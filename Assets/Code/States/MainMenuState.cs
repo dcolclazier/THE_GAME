@@ -3,14 +3,18 @@ using UnityEngine;
 
 namespace Assets.Code.States
 {
-    public class SandboxState : IEngineState
+    public class MainMenuState : IEngineState
     {
-        private readonly GameManager _engine;
-        
+        private readonly GameManager _manager;
+        public MainMenuState(GameManager manager)
+        {
+            _manager = manager;
+        }
         public void Update()
         {
-           
+            
         }
+
         public void Deactivate()
         {
             
@@ -18,7 +22,7 @@ namespace Assets.Code.States
 
         public void Activate()
         {
-            Application.LoadLevel("Sandbox");
+            Application.LoadLevel("MainMenu");
         }
     }
 }

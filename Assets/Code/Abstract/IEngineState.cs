@@ -1,8 +1,9 @@
-﻿namespace Abstract
+﻿namespace Assets.Code.Abstract
 {
     public interface IEngineState
     {
         void Update();
-        void Render();
+        void Deactivate();
+        void Activate();
     }
 }

@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Main.unity
+    path: Assets/Scenes/PreStart.unity
   - enabled: 1
-    path: Assets/Sandbox.unity
+    path: Assets/Scenes/Main.unity
+  - enabled: 1
+    path: Assets/Scenes/Sandbox.unity
