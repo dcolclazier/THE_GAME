@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Assets.Code;
 using Object = UnityEngine.Object;
 
 // ReSharper disable once CheckNamespace (only because Monobehaviour can't be in a custom namespace)
@@ -56,15 +57,28 @@ public class MainController : MonoBehaviour {
         _updateDelegates[(int)SceneState.Run] = ScreenStateRun;
 
         _nextSceneName = "MainMenu";
+
+        //testing event messaging system
+        Messenger.AddListener<string>("Scene change",Test);
+        Messenger.MarkAsPermanent("Scene change");
+        Messenger.Broadcast("Scene change", _nextSceneName);
+        //oh yeah... that's how I like it.
+
         _currentSceneState = SceneState.Reset;
 
     }
+
+    //part of event messaging system test
+    private void Test(string arg1) {
+        Debug.Log("Testing Messenger system - Scene change: " + arg1);
+    }
+
     //first step - do a GC.collect!
-    private void SceneStateReset()
-    {
+    private void SceneStateReset(){
         System.GC.Collect();
         _currentSceneState = SceneState.Preload;
     }
+
     //start loading the next scene asynchrounously 
     private void SceneStatePreload()
     {
