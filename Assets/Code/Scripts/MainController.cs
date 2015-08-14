@@ -1,10 +1,5 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Runtime.InteropServices;
-using System.Threading;
+﻿using UnityEngine;
 using Assets.Code;
-using Object = UnityEngine.Object;
 
 // ReSharper disable once CheckNamespace (only because Monobehaviour can't be in a custom namespace)
 public class MainController : MonoBehaviour {
@@ -60,7 +55,7 @@ public class MainController : MonoBehaviour {
 
         //testing event messaging system
         Messenger.AddListener<string>("Scene change",Test);
-        Messenger.MarkAsPermanent("Scene change");
+        Messenger.MarkAsPermanent("Scene change"); // <-- persists through scene changes
         Messenger.Broadcast("Scene change", _nextSceneName);
         //oh yeah... that's how I like it.
 
