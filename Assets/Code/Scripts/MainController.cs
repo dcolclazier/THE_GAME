@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Assets.Code;
 
 // ReSharper disable once CheckNamespace (only because Monobehaviour can't be in a custom namespace)
@@ -57,6 +58,9 @@ public class MainController : MonoBehaviour {
         Messenger.AddListener<string>("Scene change",Test);
         Messenger.MarkAsPermanent("Scene change"); // <-- persists through scene changes
         Messenger.Broadcast("Scene change", _nextSceneName);
+        Messenger.RemoveListener<string>("Scene change", Test);
+        Messenger.Broadcast("Scene change", _nextSceneName);
+        Messenger.AddListener<string>("Scene change", Test);
         //oh yeah... that's how I like it.
 
         _currentSceneState = SceneState.Reset;

@@ -30,80 +30,84 @@ namespace Assets.Code {
         }
     }
     static internal class Messenger {
-         
-        static private MessengerHelper _messengerHelper = (new GameObject("MessengerHelper")).AddComponent<MessengerHelper>();
 
-        static public Dictionary<string, Delegate> eventTable = new Dictionary<string, Delegate>();
-        static public List<string> permenantMessages = new List<string>();
+        // ReSharper disable once UnusedMember.Local
+#pragma warning disable 0414
+        private static MessengerHelper _messengerHelper = (new GameObject("MessengerHelper")).AddComponent<MessengerHelper>();
+        private static readonly Dictionary<string, Delegate> EventTable = new Dictionary<string, Delegate>();
+        private static readonly List<string> PermenantMessages = new List<string>();
 
         static public void MarkAsPermanent(string eventType) {
-            permenantMessages.Add(eventType);
+            PermenantMessages.Add(eventType);
         }
 
         static public void Cleanup() {
             Debug.Log("MESSENGER Cleanup. Make sure that none of necessary listeners are removed.");
  
-		var messagesToRemove = (from pair 
-                                in eventTable 
-                                let wasFound = permenantMessages.Any(message => pair.Key == message) 
+		    var messagesToRemove = (from pair 
+                                in EventTable 
+                                let wasFound = PermenantMessages.Any(message => pair.Key == message) 
                                 where !wasFound 
                                 select pair.Key).ToList();
 
-        foreach (var message in messagesToRemove) 
-		    eventTable.Remove( message );
+            foreach (var message in messagesToRemove) 
+		        EventTable.Remove( message );
+            PrintEventTable();
+
 		}
 
         static public void PrintEventTable() {
             Debug.Log("\t\t\t=== MESSENGER PrintEventTable ===");
 
-            foreach (KeyValuePair<string, Delegate> pair in eventTable)
-            {
+            foreach (var pair in EventTable) {
                 Debug.Log("\t\t\t" + pair.Key + "\t\t" + pair.Value);
             }
 
             Debug.Log("\n");
         }
 
-        static public void OnListenerAdding(string eventType, Delegate listenerBeingAdded) {
+        private static void OnListenerAdding(string eventType, Delegate listenerBeingAdded) {
             
             //if the eventType doesn't exist, add it with a null listener
-            if(!eventTable.ContainsKey(eventType)) eventTable.Add(eventType,null);
+            if(!EventTable.ContainsKey(eventType)) EventTable.Add(eventType,null);
 
             //either way, though...
-            var listeners = eventTable[eventType];
+            var listeners = EventTable[eventType];
             if(listeners != null && listeners.GetType() != listenerBeingAdded.GetType())
                 throw new ListenerException(string.Format("Tried to add listener with wrong signature for event type {0}. " +
                                                           "Current listeners have type {1} and listener being added has type {2}", 
                                                           eventType, listeners.GetType().Name, listenerBeingAdded.GetType().Name));
         }
 
-        static public void OnListenerRemoving(string eventType, Delegate listenerBeingRemoved) {
-            if (!eventTable.ContainsKey(eventType)) return;
-            var listeners = eventTable[eventType];
+        private static void OnListenerRemoving(string eventType, Delegate listenerBeingRemoved) {
+            if (!EventTable.ContainsKey(eventType)) return;
+            var listeners = EventTable[eventType];
             if (listeners == null) {
                 throw new ListenerException(string.Format("Tried to remove listener for event type \"{0}\" but the current listener is null.",eventType));
             } else if (listeners.GetType() != listenerBeingRemoved.GetType()) {
-                throw new ListenerException( string.Format("Tried to remove listener with wrong signature for event type {0}. " +
-                                                           "Current listeners have type {1} and listener being added has type {2}",
-                                                            eventType, listeners.GetType().Name, listenerBeingRemoved.GetType().Name));
-            } else {
-                throw new ListenerException(string.Format("Tried to remove listener for type \"{0}\" but Messenger didn't know about this event type.", eventType));
+                throw new ListenerException(
+                    string.Format("Tried to remove listener with wrong signature for event type {0}. " +
+                                  "Current listeners have type {1} and listener being added has type {2}",
+                        eventType, listeners.GetType().Name, listenerBeingRemoved.GetType().Name));
             }
+            //} else {
+            //    throw new ListenerException(string.Format("Tried to remove listener for type \"{0}\" but Messenger didn't know about this event type.", eventType));
+            //}
         }
 
-        static public void OnListenerRemoved(string eventType) {
-            if (eventTable[eventType] == null) {
-                eventTable.Remove(eventType);
-            }
+        private static void OnListenerRemoved(string eventType) {
+
+            if (PermenantMessages.Contains(eventType)) PermenantMessages.Remove(eventType);
+            if (EventTable[eventType] == null) EventTable.Remove(eventType);
         }
 
-        static public void OnBroadcasting(string eventType) {
-            if (!eventTable.ContainsKey(eventType)) {
-                throw new BroadcastException(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
-            }
+        private static void OnBroadcasting(string eventType) {
+            if (EventTable.ContainsKey(eventType)) return;
+
+            Debug.Log(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
         }
 
-        static public BroadcastException CreateBroadcastSignatureException(string eventType) {
+        private static BroadcastException CreateBroadcastSignatureException(string eventType) {
             return new BroadcastException(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
 
         }
@@ -112,48 +116,48 @@ namespace Assets.Code {
         static public void AddListener(string eventType, Callback handler)
         {
             OnListenerAdding(eventType, handler);
-            eventTable[eventType] = (Callback)eventTable[eventType] + handler;
+            EventTable[eventType] = (Callback)EventTable[eventType] + handler;
         }
 
         static public void AddListener<T>(string eventType, Callback<T> handler) {
             OnListenerAdding(eventType, handler);
-            eventTable[eventType] = (Callback<T>)eventTable[eventType] + handler;
+            EventTable[eventType] = (Callback<T>)EventTable[eventType] + handler;
         }
 
         static public void AddListener<T, T2>(string eventType, Callback<T, T2> handler)
         {
             OnListenerAdding(eventType, handler);
-            eventTable[eventType] = (Callback<T, T2>)eventTable[eventType] + handler;
+            EventTable[eventType] = (Callback<T, T2>)EventTable[eventType] + handler;
         }
 
         static public void AddListener<T, T2, T3>(string eventType, Callback<T, T2, T3> handler)
         {
             OnListenerAdding(eventType, handler);
-            eventTable[eventType] = (Callback<T, T2, T3>)eventTable[eventType] + handler;
+            EventTable[eventType] = (Callback<T, T2, T3>)EventTable[eventType] + handler;
         }
 	    
         static public void RemoveListener(string eventType, Callback handler) {
             OnListenerRemoving(eventType, handler);   
-            eventTable[eventType] = (Callback)eventTable[eventType] - handler;
+            EventTable[eventType] = (Callback)EventTable[eventType] - handler;
             OnListenerRemoved(eventType);
         }
  
 	    static public void RemoveListener<T>(string eventType, Callback<T> handler) {
             OnListenerRemoving(eventType, handler);
-            eventTable[eventType] = (Callback<T>)eventTable[eventType] - handler;
+            EventTable[eventType] = (Callback<T>)EventTable[eventType] - handler;
             OnListenerRemoved(eventType);
         }
 
         static public void RemoveListener<T, T2>(string eventType, Callback<T, T2> handler)
         {
             OnListenerRemoving(eventType, handler);
-            eventTable[eventType] = (Callback<T, T2>)eventTable[eventType] - handler;
+            EventTable[eventType] = (Callback<T, T2>)EventTable[eventType] - handler;
             OnListenerRemoved(eventType);
         }
  
 	    static public void RemoveListener<T, T2, T3>(string eventType, Callback<T, T2, T3> handler) {
             OnListenerRemoving(eventType, handler);
-            eventTable[eventType] = (Callback<T, T2, T3>)eventTable[eventType] - handler;
+            EventTable[eventType] = (Callback<T, T2, T3>)EventTable[eventType] - handler;
             OnListenerRemoved(eventType);
         }
       
@@ -162,7 +166,7 @@ namespace Assets.Code {
             OnBroadcasting(eventType);
 
             Delegate listeners;
-            if (!eventTable.TryGetValue(eventType, out listeners)) return;
+            if (!EventTable.TryGetValue(eventType, out listeners)) return;
             
             var callback = listeners as Callback;
             if (callback != null) callback();
@@ -174,7 +178,7 @@ namespace Assets.Code {
             OnBroadcasting(eventType);
 
             Delegate listeners;
-            if (!eventTable.TryGetValue(eventType, out listeners)) return;
+            if (!EventTable.TryGetValue(eventType, out listeners)) return;
             
             var callback = listeners as Callback<T>;
             if (callback != null) callback(arg1);
@@ -187,7 +191,7 @@ namespace Assets.Code {
             OnBroadcasting(eventType);
 
             Delegate listeners;
-            if (!eventTable.TryGetValue(eventType, out listeners)) return;
+            if (!EventTable.TryGetValue(eventType, out listeners)) return;
             
             var callback = listeners as Callback<T, T2>;
             if (callback != null) callback(arg1, arg2);
@@ -198,7 +202,7 @@ namespace Assets.Code {
             OnBroadcasting(eventType);
 
             Delegate listeners;
-            if (!eventTable.TryGetValue(eventType, out listeners)) return;
+            if (!EventTable.TryGetValue(eventType, out listeners)) return;
 
             var callback = listeners as Callback<T, T2, T3>;
             if (callback != null) callback(arg1, arg2, arg3);
