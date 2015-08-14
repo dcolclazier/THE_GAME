@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Node;
+//using Node;
 
 public class PathFind : MonoBehaviour {
 
@@ -24,7 +24,7 @@ public Vector3[] findPath(GameObject unit, Vector3 goal)
 		//add to open list any nodes found with los not previously on list
 		//resort open list with new values
 		//repeat until path to goal is found
-
+    return null;
 	}
 
 

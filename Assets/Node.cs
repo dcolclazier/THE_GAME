@@ -29,7 +29,7 @@ public class Node : MonoBehaviour {
 	public Node[] polygonNodes(PolygonCollider2D poly)
 	{
 
-
+	    return null;
 	}
 
 
