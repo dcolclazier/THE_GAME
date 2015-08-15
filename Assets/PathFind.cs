@@ -83,14 +83,12 @@ public static class PathFind {
         Debug.Log("Path: Step 2 complete.");
 
 		//Check if start point can see end point (if so no additional path finding required)
-<<<<<<< HEAD
+
 		Physics2D.raycastsStartInColliders = false; //TODO this is not a permenant solution
 		if (Physics2D.Raycast(circle.transform.position, goal - circPos, Vector2.Distance(goal, circPos), 1 << 11))
 		{Debug.Log("intial raycast hit something");}
 		else
-=======
 		if (Physics2D.Raycast(circle.transform.position, goal - circle.transform.position))
->>>>>>> 480df46f7e4562287fb945b5effed0b175d5649a
 		{
 			Debug.Log("intial raycast didn't hit something");
 			path[1] = goal;

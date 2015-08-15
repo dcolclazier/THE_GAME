@@ -31,7 +31,6 @@ public class Node {
 		Vector2 center = polygonCenter(poly.points);
         Debug.Log(string.Format("CenterX: {0}, CenterY: {1}",center.x,center.y));
 
-<<<<<<< HEAD
 		Vector2[] polyPoints = poly.points;
         Debug.Log("Length of poly points: " + poly.points);
 
@@ -44,9 +43,7 @@ public class Node {
 			nodeList[size-1] = new Node(vect);
 		}
 		return nodeList;
-=======
 	    return null;
->>>>>>> develop
 	}
 
 	public static Node[] circleNodes(CircleCollider2D circ, Vector2 from, float buffer)
