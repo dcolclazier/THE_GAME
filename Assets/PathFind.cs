@@ -18,6 +18,7 @@ public static class PathFind {
 		GameObject map = createBufferMap(0.38f);
 		permNodes = createPermNodes(map);
 		testMap = map; //for testing only
+        Debug.Log("Yay... got here.");
 		//TODO figure out way to do this for each buffer map size needed
 	}
 
@@ -25,10 +26,11 @@ public static class PathFind {
 	{
 		GameObject backGround = GameObject.Find("background");
 		GameObject BufferMap = GameObject.Instantiate(backGround);
-		Collider2D[] noWalks = BufferMap.GetComponentsInChildren<Collider2D>();
-		foreach (CircleCollider2D cc in noWalks)
+		var noWalks = BufferMap.GetComponentsInChildren<PolygonCollider2D>();
+	    var noWalkCircles = BufferMap.GetComponentsInChildren<CircleCollider2D>();
+		foreach (var cc in noWalkCircles)
 		{
-			cc.radius += buffer;
+			((CircleCollider2D)cc).radius += buffer;
 			cc.gameObject.layer = 11;
 		}
 		foreach (PolygonCollider2D pc in noWalks)

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Node : MonoBehaviour {
+public class Node {
 
 	public Vector2 position;
 	public float guess = 0;
@@ -29,8 +29,14 @@ public class Node : MonoBehaviour {
 	public static Node[] polygonNodes(PolygonCollider2D poly)
 	{
 		Vector2 center = polygonCenter(poly.points);
+        Debug.Log(string.Format("CenterX: {0}, CenterY: {1}",center.x,center.y));
+
 		Vector2[] polyPoints = poly.points;
+        Debug.Log("Length of poly points: " + poly.points);
+
+        //Debug.Log(string.Format("PolyX: {0}, PolyY: {1}", polyPoints, center.y));
 		Node[] nodeList = new Node[polyPoints.Length];
+        Debug.Log("PolyPoints.length: "+ polyPoints.Length);
 		foreach(Vector2 vect in polyPoints)
 		{
 			int size = nodeList.Length;
@@ -41,7 +47,7 @@ public class Node : MonoBehaviour {
 
 	public static Node[] circleNodes(CircleCollider2D circ, Vector2 from, float buffer)
 	{
-		Node[] nodeList = new Node[1];
+		Node[] nodeList = new Node[2];
 		Vector2 center = (Vector2)circ.transform.position;
 		Ray2D ray = new Ray2D(center, from - center);
 		Quaternion q = Quaternion.AngleAxis(90, Vector2.up);

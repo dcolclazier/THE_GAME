@@ -40,7 +40,7 @@ public class Unit_Select : MonoBehaviour {
 		if (selected && Input.GetMouseButton(1))
         {
 			setDestinationCircle();
-			//Vector3[] path = PathFind.findPath(selected, MouseWorldPoint());
+			Vector3[] path = PathFind.findPath(selected, MouseWorldPoint());
 			//movePathLine = new VectorLine("Move Path Line", path, null, line_thickness, LineType.Continuous);
 			//movePathLine.Draw3DAuto();
 			//movePathLine.active = true;
