@@ -48,7 +48,8 @@ public class MenuController : MonoBehaviour
     }
 
     public void SinglepPress() {
-        //load single player menu
+
+        MainController.SwitchScene("Test Scene");
     }
 
     public void MultipPress() {
