@@ -2,14 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public sealed class PathFindHelper : MonoBehaviour {
+    
+}
 
-
-public class PathFind : MonoBehaviour {
+public static class PathFind {
 	
-	private  GameObject testMap; 
-	private  Node[] permNodes ;
+	private static GameObject testMap; 
+	private static Node[] permNodes ;
+    private static PathFindHelper pathFindHelper = (new GameObject("PathFindHelper")).AddComponent<PathFindHelper>();
 
-	public  void preLoad()
+	static PathFind()
 	{
 		//Pre-process collider expansions based on required buffers of units in scene and nodes for polygons
 		GameObject map = createBufferMap(0.38f);
@@ -18,11 +21,11 @@ public class PathFind : MonoBehaviour {
 		//TODO figure out way to do this for each buffer map size needed
 	}
 
-	 GameObject createBufferMap(float buffer)
+	private static GameObject createBufferMap(float buffer)
 	{
 		GameObject backGround = GameObject.Find("background");
 		GameObject BufferMap = GameObject.Instantiate(backGround);
-		Collider2D[] noWalks = GetComponentsInChildren<Collider2D>(BufferMap);
+		Collider2D[] noWalks = pathFindHelper.GetComponentsInChildren<Collider2D>(BufferMap);
 		foreach (CircleCollider2D cc in noWalks)
 		{
 			cc.radius += buffer;
@@ -38,10 +41,10 @@ public class PathFind : MonoBehaviour {
 		return BufferMap;
 	}
 
-	 Node[] createPermNodes(GameObject map)
+	 private static Node[] createPermNodes(GameObject map)
 	{
 		int i = 0;
-		Collider2D[] noWalks = GetComponentsInChildren<Collider2D>(map);
+        Collider2D[] noWalks = pathFindHelper.GetComponentsInChildren<Collider2D>(map);
 		foreach(PolygonCollider2D pc in noWalks)
 		{
 			int n = pc.GetTotalPointCount();
@@ -62,7 +65,7 @@ public class PathFind : MonoBehaviour {
 
 	//TODO need function for updating and adding dynamic units and props after each move to the buffer maps
 
-	public  Vector3[] findPath(GameObject unit, Vector3 goal)
+	public static Vector3[] findPath(GameObject unit, Vector3 goal)
 	{
 		//create path and set first point as current location of unit
 		Vector3[] path = new Vector3[99];
@@ -106,7 +109,7 @@ public class PathFind : MonoBehaviour {
 		return path;
 	}
 
-	 void canSee (Node searchNode, GameObject bufferMap, Vector3 goal, List<Node> openList)
+	private static void canSee (Node searchNode, GameObject bufferMap, Vector3 goal, List<Node> openList)
 	{
 		//create nodes for each circle collider 90 degrees off the angle pointing directly towards them
 		List<Node> currentCircleNodes = new List<Node>();
@@ -124,7 +127,7 @@ public class PathFind : MonoBehaviour {
 	}
 
 
-	 void checkLOS(List<Node> openList, Node searchNode, Node node, Vector3 goal)
+	 private static void checkLOS(List<Node> openList, Node searchNode, Node node, Vector3 goal)
 	{
 		if (!Physics2D.Raycast(searchNode.position, node.position - searchNode.position, Mathf.Infinity, 1 << 11) && node.open == true)
 		{ //if no collision between searching node and this node, and this node is not on closed list:
@@ -144,7 +147,7 @@ public class PathFind : MonoBehaviour {
 		}
 	}
 
-	 Vector3[] createPath(Node node, Vector3 goal)
+	private static Vector3[] createPath(Node node, Vector3 goal)
 	{
 		int i = 1;
 		bool start = false;
