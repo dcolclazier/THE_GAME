@@ -70,21 +70,25 @@ public static class PathFind {
 	public static Vector3[] findPath(GameObject unit, Vector3 goal)
 	{
 		//create path and set first point as current location of unit
-		Vector3[] path = new Vector3[99];
+        Vector3[] path = new Vector3[99];
 		CircleCollider2D circle = unit.GetComponentInChildren<CircleCollider2D>();
 		path[0] = circle.transform.position;
+        Debug.Log("Path: Step 1 complete.");
 
 		//Get collider size of object that is path finding
 		float buffer = circle.radius;   //figure out how to referance the buffermap created for that size
 		GameObject bufferMap = testMap;
 		bufferMap.SetActive(true);
+        Debug.Log("Path: Step 2 complete.");
 
 		//Check if start point can see end point (if so no additional path finding required)
-		if (!Physics2D.Raycast(circle.transform.position, goal - circle.transform.position))
+		if (Physics2D.Raycast(circle.transform.position, goal - circle.transform.position))
 		{
 			path[1] = goal;
+            Debug.Log("Found a path. Pathfind returning path now.");
 			return path;
 		}
+        Debug.Log("Path: Path not found at first - lets start looking.");
 
 		//else start iterrating through nodes to find the best path
 		bool foundGoal = false;
