@@ -70,26 +70,34 @@ public static class PathFind {
 	public static Vector3[] findPath(GameObject unit, Vector3 goal)
 	{
 		//create path and set first point as current location of unit
-		Vector3[] path = new Vector3[99];
+        Vector3[] path = new Vector3[99];
 		CircleCollider2D circle = unit.GetComponentInChildren<CircleCollider2D>();
 		path[0] = circle.transform.position;
+        Debug.Log("Path: Step 1 complete.");
 
 		//Get collider size of object that is path finding
 		float buffer = circle.radius;   //figure out how to referance the buffermap created for that size
 		GameObject bufferMap = testMap;
 		Vector3 circPos = circle.transform.position;
 		bufferMap.SetActive(true);
+        Debug.Log("Path: Step 2 complete.");
 
 		//Check if start point can see end point (if so no additional path finding required)
+<<<<<<< HEAD
 		Physics2D.raycastsStartInColliders = false; //TODO this is not a permenant solution
 		if (Physics2D.Raycast(circle.transform.position, goal - circPos, Vector2.Distance(goal, circPos), 1 << 11))
 		{Debug.Log("intial raycast hit something");}
 		else
+=======
+		if (Physics2D.Raycast(circle.transform.position, goal - circle.transform.position))
+>>>>>>> 480df46f7e4562287fb945b5effed0b175d5649a
 		{
 			Debug.Log("intial raycast didn't hit something");
 			path[1] = goal;
+            Debug.Log("Found a path. Pathfind returning path now.");
 			return path;
 		}
+        Debug.Log("Path: Path not found at first - lets start looking.");
 
 		//else start iterrating through nodes to find the best path
 		bool foundGoal = false;
