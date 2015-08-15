@@ -41,10 +41,10 @@ public class Unit_Select : MonoBehaviour {
         {
 			setDestinationCircle();
 			Vector3[] path = PathFind.findPath(selected, MouseWorldPoint());
-			//VectorLine.Destroy(ref movePathLine);
-			//movePathLine = new VectorLine("Move Path Line", path, null, line_thickness, LineType.Continuous);
-			//movePathLine.Draw3DAuto();
-			//movePathLine.active = true;
+			VectorLine.Destroy(ref movePathLine);
+			movePathLine = new VectorLine("Move Path Line", path, null, line_thickness, LineType.Continuous);
+			movePathLine.Draw3DAuto();
+			movePathLine.active = true;
 			//connectLine();
         }
 
