@@ -10,34 +10,20 @@ Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.dll (this m
 Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\GAME\TheGame\The_Game_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.193 seconds
+Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\Vectrosity.dll (this message is harmless)
+Loading D:\GAME\TheGame\The_Game_Data\Managed\Vectrosity.dll into Unity Child Domain
+- Completed reload, in  0.186 seconds
 desktop: 1920x1080 60Hz; virtual: 5760x1080 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\System.dll (this message is harmless)
-Got here! GameManager loading prestart state.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Changing State to Main Menu!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.236173 ms
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 211.
-Total: 0.164180 ms (FindLiveObjects: 0.020193 ms CreateObjectMapping: 0.006731 ms MarkObjects: 0.127598 ms  DeleteObjects: 0.008487 ms)
-
-Exit button clicked!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
-
