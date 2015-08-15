@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 
 public class PathFind : MonoBehaviour {
+	
+	private  GameObject testMap; 
+	private  Node[] permNodes ;
 
-	private GameObject testMap;
-
-	public void Start()
+	public  void preLoad()
 	{
 		//Pre-process collider expansions based on required buffers of units in scene and nodes for polygons
 		GameObject map = createBufferMap(0.38f);
-		Node[] permNodes = createPermNodes(map);
+		permNodes = createPermNodes(map);
 		testMap = map; //for testing only
 		//TODO figure out way to do this for each buffer map size needed
 	}
 
-	public GameObject createBufferMap(float buffer)
+	 GameObject createBufferMap(float buffer)
 	{
 		GameObject backGround = GameObject.Find("background");
 		GameObject BufferMap = GameObject.Instantiate(backGround);
@@ -36,7 +38,7 @@ public class PathFind : MonoBehaviour {
 		return BufferMap;
 	}
 
-	public Node[] createPermNodes(GameObject map)
+	 Node[] createPermNodes(GameObject map)
 	{
 		int i = 0;
 		Collider2D[] noWalks = GetComponentsInChildren<Collider2D>(map);
@@ -60,7 +62,7 @@ public class PathFind : MonoBehaviour {
 
 	//TODO need function for updating and adding dynamic units and props after each move to the buffer maps
 
-	public Vector3[] findPath(GameObject unit, Vector3 goal)
+	public  Vector3[] findPath(GameObject unit, Vector3 goal)
 	{
 		//create path and set first point as current location of unit
 		Vector3[] path = new Vector3[99];
@@ -73,58 +75,106 @@ public class PathFind : MonoBehaviour {
 		bufferMap.SetActive(true);
 
 		//Check if start point can see end point (if so no additional path finding required)
-		if (!Physics2D.Raycast(circle.transform.position, goal))
+		if (!Physics2D.Raycast(circle.transform.position, goal - circle.transform.position))
 		{
 			path[1] = goal;
 			return path;
 		}
 
-		//Create list of nodes based off expanded no walk colliders in scene
+		//else start iterrating through nodes to find the best path
+		bool foundGoal = false;
+		Node nextNode = new Node (circle.transform.position);
+		List<Node> openList = new List<Node>();
+		while (foundGoal == false)
+		{
+			nextNode.open = false;
+			canSee (nextNode, testMap, goal, openList);
+			//resort open list with new values
+			foreach (Node node in openList) node.Value = node.pathDist + node.guess;
+			openList.Sort((x, y) => x.Value.CompareTo(y.Value));
+			nextNode = openList[0];
+			openList.RemoveAt(0);
+			//repeat until path to goal is found
+			if (!Physics2D.Raycast(nextNode.position, (Vector2)goal - nextNode.position))
+			{
+				foundGoal = true;
+				path = createPath(nextNode, goal);
+			}
+		}
 
-
-		//temporary circle nodes
-
-
-		//check line of site to each node in list from start point
-
-
-		//set distance from start point for each visible node
-
-
-		//set guess distance for each visibile node
-
-
-		//add nodes to open list and sort by smallest value on top
-
-
-		//pop first value off open list, check for los to goal
-
-
-		//add node to closed list
-
-
-		//recalc circle nodes based off direction to current node
-
-
-		//check for los to each node not on closed list
-
-
-		//if current this node.pathDist + dist to ceck node < check node.pathDist, override values
-
-
-		//add to open list any nodes found with los not previously on list
-
-
-		//resort open list with new values
-
-
-		//repeat until path to goal is found
-
-
-
-
-		return findPath;
+		bufferMap.SetActive(false);
+		return path;
 	}
 
+	 void canSee (Node searchNode, GameObject bufferMap, Vector3 goal, List<Node> openList)
+	{
+		//create nodes for each circle collider 90 degrees off the angle pointing directly towards them
+		List<Node> currentCircleNodes = new List<Node>();
+		CircleCollider2D[] circTemp = testMap.GetComponentsInChildren<CircleCollider2D>();
+		foreach (CircleCollider2D cc in circTemp)
+		{
+			//TODO ignore the temp circle collider of current unit
+			Node[] temp = Node.circleNodes(cc, searchNode.position, 0);
+			foreach (Node n in temp) currentCircleNodes.Add(n);
+		}
+		
+		//check line of site to each node in list from start point
+		foreach (Node node in permNodes) checkLOS(openList, searchNode, node, goal); //add all nodes with LOS to open list
+		foreach(Node node in currentCircleNodes) checkLOS(openList, searchNode, node, goal); //add all nodes with LOS to open list
+	}
+
+
+	 void checkLOS(List<Node> openList, Node searchNode, Node node, Vector3 goal)
+	{
+		if (!Physics2D.Raycast(searchNode.position, node.position - searchNode.position, Mathf.Infinity, 1 << 11) && node.open == true)
+		{ //if no collision between searching node and this node, and this node is not on closed list:
+			float dist = Vector2.Distance(searchNode.position, node.position) + searchNode.pathDist; //dist of start point to searching node + dist from searching node to this node
+			if (node.pathDist == 0) //if first time this node has been found
+			{
+				node.pathDist = dist;
+				node.pointTo = searchNode;
+				openList.Add(node);
+				node.guess = Vector2.Distance(node.position, goal);
+			}
+			else if (dist < node.pathDist) //override current path on this node of currently searching path is shorter
+			{
+				node.pathDist = dist;
+				node.pointTo = searchNode;
+			}
+		}
+	}
+
+	 Vector3[] createPath(Node node, Vector3 goal)
+	{
+		int i = 1;
+		bool start = false;
+		Node newNode = node.pointTo;
+		while (start == false)
+		{
+			i++;
+			newNode = newNode.pointTo;
+			if (newNode.pointTo == null) start = true;
+		}
+
+		Vector3[] path = new Vector3[i];
+		path[i] = goal;
+		i--;
+		path[i] = (Vector3)node.position;
+
+		start = false;
+		newNode = node.pointTo;
+		while (start == false)
+		{
+			i--;
+			path[i] = (Vector3)newNode.position;
+			if (i==0) 
+			{
+				start = true;
+				return path;
+			}
+			newNode = newNode.pointTo;
+		}
+		return path;
+	}
 
 }

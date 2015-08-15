@@ -4,10 +4,11 @@ using System.Collections;
 public class Node : MonoBehaviour {
 
 	public Vector2 position;
-	public float guess;
-	public float pathDist;
+	public float guess = 0;
+	public float pathDist = 0;
 	public float Value;
 	public Node pointTo;
+	public bool open = true;
 
 	public Node (Vector2 pos)
 	{

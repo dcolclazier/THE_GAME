@@ -40,7 +40,11 @@ public class Unit_Select : MonoBehaviour {
 		if (selected && Input.GetMouseButton(1))
         {
 			setDestinationCircle();
-			connectLine();
+			//Vector3[] path = PathFind.findPath(selected, MouseWorldPoint());
+			//movePathLine = new VectorLine("Move Path Line", path, null, line_thickness, LineType.Continuous);
+			//movePathLine.Draw3DAuto();
+			//movePathLine.active = true;
+			//connectLine();
         }
 
         //left mouse held to drag screen around
@@ -111,7 +115,8 @@ public class Unit_Select : MonoBehaviour {
 		destinationCircle.active = true;
 		pathGoal = point;
 	}
-	
+
+
 	void connectLine()
 	{
 		movePathLine.active = true;
