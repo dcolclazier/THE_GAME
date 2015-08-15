@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public sealed class PathFindHelper : MonoBehaviour {
+//public sealed class PathFindHelper : MonoBehaviour {
     
-}
+//}
 
 public static class PathFind {
 	
 	private static GameObject testMap; 
 	private static Node[] permNodes ;
-    private static PathFindHelper pathFindHelper = (new GameObject("PathFindHelper")).AddComponent<PathFindHelper>();
+    //private static PathFindHelper pathFindHelper = (new GameObject("PathFindHelper")).AddComponent<PathFindHelper>();
 
 	static PathFind()
 	{
@@ -25,7 +25,7 @@ public static class PathFind {
 	{
 		GameObject backGround = GameObject.Find("background");
 		GameObject BufferMap = GameObject.Instantiate(backGround);
-		Collider2D[] noWalks = pathFindHelper.GetComponentsInChildren<Collider2D>(BufferMap);
+		Collider2D[] noWalks = BufferMap.GetComponentsInChildren<Collider2D>();
 		foreach (CircleCollider2D cc in noWalks)
 		{
 			cc.radius += buffer;
@@ -44,7 +44,7 @@ public static class PathFind {
 	 private static Node[] createPermNodes(GameObject map)
 	{
 		int i = 0;
-        Collider2D[] noWalks = pathFindHelper.GetComponentsInChildren<Collider2D>(map);
+        Collider2D[] noWalks = map.GetComponentsInChildren<Collider2D>();
 		foreach(PolygonCollider2D pc in noWalks)
 		{
 			int n = pc.GetTotalPointCount();
