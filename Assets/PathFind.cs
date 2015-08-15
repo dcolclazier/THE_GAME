@@ -18,7 +18,7 @@ public static class PathFind {
 		GameObject map = createBufferMap(0.38f);
 		permNodes = createPermNodes(map);
 		testMap = map; //for testing only
-        Debug.Log("Yay... got here.");
+        Debug.Log("Start PathFind().");
 		//TODO figure out way to do this for each buffer map size needed
 	}
 
@@ -77,11 +77,16 @@ public static class PathFind {
 		//Get collider size of object that is path finding
 		float buffer = circle.radius;   //figure out how to referance the buffermap created for that size
 		GameObject bufferMap = testMap;
+		Vector3 circPos = circle.transform.position;
 		bufferMap.SetActive(true);
 
 		//Check if start point can see end point (if so no additional path finding required)
-		if (!Physics2D.Raycast(circle.transform.position, goal - circle.transform.position))
+		Physics2D.raycastsStartInColliders = false; //TODO this is not a permenant solution
+		if (Physics2D.Raycast(circle.transform.position, goal - circPos, Vector2.Distance(goal, circPos), 1 << 11))
+		{Debug.Log("intial raycast hit something");}
+		else
 		{
+			Debug.Log("intial raycast didn't hit something");
 			path[1] = goal;
 			return path;
 		}
@@ -104,6 +109,7 @@ public static class PathFind {
 			{
 				foundGoal = true;
 				path = createPath(nextNode, goal);
+				Debug.Log("Path Found");
 			}
 		}
 
