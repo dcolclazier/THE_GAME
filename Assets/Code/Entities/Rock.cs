@@ -7,7 +7,8 @@ namespace Assets.Code.Entities
        protected override void Start() {
            //objects are solid by default.
            //Solid = false;
-           
+           //do other stuff 
+           //and more.
            
            base.Start(); //must be called at end of override Start()
        }
