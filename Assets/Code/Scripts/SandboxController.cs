@@ -1,31 +1,30 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Code.Abstract;
 using Assets.Code.Entities;
 using UnityEngine;
 
 namespace Assets.Code.Scripts {
     public class SandboxController : MonoBehaviour {
-        public List<Node> EntityNodes;
+        public Dictionary<IObstructable, List<Node>> EntityNodes;
 
         protected void Awake() {
-            EntityNodes = new List<Node>();
+            EntityNodes = new Dictionary<IObstructable, List<Node>>();
             Messenger.AddListener<IObstructable>("EntityAppeared", TestEntityAdded); 
         }
 
         protected void Start() {
             
-            //create a rock
-            var y = (new GameObject("TestRock").AddComponent<PolygonCollider2D>());
-            var rock = y.gameObject.AddComponent<TestRock>();
-            y.points = new[] {
+            //create a rock - make sure monobehaviour is last component added
+            var polycollider = (new GameObject("TestRock").AddComponent<PolygonCollider2D>());
+            var rock = polycollider.gameObject.AddComponent<TestRock>();
+            polycollider.points = new[] {
                 new Vector2(-1, 1),
                 new Vector2(1, 1),
                 new Vector2(1, -1),
                 new Vector2(-1, -1)
             };
-            //y.size = new Vector2(2,2);
         }
-
         private void TestEntityAdded(IObstructable addedEntity)
         {
             if (addedEntity.Collider == null) {
@@ -34,13 +33,10 @@ namespace Assets.Code.Scripts {
             }
             else {
                 Debug.Log(string.Format("Controller: new Entity found! Collider: {0}, Solid? {1}", addedEntity.Collider.name, addedEntity.Solid));    
-                var nodeList = NodeHelper.GetNodes(addedEntity);
-                foreach(var node in nodeList) EntityNodes.Add(node);
+                if(EntityNodes.ContainsKey(addedEntity)) Debug.Log("Duplicate Entity detected...");
+                else EntityNodes.Add(addedEntity, NodeHelper.GetNodes(addedEntity).ToList());
+               
             }
-            
-
         }
-
-        
     }
 }

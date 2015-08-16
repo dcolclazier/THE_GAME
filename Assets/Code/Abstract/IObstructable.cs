@@ -4,6 +4,6 @@ namespace Assets.Code.Abstract {
     public interface IObstructable  {
         bool Solid { get; }
         Collider2D Collider { get; }
-        void Update();
+        void UpdateNodes();
     }
 }

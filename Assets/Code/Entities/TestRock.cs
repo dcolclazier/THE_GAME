@@ -12,8 +12,7 @@ namespace Assets.Code.Entities
         
         private bool _currentlySolid;
         protected void Awake() {
-            _currentlySolid = true;
-            Update();
+            Solid = true;
         }
 
         public bool Solid {
@@ -21,13 +20,15 @@ namespace Assets.Code.Entities
                 return _currentlySolid;
             }
             private set {
+                var changed = value != _currentlySolid;
                 _currentlySolid = value;
-                
+                if(changed) UpdateNodes();
             }
         }
         public Collider2D Collider { get { return GetComponent<PolygonCollider2D>(); } }
         public float Radius { get; set; }
-        public void Update() {
+
+        public void UpdateNodes() {
             Messenger.Broadcast(Solid ? "EntityAppeared" : "EntityDisappeared", (IObstructable) this);
         }
     }
