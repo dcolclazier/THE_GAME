@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
 
-    private static MenuController _menuController;
+    //private static MenuController _menuController;
 
     public Canvas QuitMenu;
     public Button SingleP;
@@ -17,7 +17,7 @@ public class MenuController : MonoBehaviour
 
 	// Use this for initialization
 	protected void Awake () {
-	    _menuController = this;
+	    //_menuController = this;
 	    Options = Options.GetComponent<Button>();
 	    QuitMenu = QuitMenu.GetComponent<Canvas>();
 	    SingleP = SingleP.GetComponent<Button>();
@@ -28,7 +28,8 @@ public class MenuController : MonoBehaviour
 	}
 
     protected void OnDestroy() {
-        _menuController = null;
+        //_menuController = null;
+        
     }
 
     public void ExitPress() {
