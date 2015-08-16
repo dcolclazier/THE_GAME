@@ -14,6 +14,7 @@ namespace Assets.Code.Entities
             else if (Collider is PolygonCollider2D) colliderType = NodeManager.ColliderType.Polygon;
             else if (Collider is BoxCollider2D) colliderType = NodeManager.ColliderType.Box;
             else { throw new Exception("ENTITY: Could not determine collider type. ");}
+            _currentlySolid = true;
         }
         protected virtual void Start() {
             Messenger.Broadcast("EntityCreated", this);
