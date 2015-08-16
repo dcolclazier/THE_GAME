@@ -1,4 +1,5 @@
-﻿using Assets.Code.Abstract;
+﻿using System;
+using Assets.Code.Abstract;
 using UnityEngine;
 
 namespace Assets.Code.Entities
@@ -19,7 +20,8 @@ namespace Assets.Code.Entities
                 if(changed) UpdateNodes();
             }
         }
-        public Collider2D Collider { get { return GetComponent<PolygonCollider2D>(); } }
+        //uh oh - this only works for one collider type...
+        public Collider2D Collider { get { return GetComponent<Collider2D>(); } }
         public virtual void Phase() {
             Solid = !Solid;
         }

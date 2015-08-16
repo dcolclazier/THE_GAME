@@ -166,7 +166,7 @@ namespace Assets.Code {
             
             var callback = listeners as Callback<T>;
             if (callback != null) callback(arg1);
-            //else throw CreateBroadcastSignatureException(eventType);
+            else throw CreateBroadcastSignatureException(eventType);
             
         }
 
