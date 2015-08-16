@@ -58,6 +58,9 @@ namespace Assets.Code
                 };
                 foreach (var node in nodes) yield return node;
             }
+            else {
+                throw new UnityException("NodeManager: The Entity's collider does not match any of the possible scenarios...");
+            }
             
         }
         public static IEnumerable<Node> GetSolidNodes() {

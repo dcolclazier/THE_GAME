@@ -35,6 +35,12 @@ namespace Assets.Code.Scripts {
                 Debug.Log("-- Testing GetSolidNodes() --");
                 Debug.Log(string.Format("Node - X: {0}, Y: {1}",node.position.x,node.position.y));
             }
+
+            // take note - calling GetSolidNodes in the Start method executes before the Rock
+            // component's entity node braodcast , even though it is later in execution 
+            // - I assume this is based on how Unity starts the program. Thus, try to avoid 
+            //  calling GetSolidNodes in a Start or Awake function until we get this fixed 
+            // or figure it out a workaround.
             //End test code
             
         }
