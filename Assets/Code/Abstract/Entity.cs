@@ -12,8 +12,8 @@ namespace Assets.Code.Entities
         protected virtual void Start() {
             Messenger.Broadcast("EntityCreated", this);
             if (Collider is CircleCollider2D) colliderType = NodeManager.ColliderType.Circle;
-            else if (Collider is BoxCollider2D) colliderType = NodeManager.ColliderType.Box;
             else if (Collider is PolygonCollider2D) colliderType = NodeManager.ColliderType.Polygon;
+            else if (Collider is BoxCollider2D) colliderType = NodeManager.ColliderType.Box;
         }
         public bool Solid {
             get {

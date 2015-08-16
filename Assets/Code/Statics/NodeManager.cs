@@ -30,8 +30,7 @@ namespace Assets.Code
             NodeGrabber[(int)ColliderType.Polygon] = GetPolygonNodes;
         }
         //Callback function for "EntityCreated" message broadcast
-        private static void EntityCreated(Entity entity)
-        {
+        private static void EntityCreated(Entity entity) {
             if (entity.Collider == null)
             {
                 throw new NullReferenceException("Collider wasn't found - are you sure it was created prior to it's monobehaviour awake ran?");
@@ -41,7 +40,7 @@ namespace Assets.Code
                 throw new Exception("Duplicate entity detected - EntityCreated()");
             }
             Entities.Add(entity);
-            Debug.Log(string.Format("Node Helper: new Entity added: {0}, Solid? {1}", entity.Collider.name, entity.Solid));
+            Debug.Log(string.Format("Node Helper: new Entity added: {0}, Solid? {1} Collider: {2}", entity.Collider.name, entity.Solid, entity.colliderType));
           
         }
 
@@ -59,13 +58,9 @@ namespace Assets.Code
                     new Node(new Vector2(box.offset.x + box.size.x/2,
                         box.offset.y - box.size.y/2))
                 };
-            foreach (var node in nodes) {
-                node.position.x += 2*expansionfactor;
-                node.position.y += 2*expansionfactor;
-            }
-
             return nodes;
         }
+
         //NodeGrabber method for expanding and retrieving nodes for PolygonCollider2d
         private static IEnumerable<Node> GetPolygonNodes(Entity entity, float expansionfactor) {
             if (entity.Collider == null) yield break;
@@ -74,27 +69,30 @@ namespace Assets.Code
                 yield return new Node(point);
             }
         }
+
         //NodeGrabber method for expanding and retrieving nodes for CircleCollider2d
         private static IEnumerable<Node> GetCircleNodes(Entity entity, float expansionFactor) {
             if (entity.Collider == null) yield break;
+
             const float precision = 8f;
             const float radians = (2f * Mathf.PI) / precision;
-            ((CircleCollider2D) entity.Collider).radius += expansionFactor;
-            var circlerad = ((CircleCollider2D) entity.Collider).radius;
-            for (var i = 0; i < precision; i++)
-            {
-
+            var collider = ((CircleCollider2D) entity.Collider);
+            
+            collider.Scale(expansionFactor);
+            for (var i = 0; i < precision; i++) {
                 var angle = radians * (i + 1);
-                var xMag = Mathf.Round(circlerad * Mathf.Cos(angle) * 1000f) / 1000f;
-                var yMag = Mathf.Round(circlerad * Mathf.Sin(angle) * 1000f) / 1000f;
+                var xMag = collider.offset.x + Mathf.Round(collider.radius * Mathf.Cos(angle) * 1000f) / 1000f;
+                var yMag = collider.offset.y + Mathf.Round(collider.radius * Mathf.Sin(angle) * 1000f) / 1000f;
                 yield return new Node(new Vector2(xMag, yMag));
             }
         }
+
         //responsible for picking the right NodeGrabber for the right type of collider.
         private static IEnumerable<Node> GetNodes(Entity entity, float expRadius) {
             
             return NodeGrabber[(int)entity.colliderType](entity, expRadius);     
         }
+
         //Public facing function - retreives nodes for all colliders in a scene, automatically 
         //expanding them by a certain expansionFactor to facilitate size of moving entity.
         public static IEnumerable<Node> GetAllSolidNodes(float expansionFactor) {
@@ -105,6 +103,7 @@ namespace Assets.Code
             }
             return nodelist;
         }
+
         //Clears all entries from Entities list
         public static void ClearEntities() {
             Entities.Clear();
