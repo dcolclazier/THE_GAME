@@ -17,7 +17,6 @@ namespace Assets.Code {
 
         // ReSharper disable once UnusedMember.Local
 #pragma warning disable 0414
-        private static StaticsHelper _staticsHelper = (new GameObject("StaticsHelper")).AddComponent<StaticsHelper>();
         private static readonly Dictionary<string, Delegate> EventTable = new Dictionary<string, Delegate>();
         private static readonly List<string> PermenantMessages = new List<string>();
 

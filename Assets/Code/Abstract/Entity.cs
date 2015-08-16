@@ -26,27 +26,14 @@ namespace Assets.Code.Entities
             }
         }
 
-        public Collider2D Collider {
-            get {
-                
-                return GetComponent<Collider2D>();
-            }
-        }
+        public Collider2D Collider { get { return GetComponent<Collider2D>(); } }
 
         public virtual void Phase() {
             Solid = !Solid;
         }
 
-        protected void UpdateNodes() {
+        private void UpdateNodes() {
             Messenger.Broadcast(Solid ? "EntityAppeared" : "EntityDisappeared", this);
-        }
-    }
-
-
-    public static class Extensions {
-
-        static void Expand(this CircleCollider2D collider, float expRadius) {
-            collider.radius += expRadius;
         }
     }
 }

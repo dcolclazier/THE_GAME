@@ -61,6 +61,8 @@ public class MainController : MonoBehaviour {
     //first step - do a GC.collect!
     private void SceneStateReset(){
         System.GC.Collect();
+        NodeManager.ClearEntities();
+        Messenger.Cleanup();
         _currentSceneState = SceneState.Preload;
     }
 
@@ -100,9 +102,6 @@ public class MainController : MonoBehaviour {
     //handle anything that needs to happen immediately after scene finishes loading
     private void ScreenStatePostLoad()
     {
-        NodeManager.ClearEntities();
-        Messenger.Cleanup();
-
         _currentSceneName = _nextSceneName;
         _currentSceneState = SceneState.Ready;
     }

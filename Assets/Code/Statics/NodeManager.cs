@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Assets.Code.Abstract;
 using Assets.Code.Entities;
 using UnityEngine;
 
@@ -21,15 +19,15 @@ namespace Assets.Code
         //todo - add in capability to scale polygon and box colliders prior to node creation.
 
         static NodeManager()  {
-            //Messenger.AddListener<Entity>("EntityCreated", EntityCreated);
-            Entities = new List<Entity>();
-        }
-        public static void Init() {
             Messenger.AddListener<Entity>("EntityCreated", EntityCreated);
+            Messenger.MarkAsPermanent("EntityCreated");
+            
+            Entities = new List<Entity>();
             _nodeRetreival = new NodeRetreiveDelegate[(int)ColliderType.Count];
-            _nodeRetreival[(int) ColliderType.Circle] = GetCircleNodes;
-            _nodeRetreival[(int) ColliderType.Box] = GetBoxNodes;
-            _nodeRetreival[(int) ColliderType.Polygon] = GetPolygonNodes;
+            
+            _nodeRetreival[(int)ColliderType.Circle] = GetCircleNodes;
+            _nodeRetreival[(int)ColliderType.Box] = GetBoxNodes;
+            _nodeRetreival[(int)ColliderType.Polygon] = GetPolygonNodes;
         }
         private static void EntityCreated(Entity entity)
         {
@@ -69,6 +67,7 @@ namespace Assets.Code
         }
 
         private static IEnumerable<Node> GetCircleNodes(Entity entity, float expansionFactor) {
+            if (entity.Collider == null) yield break;
             const float precision = 8f;
             const float radians = (2f * Mathf.PI) / precision;
             var circlerad = ((CircleCollider2D) entity.Collider).radius + expansionFactor;
