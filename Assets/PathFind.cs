@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Code;
+using Assets.Code.Abstract;
 
 //public sealed class PathFindHelper : MonoBehaviour {
     
@@ -12,17 +14,22 @@ public static class PathFind {
 	private static Node[] permNodes ;
     //private static PathFindHelper pathFindHelper = (new GameObject("PathFindHelper")).AddComponent<PathFindHelper>();
 
+     
+    
 	static PathFind()
 	{
+        Debug.Log("Pathfind initialized.");
 		//Pre-process collider expansions based on required buffers of units in scene and nodes for polygons
-		GameObject map = createBufferMap(0.38f);
+        GameObject map = createBufferMap(0.38f);
 		permNodes = createPermNodes(map);
 		testMap = map; //for testing only
         Debug.Log("Start PathFind().");
 		//TODO figure out way to do this for each buffer map size needed
 	}
 
-	private static GameObject createBufferMap(float buffer)
+    
+
+    public static GameObject createBufferMap(float buffer)
 	{
 		GameObject backGround = GameObject.Find("background");
 		GameObject BufferMap = GameObject.Instantiate(backGround);
@@ -64,6 +71,9 @@ public static class PathFind {
 		}
 		return permPolys;
 	}
+
+    
+
 
 	//TODO need function for updating and adding dynamic units and props after each move to the buffer maps
 
