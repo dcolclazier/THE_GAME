@@ -43,7 +43,7 @@ public static class PathFind {
 		return BufferMap;
 	}
 
-	 private static Node[] createPermNodes(GameObject map)
+	private static Node[] createPermNodes(GameObject map)
 	{
 		int i = 0;
         Collider2D[] noWalks = map.GetComponentsInChildren<Collider2D>();
@@ -73,14 +73,12 @@ public static class PathFind {
         Vector3[] path = new Vector3[99];
 		CircleCollider2D circle = unit.GetComponentInChildren<CircleCollider2D>();
 		path[0] = circle.transform.position;
-        Debug.Log("Path: Step 1 complete.");
 
 		//Get collider size of object that is path finding
 		float buffer = circle.radius;   //figure out how to referance the buffermap created for that size
 		GameObject bufferMap = testMap;
 		Vector3 circPos = circle.transform.position;
 		bufferMap.SetActive(true);
-        Debug.Log("Path: Step 2 complete.");
 
 		//Check if start point can see end point (if so no additional path finding required)
 
@@ -91,8 +89,7 @@ public static class PathFind {
 		if (Physics2D.Raycast(circle.transform.position, goal - circle.transform.position))
 		{
 			Debug.Log("intial raycast didn't hit something");
-			path[1] = goal;
-            Debug.Log("Found a path. Pathfind returning path now.");
+			path[1] = goal;;
 			return path;
 		}
         Debug.Log("Path: Path not found at first - lets start looking.");
@@ -161,7 +158,7 @@ public static class PathFind {
 		}
 	}
 
-	private static Vector3[] createPath(Node node, Vector3 goal)
+	public static Vector3[] createPath(Node node, Vector3 goal)
 	{
 		int i = 1;
 		bool start = false;

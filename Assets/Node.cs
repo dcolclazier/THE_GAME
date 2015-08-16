@@ -43,23 +43,24 @@ public class Node {
 			nodeList[size-1] = new Node(vect);
 		}
 		return nodeList;
-	    return null;
 	}
 
 	public static Node[] circleNodes(CircleCollider2D circ, Vector2 from, float buffer)
 	{
 		Node[] nodeList = new Node[2];
 		Vector2 center = (Vector2)circ.transform.position;
-		Ray2D ray = new Ray2D(center, from - center);
-		Quaternion q = Quaternion.AngleAxis(90, Vector2.up);
-		ray.direction = q * ray.direction;
-		nodeList[0] = new Node(ray.GetPoint(buffer));
-		nodeList[1] = new Node(ray.GetPoint(-buffer));
+		Ray2D ray = new Ray2D(center, from - center); //ray that points from node1 to node2
+
+		ray.direction = Rotate90(ray.direction);
+
+		nodeList[0] = new Node(ray.GetPoint(circ.radius+buffer));
+		nodeList[1] = new Node(ray.GetPoint(-circ.radius-buffer));
 		return nodeList;
 	}
 
 	public static void expandPoly(PolygonCollider2D poly, float buffer)
 	{
+		//TODO this is incorrect. is expanding based off center of polygon, should expand based on center of corner angle
 		Vector2 center = polygonCenter(poly.points);
 		Vector2[] polyPoints = poly.points;
 		for (int i=0; i<polyPoints.Length; i++)
@@ -69,5 +70,12 @@ public class Node {
 		}
 		poly.points = polyPoints;
 	}
+	
 
+	public static Vector2 Rotate90(Vector2 v2)
+	{
+		Vector2 nextV = new Vector2(-v2.y, v2.x);
+		return nextV;
+	}
+	
 }
