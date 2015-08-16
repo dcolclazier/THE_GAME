@@ -100,6 +100,8 @@ public class MainController : MonoBehaviour {
     //handle anything that needs to happen immediately after scene finishes loading
     private void ScreenStatePostLoad()
     {
+        NodeManager.ClearEntities();
+        Messenger.Cleanup();
 
         _currentSceneName = _nextSceneName;
         _currentSceneState = SceneState.Ready;

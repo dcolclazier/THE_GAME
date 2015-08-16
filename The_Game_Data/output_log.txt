@@ -1,3 +1,13 @@
+Mono path[0] = 'D:/GAME/TheGame/The_Game_Data/Managed'
+Mono path[1] = 'D:/GAME/TheGame/The_Game_Data/Mono'
+Mono config path = 'D:/GAME/TheGame/The_Game_Data/Mono/etc'
+PlayerConnection initialized from D:/GAME/TheGame/The_Game_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55017
+Broadcasting "[IP] 169.254.200.224 [Port] 55017 [Flags] 3 [Guid] 3017014401 [EditorId] 1571175931 [Version] 1048832 [Id] WindowsPlayer(Stelio) [Debug] 1" to [169.254.255.255:54997]...
+Waiting for connection from host on [169.254.200.224:55017]...
+PlayerConnection accepted from [169.254.200.224] handle:0x250
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,defer=y,address=0.0.0.0:56401
+PlayerConnection already initialized - listening to [169.254.200.224:55017]
 Initialize engine version: 5.1.2f1 (afd2369b692a)
 GfxDevice: creating device client; threaded=1
 Direct3D:
@@ -12,18 +22,169 @@ Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\Assembly-CSharp.dll (th
 Loading D:\GAME\TheGame\The_Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\GAME\TheGame\The_Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\Vectrosity.dll (this message is harmless)
 Loading D:\GAME\TheGame\The_Game_Data\Managed\Vectrosity.dll into Unity Child Domain
-- Completed reload, in  0.186 seconds
+- Completed reload, in  0.069 seconds
 desktop: 1920x1080 60Hz; virtual: 5760x1080 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\GAME\TheGame\The_Game_Data\Managed\System.dll (this message is harmless)
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.312849 ms
+System memory in use before: 13.1 MB.
+System memory in use after: 13.1 MB.
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 274.
+Total: 0.262512 ms (FindLiveObjects: 0.025461 ms CreateObjectMapping: 0.008779 ms MarkObjects: 0.197543 ms  DeleteObjects: 0.016388 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 13.1 MB.
+System memory in use after: 13.1 MB.
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 274.
+Total: 0.190519 ms (FindLiveObjects: 0.013169 ms CreateObjectMapping: 0.005267 ms MarkObjects: 0.170033 ms  DeleteObjects: 0.001463 ms)
+
+NODEMANAGER Cleanup... All entitie records cleared.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.NodeManager:ClearEntities() (at D:\GAME\TheGame\Assets\Code\Statics\NodeManager.cs:100)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:103)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/NodeManager.cs Line: 100)
+
+MESSENGER Cleanup. Make sure that none of necessary listeners are removed.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:Cleanup() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:29)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:104)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 29)
+
+			=== MESSENGER PrintEventTable ===
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:PrintEventTable() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:44)
+Assets.Code.Messenger:Cleanup() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:39)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:104)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 44)
+
+
+
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:PrintEventTable() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:50)
+Assets.Code.Messenger:Cleanup() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:39)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:104)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 50)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.543201 ms
+Broadcasting message "EntityAppeared" but no listener found. Try marking the message with Messenger.MarkAsPermanent.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:OnBroadcasting(String) (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:91)
+Assets.Code.Messenger:Broadcast(String, Entity) (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:162)
+Assets.Code.Entities.Entity:UpdateNodes() (at D:\GAME\TheGame\Assets\Code\Abstract\Entity.cs:41)
+Assets.Code.Entities.Entity:set_Solid(Boolean) (at D:\GAME\TheGame\Assets\Code\Abstract\Entity.cs:25)
+Assets.Code.Entities.Frisbee:Start() (at D:\GAME\TheGame\Assets\Code\Entities\Frisbee.cs:7)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 91)
+
+Node Helper: new Entity added: Frisbee, Solid? True
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.NodeManager:EntityCreated(Entity) (at D:\GAME\TheGame\Assets\Code\Statics\NodeManager.cs:45)
+Assets.Code.Messenger:Broadcast(String, Entity) (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:168)
+Assets.Code.Entities.Entity:Start() (at D:\GAME\TheGame\Assets\Code\Abstract\Entity.cs:13)
+Assets.Code.Entities.Frisbee:Start() (at D:\GAME\TheGame\Assets\Code\Entities\Frisbee.cs:8)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/NodeManager.cs Line: 45)
+
+Broadcasting message "EntityAppeared" but no listener found. Try marking the message with Messenger.MarkAsPermanent.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:OnBroadcasting(String) (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:91)
+Assets.Code.Messenger:Broadcast(String, Entity) (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:162)
+Assets.Code.Entities.Entity:UpdateNodes() (at D:\GAME\TheGame\Assets\Code\Abstract\Entity.cs:41)
+Assets.Code.Entities.Entity:set_Solid(Boolean) (at D:\GAME\TheGame\Assets\Code\Abstract\Entity.cs:25)
+Assets.Code.Entities.Rock:Start() (at D:\GAME\TheGame\Assets\Code\Entities\Rock.cs:11)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 91)
+
+Node Helper: new Entity added: Rock, Solid? True
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.NodeManager:EntityCreated(Entity) (at D:\GAME\TheGame\Assets\Code\Statics\NodeManager.cs:45)
+Assets.Code.Messenger:Broadcast(String, Entity) (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:168)
+Assets.Code.Entities.Entity:Start() (at D:\GAME\TheGame\Assets\Code\Abstract\Entity.cs:13)
+Assets.Code.Entities.Rock:Start() (at D:\GAME\TheGame\Assets\Code\Entities\Rock.cs:12)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/NodeManager.cs Line: 45)
+
+System memory in use before: 13.0 MB.
+System memory in use after: 13.0 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 214.
+Total: 0.172667 ms (FindLiveObjects: 0.009950 ms CreateObjectMapping: 0.005853 ms MarkObjects: 0.129939 ms  DeleteObjects: 0.026046 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 13.0 MB.
+System memory in use after: 13.0 MB.
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 214.
+Total: 0.127305 ms (FindLiveObjects: 0.008487 ms CreateObjectMapping: 0.004389 ms MarkObjects: 0.112380 ms  DeleteObjects: 0.001170 ms)
+
+NODEMANAGER Cleanup... All entitie records cleared.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.NodeManager:ClearEntities() (at D:\GAME\TheGame\Assets\Code\Statics\NodeManager.cs:100)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:103)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/NodeManager.cs Line: 100)
+
+MESSENGER Cleanup. Make sure that none of necessary listeners are removed.
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:Cleanup() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:29)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:104)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 29)
+
+			=== MESSENGER PrintEventTable ===
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:PrintEventTable() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:44)
+Assets.Code.Messenger:Cleanup() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:39)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:104)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 44)
+
+
+
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.Code.Messenger:PrintEventTable() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:50)
+Assets.Code.Messenger:Cleanup() (at D:\GAME\TheGame\Assets\Code\Statics\Messenger.cs:39)
+MainController:ScreenStatePostLoad() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:104)
+MainController:Update() (at D:\GAME\TheGame\Assets\Code\Scripts\MainController.cs:126)
+ 
+(Filename: D:/GAME/TheGame/Assets/Code/Statics/Messenger.cs Line: 50)
+
+Waiting for finish

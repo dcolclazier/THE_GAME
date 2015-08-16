@@ -21,19 +21,15 @@ namespace Assets.Code
         //todo - add in capability to scale polygon and box colliders prior to node creation.
 
         static NodeManager()  {
-            //EntityNodes = new Dictionary<Entity, List<Node>>();
-            Messenger.AddListener<Entity>("EntityCreated", EntityCreated);
+            //Messenger.AddListener<Entity>("EntityCreated", EntityCreated);
             Entities = new List<Entity>();
         }
         public static void Init() {
-            //delegates? return null if cast fails?
-
+            Messenger.AddListener<Entity>("EntityCreated", EntityCreated);
             _nodeRetreival = new NodeRetreiveDelegate[(int)ColliderType.Count];
             _nodeRetreival[(int) ColliderType.Circle] = GetCircleNodes;
             _nodeRetreival[(int) ColliderType.Box] = GetBoxNodes;
             _nodeRetreival[(int) ColliderType.Polygon] = GetPolygonNodes;
-
-
         }
         private static void EntityCreated(Entity entity)
         {
@@ -97,11 +93,11 @@ namespace Assets.Code
                 nodelist.AddRange(GetNodes(entity, expansionFactor));
             }
             return nodelist;
-            //return EntityNodes.Where(item => item.Key.Solid).SelectMany(entity => entity.Value);
         }
 
         public static void ClearEntities() {
             Entities.Clear();
+            Debug.Log("NODEMANAGER Cleanup... All entitie records cleared.");
         }
     }
 }

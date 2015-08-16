@@ -29,22 +29,26 @@ namespace Assets.Code.Scripts {
             };
             var rock = rockcollider.gameObject.AddComponent<Rock>();
             //rock created.
-
-            //testing GetAllSolidNodes
-            foreach (var node in NodeManager.GetAllSolidNodes(0f)) {
-                Debug.Log("-- Testing GetAllSolidNodes() --");
-                Debug.Log(string.Format("Node - X: {0}, Y: {1}",node.position.x,node.position.y));
-            }
-
-            // take note - calling GetAllSolidNodes in the Start method executes before the Rock
-            // component's entity node braodcast , even though it is later in execution 
-            // - I assume this is based on how Unity starts the program. Thus, try to avoid 
-            //  calling GetAllSolidNodes in a Start or Awake function until we get this fixed 
-            // or figure it out a workaround.
             //End test code
             
+            
+
+            
+            
         }
-      
+
+        //testing GetAllSolidNodes
+        //NOTE - DO NOT CALL GETALLSOLIDNODES() during Awake() or Start() if you
+        //        need to rely on it for pathing - it may not catch all of the run-time
+        //        objects that are also created during Awake() or Start()
+        public void GetAllSolidNodeTest() {
+            //This function is tied to the button in SandBox scene
+            foreach (var node in NodeManager.GetAllSolidNodes(0f))
+            {
+                Debug.Log("-- Testing GetAllSolidNodes() --");
+                Debug.Log(string.Format("Node - X: {0}, Y: {1}", node.position.x, node.position.y));
+            }
+        }
 
      
         

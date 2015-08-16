@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
 	// Use this for initialization
 	protected void Awake () {
 	    _menuController = this;
-
+	    Options = Options.GetComponent<Button>();
 	    QuitMenu = QuitMenu.GetComponent<Canvas>();
 	    SingleP = SingleP.GetComponent<Button>();
 	    MultiP = MultiP.GetComponent<Button>();
@@ -57,7 +57,7 @@ public class MenuController : MonoBehaviour
     }
 
     public void OptionsPress() {
-        //load options menu
+        MainController.SwitchScene("Sandbox");
     }
   
 	// Update is called once per frame
