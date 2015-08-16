@@ -29,22 +29,18 @@ namespace Assets.Code
             var polygonCheck = entity.Collider as PolygonCollider2D;
             var boxCheck = entity.Collider as BoxCollider2D;
             if (circlecheck) {
-                //todo = kyle - how do you want to create the nodes for this?
-                //it would be easiest to assign a precision, which defines how many
-                //points are in the circle, such that the nodes are an approximation
-                //of the circle represented as a polygon.
-
-                //Node[] nodeList = new Node[2];
-                //Vector2 center = (Vector2)circ.transform.position;
-                //Ray2D ray = new Ray2D(center, from - center);
-                //Quaternion q = Quaternion.AngleAxis(90, Vector2.up);
-                //ray.direction = q * ray.direction;
-                //nodeList[0] = new Node(ray.GetPoint(buffer));
-                //nodeList[1] = new Node(ray.GetPoint(-buffer));
-                //return nodeList;
-
-            } 
-
+                const float precision = 8f;
+                const float radians = (2f*Mathf.PI)/precision;
+                for (var i = 0; i < precision; i++) {
+                    
+                    var angle = radians*(i+1);
+                    var xMag = Mathf.Round(Mathf.Cos(angle)*1000f)/1000f;
+                    var yMag = Mathf.Round(Mathf.Sin(angle)*1000f)/1000f;
+                    Debug.Log(string.Format("Angle: {0} .. Radius: {1} Cos(angle): {2}  Sin(angle): {3}",
+                                            angle, circlecheck.radius, xMag, yMag));
+                    yield return new Node(new Vector2(xMag,yMag));
+                }
+            }
             else if(polygonCheck) {
                 foreach (var point in polygonCheck.points) {
                     yield return new Node(point);
