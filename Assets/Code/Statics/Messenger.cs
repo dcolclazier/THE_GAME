@@ -13,22 +13,6 @@ namespace Assets.Code {
     public delegate void Callback<T, T2>(T arg1, T2 arg2);
     public delegate void Callback<T, T2, T3>(T arg1, T2 arg2, T3 arg3);
 
-    public class BroadcastException : Exception {
-        public BroadcastException(string msg) : base(msg) { }
-    }
-
-    public class ListenerException : Exception {
-        public ListenerException(string msg)
-            : base(msg) { }
-    }
-    public sealed class MessengerHelper :   MonoBehaviour {
-        void Awake() {
-            DontDestroyOnLoad(gameObject);
-        }
-        public void OnLevelWasLoaded(int unused) {
-            Messenger.Cleanup();
-        }
-    }
     static internal class Messenger {
 
         // ReSharper disable once UnusedMember.Local

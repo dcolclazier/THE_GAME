@@ -43,7 +43,7 @@ public class Node {
 			nodeList[size-1] = new Node(vect);
 		}
 		return nodeList;
-	    return null;
+
 	}
 
 	public static Node[] circleNodes(CircleCollider2D circ, Vector2 from, float buffer)
