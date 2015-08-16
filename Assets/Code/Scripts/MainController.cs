@@ -58,7 +58,10 @@ public class MainController : MonoBehaviour {
 
     }
 
-    //first step - do a GC.collect!
+    //first step - do a GC.collect! Also perform static class cleanup - this has the 
+    //fortunate side-effect of initializing the class as we transition to the Main
+    //Menu state - not the most efficient, but as long as we limit statics as much as possible
+    //we shouldn't see any performance issues - just a bit higher memory useage.
     private void SceneStateReset(){
         System.GC.Collect();
         NodeManager.ClearEntities();

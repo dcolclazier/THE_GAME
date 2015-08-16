@@ -1,7 +1,7 @@
 ﻿
 namespace Assets.Code.Entities
 {
-    public class Rock : Entity
+    public sealed class Rock : Entity
     {
        //created during run-time, this object is.
        protected override void Start() {

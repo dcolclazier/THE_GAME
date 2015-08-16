@@ -40,7 +40,7 @@ namespace Assets.Code
                 throw new Exception("Duplicate entity detected - EntityCreated()");
             }
             Entities.Add(entity);
-            Debug.Log(string.Format("Node Helper: new Entity added: {0}, Solid? {1} Collider: {2}", entity.Collider.name, entity.Solid, entity.colliderType));
+            Debug.Log(string.Format("NODEMANAGER: new Entity added: {0}, Solid? {1} Collider: {2}", entity.Collider.name, entity.Solid, entity.colliderType));
           
         }
 
@@ -107,7 +107,7 @@ namespace Assets.Code
         //Clears all entries from Entities list
         public static void ClearEntities() {
             Entities.Clear();
-            Debug.Log("NODEMANAGER Cleanup... All entitie records cleared.");
+            Debug.Log("NODEMANAGER Cleanup... All entity records cleared.");
         }
     }
 }
