@@ -9,12 +9,19 @@ namespace Assets.Code
 {
     public static class NodeManager
     {
+        public static Dictionary<Entity, List<Node>> EntityNodes;
         //this code kinda sucks... maybe refactor it?
         //1 - static classes blow - global state!
-        //2 - repeating if's? I know there's only 4 cases, but it's like... c'mon.
+        //2 - repeating if's? redundant poly-casts? I know there's only 4 cases, but it's like... c'mon.
         
         private static NodeHelper _nodeHelper = (new GameObject("NodeHelper")).AddComponent<NodeHelper>();
 
+        static NodeManager()  {
+            EntityNodes = new Dictionary<Entity, List<Node>>();
+        }
+        public static void Init() {
+            
+        }
         public static IEnumerable<Node> GetNodes(Entity entity)
         {
 
@@ -22,7 +29,7 @@ namespace Assets.Code
             var polygonCheck = entity.Collider as PolygonCollider2D;
             var boxCheck = entity.Collider as BoxCollider2D;
             if (circlecheck) {
-                //how do you want to create the nodes for this?
+                //todo = kyle - how do you want to create the nodes for this?
                 //it would be easiest to assign a precision, which defines how many
                 //points are in the circle, such that the nodes are an approximation
                 //of the circle represented as a polygon.
@@ -64,7 +71,8 @@ namespace Assets.Code
         //currently does not return the entity associated with the nodes, but
         //that can be added very easily if need-be
         public static IEnumerable<Node> GetSolidNodes() {
-            return NodeHelper.EntityNodes.Where(item => item.Key.Solid).SelectMany(entity => entity.Value);
+
+            return EntityNodes.Where(item => item.Key.Solid).SelectMany(entity => entity.Value);
         }
 
         public static void Cleanup() {

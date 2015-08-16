@@ -10,12 +10,13 @@ namespace Assets.Code.Scripts {
     public class SandboxController : MonoBehaviour {
 
         protected void Awake() {
-            NodeManager.GetSolidNodes();
+            //required in the awake method of every scenecontroller!
+            NodeManager.Init();
         }
         protected void Start()
         {
 
-            #region Testing Stuff - not real code
+            //Begin test code
             //create a rock - make sure monobehaviour is last component added
             //tests ability of controller to detect announcements of entities created during
             //runtime
@@ -34,9 +35,8 @@ namespace Assets.Code.Scripts {
                 Debug.Log("-- Testing GetSolidNodes() --");
                 Debug.Log(string.Format("Node - X: {0}, Y: {1}",node.position.x,node.position.y));
             }
-            //End test
-            #endregion
-
+            //End test code
+            
         }
       
 

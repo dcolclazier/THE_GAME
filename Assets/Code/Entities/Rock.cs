@@ -4,11 +4,8 @@ namespace Assets.Code.Entities
 {
     public class Rock : Entity
     {
-        public new Collider2D Collider {
-            get { return GetComponent<BoxCollider2D>(); }
-        }
-        
-        protected override void Start() {
+       //created during run-time, this object is.
+       protected override void Start() {
             Solid = true;
             base.Start();
         }
