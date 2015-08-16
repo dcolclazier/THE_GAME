@@ -9,11 +9,14 @@ namespace Assets.Code.Entities
         private bool _currentlySolid;
         public NodeManager.ColliderType colliderType;
 
-        protected virtual void Start() {
-            Messenger.Broadcast("EntityCreated", this);
+        protected void Awake() {
             if (Collider is CircleCollider2D) colliderType = NodeManager.ColliderType.Circle;
             else if (Collider is PolygonCollider2D) colliderType = NodeManager.ColliderType.Polygon;
             else if (Collider is BoxCollider2D) colliderType = NodeManager.ColliderType.Box;
+            else { throw new Exception("ENTITY: Could not determine collider type. ");}
+        }
+        protected virtual void Start() {
+            Messenger.Broadcast("EntityCreated", this);
         }
         public bool Solid {
             get {

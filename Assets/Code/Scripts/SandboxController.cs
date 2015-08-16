@@ -8,7 +8,6 @@ namespace Assets.Code.Scripts {
         {
             //Begin test code
             //create a rock - make sure monobehaviour is last component added
-            //bug - this is being detected as a box collider??
             var rockcollider = (new GameObject("Rock").AddComponent<PolygonCollider2D>());
             rockcollider.points = new[] {
                 new Vector2(-1, 1),
