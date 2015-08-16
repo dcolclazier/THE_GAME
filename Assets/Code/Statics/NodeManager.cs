@@ -48,7 +48,7 @@ namespace Assets.Code
         //NodeGrabber method for expanding and retrieving nodes for BoxCollider2d
         private static IEnumerable<Node> GetBoxNodes(Entity entity, float expansionfactor) {
             var box = ((BoxCollider2D) entity.Collider);
-            
+            box.Scale(expansionfactor);
             var nodes = new List<Node> {
                     new Node(new Vector2(box.offset.x - box.size.x/2,
                         box.offset.y + box.size.y/2)),
