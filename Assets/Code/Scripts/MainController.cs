@@ -54,22 +54,8 @@ public class MainController : MonoBehaviour {
 
         _nextSceneName = "MainMenu";
 
-        //testing event messaging system
-        Messenger.AddListener<string>("Scene change",Test);
-        Messenger.MarkAsPermanent("Scene change"); // <-- persists through scene changes
-        Messenger.Broadcast("Scene change", _nextSceneName);
-        Messenger.RemoveListener<string>("Scene change", Test);
-        Messenger.Broadcast("Scene change", _nextSceneName);
-        Messenger.AddListener<string>("Scene change", Test);
-        //oh yeah... that's how I like it.
-
         _currentSceneState = SceneState.Reset;
 
-    }
-
-    //part of event messaging system test
-    private void Test(string arg1) {
-        Debug.Log("Testing Messenger system - Scene change: " + arg1);
     }
 
     //first step - do a GC.collect!
