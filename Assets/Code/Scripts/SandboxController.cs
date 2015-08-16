@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Assets.Code.Abstract;
-using Assets.Code.Entities;
+﻿using Assets.Code.Entities;
 using UnityEngine;
 
 namespace Assets.Code.Scripts {
@@ -26,7 +22,7 @@ namespace Assets.Code.Scripts {
         public void GetAllSolidNodeTest() {
             //This function is tied to the test button in SandBox scene
             Debug.Log("-- Testing GetAllSolidNodes() --");
-            foreach (var node in NodeManager.GetAllSolidNodes(0f))
+            foreach (var node in NodeManager.GetAllSolidNodes(2f))
             {
                 Debug.Log(string.Format("Node - X: {0}, Y: {1}", node.position.x, node.position.y));
             }
