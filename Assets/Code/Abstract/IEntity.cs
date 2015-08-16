@@ -7,6 +7,4 @@ namespace Assets.Code.Abstract {
         
     }
 
-
-    //public class 
 }

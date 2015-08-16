@@ -7,12 +7,11 @@ using UnityEngine;
 
 namespace Assets.Code.Scripts {
     public class SandboxController : MonoBehaviour {
-        private Dictionary<IObstructable, List<Node>> _entityNodes;
+        private Dictionary<Entity, List<Node>> _entityNodes;
 
         protected void Awake() {
-            _entityNodes = new Dictionary<IObstructable, List<Node>>();
-            Messenger.AddListener<IObstructable>("EntityAppeared", EntityAppeared); 
-            Messenger.AddListener<IObstructable>("EntityDisappeared", EntityAppeared); 
+            Messenger.AddListener<Entity>("EntityCreated", EntityCreated);
+            _entityNodes = new Dictionary<Entity, List<Node>>();
         }
 
         protected void Start() {
@@ -26,28 +25,26 @@ namespace Assets.Code.Scripts {
                 new Vector2(-1, -1)
             };
             var rock = rockcollider.gameObject.AddComponent<Rock>();
+            Messenger.Broadcast("EntityCreated", rock);
             //rock created.
         }
 
         public IEnumerable<Node> GetSolidNodes() {
             var completeNodeList = new List<Node>();
-            foreach (var item in _entityNodes) {
-                if (item.Key.Solid) {
-                    completeNodeList.AddRange(item.Value);
-                }            
+            foreach (var item in _entityNodes.Where(item => item.Key.Solid)) {
+                completeNodeList.AddRange(item.Value);
             }
             return completeNodeList;
         } 
-        private void EntityAppeared(IObstructable addedEntity)
+        private void EntityCreated(Entity entity)
         {
-            if (addedEntity.Collider == null) {
+            if (entity.Collider == null) {
                 throw new NullReferenceException("Collider wasn't found - are you sure it was created prior to it's monobehaviour awake ran?");
             }
-
-            if (_entityNodes.ContainsKey(addedEntity)) Debug.Log("Duplicate Entity detected...");
+            if (_entityNodes.ContainsKey(entity)) Debug.Log("Duplicate Entity detected...");
             else {
-                _entityNodes.Add(addedEntity, NodeHelper.GetNodes(addedEntity).ToList());
-                Debug.Log(string.Format("Controller: new Entity added: {0}, Solid? {1}", addedEntity.Collider.name, addedEntity.Solid));
+                _entityNodes.Add(entity, NodeHelper.GetNodes(entity).ToList());
+                Debug.Log(string.Format("Controller: new Entity added: {0}, Solid? {1}", entity.Collider.name, entity.Solid));
             }
         }
     }

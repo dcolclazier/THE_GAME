@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Assets.Code.Abstract;
+using Assets.Code.Entities;
 using UnityEngine;
 
 namespace Assets.Code
 {
     public static class NodeHelper
     {
-        public static IEnumerable<Node> GetNodes(IObstructable entity)
+        public static IEnumerable<Node> GetNodes(Entity entity)
         {
 
             var circlecheck = entity.Collider as CircleCollider2D;

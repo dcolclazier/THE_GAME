@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Assets.Code.Entities
 {
-    public class Entity : MonoBehaviour, IEntity, IObstructable {
+    public abstract class Entity : MonoBehaviour, IEntity, IObstructable {
         
         private bool _currentlySolid;
-        protected virtual void Awake() {
-            
+        protected virtual void Start() {
+            Messenger.Broadcast("EntityCreated", this);
         }
         public bool Solid {
             get {
@@ -20,13 +20,12 @@ namespace Assets.Code.Entities
             }
         }
         public Collider2D Collider { get { return GetComponent<PolygonCollider2D>(); } }
+        public virtual void Phase() {
+            Solid = !Solid;
+        }
+
         protected void UpdateNodes() {
-            Messenger.Broadcast(Solid ? "EntityAppeared" : "EntityDisappeared", (IObstructable) this);
+            Messenger.Broadcast(Solid ? "EntityAppeared" : "EntityDisappeared", this);
         }
     }
-
- 
-
-   
-    
 }
