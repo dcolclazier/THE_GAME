@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 8240ea27878ff0948a086ede8715f039
 timeCreated: 1439616800
+=======
+guid: 5ef21c12c0fc58a479c28949781b5ea0
+timeCreated: 1439616496
+>>>>>>> .meta crap
 licenseType: Free
 DefaultImporter:
   userData: 
