@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets.Code.Abstract;
 using UnityEngine;
 
@@ -10,12 +11,13 @@ namespace Assets.Code.Entities
 
         //bug - should be property w/ private setter, when confirmed that Unity dropdown is not needed
         public NodeManager.ColliderType colliderType;
-
+        public List<Node> CollisionNodes; 
         protected void Awake() {
             if (Collider is CircleCollider2D) colliderType = NodeManager.ColliderType.Circle;
             else if (Collider is PolygonCollider2D) colliderType = NodeManager.ColliderType.Polygon;
             else if (Collider is BoxCollider2D) colliderType = NodeManager.ColliderType.Box;
             else { throw new Exception("ENTITY: Could not determine collider type. ");}
+            CollisionNodes = new List<Node>(NodeManager.GetNodes(this, 0f));
 
             //bug this hides the trait - it should be dropped to subclass level after kyle knows how it works
             _currentlySolid = true;
@@ -42,6 +44,10 @@ namespace Assets.Code.Entities
 
         private void UpdateNodes() {
             Messenger.Broadcast(Solid ? "EntityAppeared" : "EntityDisappeared", this);
+        }
+
+        protected virtual void Update() {
+            
         }
     }
 }
