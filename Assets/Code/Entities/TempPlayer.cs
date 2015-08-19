@@ -1,23 +1,24 @@
 ﻿using System.Linq;
-using Assets.Code.Entities;
+using Assets.Code.Abstract;
+using Assets.Code.Statics;
+using Assets.Components.Movement;
 using UnityEngine;
 using Vectrosity;
 
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Entities {
     public class TempPlayer : Entity {
+        private float Radius { get; set; }
+        private Vector2 Position { get; set; }
+        private PathGraph MovementGraph { get; set; }
 
-        public float Radius { get; private set; }
-        public Vector2 Position { get; private set; }
-        public PathGraph MovementGraph { get; private set; }
-
-        public VectorLine SelectCircle { get; private set; }
-        public VectorLine DestinationCircle { get; private set; }
+        private VectorLine SelectCircle { get; set; }
+        private VectorLine DestinationCircle { get; set; }
 
         private readonly float line_thickness = 2.0f;
         private VectorLine _movePathLine;
         private Vector3 _pathGoal;
 
-        void Start() {
+        protected override void Start() {
             Radius = 0f;
             Position = transform.position;
             SelectCircle = new VectorLine("Select Circle", new Vector3[720], null, line_thickness);
@@ -43,9 +44,9 @@ namespace Assets.Code.Abstract {
             Selected = true;
             //int i = 0;
            
-            CircleCollider2D collider = gameObject.GetComponentInChildren<CircleCollider2D>();
-            Radius = collider.radius;
-            Position = collider.transform.position;
+            var circleCollider = gameObject.GetComponentInChildren<CircleCollider2D>();
+            Radius = circleCollider.radius;
+            Position = circleCollider.transform.position;
             SelectCircle.MakeCircle(Position, Radius, 360);
             SelectCircle.active = true;
             if (DestinationCircle.active) DestinationCircle.active = false;
@@ -90,7 +91,7 @@ namespace Assets.Code.Abstract {
                 
 
                 if (MovementGraph.TargetNode == null) MovementGraph.TargetNode = new Node(_pathGoal);
-                else MovementGraph.TargetNode.position = _pathGoal;
+                else MovementGraph.TargetNode.Position = _pathGoal;
 
                 //MovementGraph.UpdateTargetNode();
                 //MovementGraph.Update(MovementGraph.TargetNode);

@@ -1,4 +1,5 @@
 ﻿using Assets.Code.Entities;
+using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Code.Scripts {
@@ -15,14 +16,14 @@ namespace Assets.Code.Scripts {
                 new Vector2(1, -1),
                 new Vector2(-1, -1)
             };
-            var rock = rockcollider.gameObject.AddComponent<Rock>();
+            rockcollider.gameObject.AddComponent<Rock>();
             //End test code
         }
 
         public void GetAllSolidNodeTest() {
             //This function is tied to the test button in SandBox scene
             Debug.Log("-- Testing GetAllSolidNodes() --");
-            foreach (var node in NodeManager.GetAllSolidNodes(2f))
+            foreach (var node in NodeManager.GetAllSolidNodes())
             {
                 Debug.Log(string.Format("Node - X: {0}, Y: {1}", node.Position.x, node.Position.y));
             }

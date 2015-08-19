@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Abstract;
 
 namespace Assets.Code.Entities {
     public class Frisbee : Entity {

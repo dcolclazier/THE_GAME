@@ -1,6 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Assets.Code;
+using Assets.Code.Statics;
 
 // ReSharper disable once CheckNamespace (only because Monobehaviour can't be in a custom namespace)
 public class MainController : MonoBehaviour {

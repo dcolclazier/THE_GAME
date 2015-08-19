@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Code.Entities;
+using Assets.Code.Abstract;
 using UnityEngine;
 
-namespace Assets.Code
+namespace Assets.Code.Statics
 {
     //after refactor - MUCH BETTER! 
     //todo - I don't like that this is static - static is bad.
-    //todo - add in capability to scale polygon and box colliders prior to node creation.
+    //todo - add in capability to scale polygon colliders prior to node creation.
     public static class NodeManager
     {
         public enum ColliderType { Box, Circle, Polygon, Count}
@@ -40,7 +40,7 @@ namespace Assets.Code
                 throw new Exception("Duplicate entity detected - EntityCreated()");
             }
             Entities.Add(entity);
-            Debug.Log(string.Format("NODEMANAGER: new Entity added: {0}, Solid? {1} Collider: {2}", entity.Collider.name, entity.Solid, entity.colliderType));
+            Debug.Log(string.Format("NODEMANAGER: new Entity added: {0}, Solid? {1} Collider: {2}", entity.Collider.name, entity.Solid, entity.ColliderType));
           
         }
 
@@ -50,23 +50,23 @@ namespace Assets.Code
             var buffer = 0.05f;
             box.Scale(expansionfactor);
             var nodes = new List<Node> {
-                    new Node(new Vector2(box.offset.x - box.size.x/2 + entity.transform.position.x - buffer, //top left
-                                         box.offset.y + box.size.y/2 + entity.transform.position.y + buffer)), 
-                    new Node(new Vector2(box.offset.x - box.size.x/2 + entity.transform.position.x - buffer, //bottom left
-                                         box.offset.y - box.size.y/2 + entity.transform.position.y - buffer)),
-                    new Node(new Vector2(box.offset.x + box.size.x/2 + entity.transform.position.x + buffer, //top right
-                                         box.offset.y + box.size.y/2 + entity.transform.position.y + buffer)),
-                    new Node(new Vector2(box.offset.x + box.size.x/2 + entity.transform.position.x + buffer, //bottom right
-                                         box.offset.y - box.size.y/2 + entity.transform.position.y - buffer))
+                    new Node(new Vector2(box.offset.x - box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x - buffer, //top left
+                                         box.offset.y + box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y + buffer)), 
+                    new Node(new Vector2(box.offset.x - box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x - buffer, //bottom left
+                                         box.offset.y - box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y - buffer)),
+                    new Node(new Vector2(box.offset.x + box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x + buffer, //top right
+                                         box.offset.y + box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y + buffer)),
+                    new Node(new Vector2(box.offset.x + box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x + buffer, //bottom right
+                                         box.offset.y - box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y - buffer))
                 };
             return nodes;
         }
 
-        //NodeGrabber method for expanding and retrieving nodes for PolygonCollider2d
+        //NodeGrabber method for expanding and retrieving nodes for PolygonCollider2d - NOT WORKING
         private static IEnumerable<Node> GetPolygonNodes(Entity entity, float expansionfactor) {
             if (entity.Collider == null) yield break;
             
-            var center = ((PolygonCollider2D) entity.Collider).GetCenter2D();
+            //var center = ((PolygonCollider2D) entity.Collider).GetCenter2D();
             foreach (var point in ((PolygonCollider2D)entity.Collider).points) {
                 //var newX = (1.01f*(point.x - center.x) + center.x) + entity.transform.position.x;
                 //var newY = (1.01f*(point.y - center.y) + center.y) + entity.transform.position.x;
@@ -100,18 +100,18 @@ namespace Assets.Code
         //responsible for picking the right NodeGrabber for the right type of collider.
         public static IEnumerable<Node> GetNodes(Entity entity, float expRadius) {
             
-            return NodeGrabber[(int)entity.colliderType](entity, expRadius);     
+            return NodeGrabber[(int)entity.ColliderType](entity, expRadius);     
         }
 
         //Public facing function - retreives nodes for all colliders in a scene, automatically 
         //expanding them by a certain expansionFactor to facilitate size of moving entity.
-        public static IEnumerable<Node> GetAllSolidNodes(float expansionFactor) {
+        public static IEnumerable<Node> GetAllSolidNodes() {
             var nodelist = new List<Node>();
 
             foreach (var entity in Entities.Where(entity => entity.Solid)) {
                 nodelist.AddRange(entity.CollisionNodes.Where(
-                    p => {
-                        var collider = Physics2D.OverlapPoint(p.position, 1 << 10);
+                    e => {
+                        var collider = Physics2D.OverlapPoint(e.Position, 1 << 10);
                         return collider == null || collider.gameObject == entity.Collider.gameObject;
                     }));
             }

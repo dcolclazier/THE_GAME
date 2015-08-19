@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Code {
+namespace Assets.Code.Statics {
     static public class Extensions {
         public static void Scale(this BoxCollider2D box, float expansionFactor) {
             
@@ -11,7 +11,8 @@ namespace Assets.Code {
             circle.radius += expansionFactor;
         }
 
-        public static Vector2 GetCenter2D(this PolygonCollider2D poly) {
+        public static Vector2 GetCenter2D(this PolygonCollider2D poly)
+        {
             var highestX = -100000000f;
             var highestY = -100000000f;
             var lowestX = 1000000000f;
