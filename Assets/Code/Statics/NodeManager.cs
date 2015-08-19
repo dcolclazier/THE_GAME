@@ -47,6 +47,7 @@ namespace Assets.Code
         //NodeGrabber method for expanding and retrieving nodes for BoxCollider2d
         private static IEnumerable<Node> GetBoxNodes(Entity entity, float expansionfactor) {
             var box = ((BoxCollider2D) entity.Collider);
+<<<<<<< Updated upstream
             box.Scale(expansionfactor);
             var nodes = new List<Node> {
                     new Node(new Vector2(box.offset.x - box.size.x/2,
@@ -57,6 +58,19 @@ namespace Assets.Code
                         box.offset.y + box.size.y/2)),
                     new Node(new Vector2(box.offset.x + box.size.x/2,
                         box.offset.y - box.size.y/2))
+=======
+            const float buffer = 0.1f;
+            box.Scale(expansionfactor);
+            var nodes = new List<Node> {
+                    new Node(new Vector2((box.offset.x - box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x - buffer), //top left
+                                         (box.offset.y + box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y + buffer))), 
+                    new Node(new Vector2((box.offset.x - box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x - buffer), //bottom left
+                                         (box.offset.y - box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y - buffer))),
+                    new Node(new Vector2((box.offset.x + box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x + buffer), //top right
+                                         (box.offset.y + box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y + buffer))),
+                    new Node(new Vector2((box.offset.x + box.size.x*entity.transform.localScale.x/2 + entity.transform.position.x + buffer), //bottom right
+                                         (box.offset.y - box.size.y*entity.transform.localScale.y/2 + entity.transform.position.y - buffer)))
+>>>>>>> Stashed changes
                 };
             return nodes;
         }
@@ -99,7 +113,15 @@ namespace Assets.Code
             var nodelist = new List<Node>();
 
             foreach (var entity in Entities.Where(entity => entity.Solid)) {
+<<<<<<< Updated upstream
                 nodelist.AddRange(GetNodes(entity, expansionFactor));
+=======
+                nodelist.AddRange(entity.CollisionNodes.Where(
+                    p => {
+                        var collider = Physics2D.OverlapPoint(p.Position, 1 << 10);
+                        return collider == null || collider.gameObject == entity.Collider.gameObject;
+                    }));
+>>>>>>> Stashed changes
             }
             return nodelist;
         }

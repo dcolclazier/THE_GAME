@@ -79,12 +79,10 @@ public class MainController : MonoBehaviour {
     //run this while the scene is still loading
     private void SceneStateLoad()
     {
-        if (_sceneLoadTask.isDone)
-        {
+        if (_sceneLoadTask.isDone) {
             _currentSceneState = SceneState.Unload;
         }
-        else
-        {
+        else {
             //update loading stuff (progress bar, etc)
         }
     }
@@ -93,8 +91,7 @@ public class MainController : MonoBehaviour {
     private void SceneStateUnload()
     {
         if (_resourceUnloadTask == null) _resourceUnloadTask = Resources.UnloadUnusedAssets();
-        else
-        {
+        else {
             if (_resourceUnloadTask.isDone != true) return;
 
             _resourceUnloadTask = null;

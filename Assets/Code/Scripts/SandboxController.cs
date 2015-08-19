@@ -24,7 +24,7 @@ namespace Assets.Code.Scripts {
             Debug.Log("-- Testing GetAllSolidNodes() --");
             foreach (var node in NodeManager.GetAllSolidNodes(2f))
             {
-                Debug.Log(string.Format("Node - X: {0}, Y: {1}", node.position.x, node.position.y));
+                Debug.Log(string.Format("Node - X: {0}, Y: {1}", node.Position.x, node.Position.y));
             }
         }
     }
