@@ -47,16 +47,17 @@ namespace Assets.Code
         //NodeGrabber method for expanding and retrieving nodes for BoxCollider2d
         private static IEnumerable<Node> GetBoxNodes(Entity entity, float expansionfactor) {
             var box = ((BoxCollider2D) entity.Collider);
+            var buffer = 0.05f;
             box.Scale(expansionfactor);
             var nodes = new List<Node> {
-                    new Node(new Vector2(box.offset.x - box.size.x/2,
-                        box.offset.y + box.size.y/2)),
-                    new Node(new Vector2(box.offset.x - box.size.x/2,
-                        box.offset.y - box.size.y/2)),
-                    new Node(new Vector2(box.offset.x + box.size.x/2,
-                        box.offset.y + box.size.y/2)),
-                    new Node(new Vector2(box.offset.x + box.size.x/2,
-                        box.offset.y - box.size.y/2))
+                    new Node(new Vector2(box.offset.x - box.size.x/2 + entity.transform.position.x - buffer, //top left
+                                         box.offset.y + box.size.y/2 + entity.transform.position.y + buffer)), 
+                    new Node(new Vector2(box.offset.x - box.size.x/2 + entity.transform.position.x - buffer, //bottom left
+                                         box.offset.y - box.size.y/2 + entity.transform.position.y - buffer)),
+                    new Node(new Vector2(box.offset.x + box.size.x/2 + entity.transform.position.x + buffer, //top right
+                                         box.offset.y + box.size.y/2 + entity.transform.position.y + buffer)),
+                    new Node(new Vector2(box.offset.x + box.size.x/2 + entity.transform.position.x + buffer, //bottom right
+                                         box.offset.y - box.size.y/2 + entity.transform.position.y - buffer))
                 };
             return nodes;
         }
@@ -65,8 +66,13 @@ namespace Assets.Code
         private static IEnumerable<Node> GetPolygonNodes(Entity entity, float expansionfactor) {
             if (entity.Collider == null) yield break;
             
+            var center = ((PolygonCollider2D) entity.Collider).GetCenter2D();
             foreach (var point in ((PolygonCollider2D)entity.Collider).points) {
-                yield return new Node(point);
+                //var newX = (1.01f*(point.x - center.x) + center.x) + entity.transform.position.x;
+                //var newY = (1.01f*(point.y - center.y) + center.y) + entity.transform.position.x;
+                //yield return new Node(newX,newY);
+                yield return new Node(new Vector2(point.x + entity.transform.position.x,
+                                                    point.y + entity.transform.position.y));
             }
         }
 
@@ -74,21 +80,25 @@ namespace Assets.Code
         private static IEnumerable<Node> GetCircleNodes(Entity entity, float expansionFactor) {
             if (entity.Collider == null) yield break;
 
-            const float precision = 8f;
+            const float precision = 6f;
             const float radians = (2f * Mathf.PI) / precision;
             var collider = ((CircleCollider2D) entity.Collider);
             
             collider.Scale(expansionFactor);
             for (var i = 0; i < precision; i++) {
                 var angle = radians * (i + 1);
-                var xMag = collider.offset.x + Mathf.Round(collider.radius * Mathf.Cos(angle) * 1000f) / 1000f;
-                var yMag = collider.offset.y + Mathf.Round(collider.radius * Mathf.Sin(angle) * 1000f) / 1000f;
+                var xMag = entity.gameObject.transform.position.x 
+                            + Mathf.Round((collider.radius + .1f) 
+                            * Mathf.Cos(angle) * 1000f) / 1000f;
+                var yMag = entity.gameObject.transform.position.y 
+                            + Mathf.Round((collider.radius + .1f) 
+                            * Mathf.Sin(angle) * 1000f) / 1000f;
                 yield return new Node(new Vector2(xMag, yMag));
             }
         }
 
         //responsible for picking the right NodeGrabber for the right type of collider.
-        private static IEnumerable<Node> GetNodes(Entity entity, float expRadius) {
+        public static IEnumerable<Node> GetNodes(Entity entity, float expRadius) {
             
             return NodeGrabber[(int)entity.colliderType](entity, expRadius);     
         }
@@ -99,7 +109,11 @@ namespace Assets.Code
             var nodelist = new List<Node>();
 
             foreach (var entity in Entities.Where(entity => entity.Solid)) {
-                nodelist.AddRange(GetNodes(entity, expansionFactor));
+                nodelist.AddRange(entity.CollisionNodes.Where(
+                    p => {
+                        var collider = Physics2D.OverlapPoint(p.position, 1 << 10);
+                        return collider == null || collider.gameObject == entity.Collider.gameObject;
+                    }));
             }
             return nodelist;
         }
