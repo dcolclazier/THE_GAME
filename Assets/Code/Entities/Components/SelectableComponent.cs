@@ -41,7 +41,7 @@ namespace Assets.Code.Abstract {
             if (_selectableCollider == null)
                 throw new Exception(
                     "Trying to init an Obstructable Component, but init couldn't find the collider. " +
-                    "Make sure it is attached to the game object itself, not the child collider object. ");
+                    "Make sure it is attached to the child game object, not the child collider object. ");
             
             Parent.Attributes.Register("SelectCollider", _selectableCollider);
             Parent.Attributes.Register("SelectRadius", _selectableCollider.radius);
