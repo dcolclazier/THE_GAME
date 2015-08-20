@@ -5,22 +5,21 @@ using UnityEngine;
 
 namespace Assets.Code.Abstract {
     public class ObstructableComponent : IComponent, IToggle {
-        public Collider2D Collider { get; set; }
-        public NodeManager.ColliderType ColliderType { get; private set; }
-        public List<Node> CollisionNodes { get; private set; }
-        public Entity Parent { get; private set; }
+        private Collider2D _obstructCollider;
+        private NodeManager.ColliderType _colliderType;
+        private List<Node> _collisionNodes;
+        public Entity Parent { get; set; }
         public List<string> Dependencies {
             get {
                 return new List<string>() {
                     "GameObject",
-                    "ObstructCollider"
                 };
             }
         }
 
         public bool Enabled {
             get { return _solid; }
-            set {
+            private set {
                 var changed = value != _solid;
                 _solid = value;
                 if (changed) {
@@ -28,31 +27,11 @@ namespace Assets.Code.Abstract {
                 }
             } 
         }
-        private bool _solid;
+        private bool _solid = true;
 
         private void UpdateListeners() {
             Parent.Attributes.Update("CurrentlyObstructing",_solid);
             Messenger.Broadcast(Enabled ? "ObstructionAdded" : "ObstructionRemoved", Parent);
-        }
-
-        public ObstructableComponent(Entity entity) {
-            Parent = entity;
-            Enabled = true;
-            CollisionNodes = new List<Node>(EntityManager.NodeMgr.GetNodes(entity));
-            Parent.Attributes.Register("CollisionNodes", CollisionNodes);
-
-            Collider = Parent.Attributes.Get<Collider2D>("ObstructCollider");
-            
-            if (Collider is CircleCollider2D) ColliderType = NodeManager.ColliderType.Circle;
-            else if (Collider is PolygonCollider2D) ColliderType = NodeManager.ColliderType.Polygon;
-            else if (Collider is BoxCollider2D) ColliderType = NodeManager.ColliderType.Box;
-            else { throw new Exception("ENTITY: Could not determine collider type. "); }
-
-            Parent.Attributes.Register("ObstructColliderType", ColliderType);
-            Parent.Attributes.Register("CurrentlyObstructing", _solid);
-            //Collider = Parent.Components.Get<GameObject>("GameObject").AddComponent<Collider2D>();
-            //Parent.Attributes.Register("Collider", Collider);
-
         }
 
         public void OnAwake() {
@@ -61,10 +40,35 @@ namespace Assets.Code.Abstract {
         }
 
         public void OnStart() {
-            //Messenger.Broadcast("EntityCreated", Parent);
+
         }
 
-        
+        public void Init() {
+            //get the obstruct collider from the game object and register it as an attribute for the entity.
+            _obstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<Collider2D>();
+            if (_obstructCollider == null)
+                throw new Exception(
+                    "Trying to init an Obstructable Component, but init couldn't find the collider. " +
+                    "Make sure it is attached to the game object itself, not the child collider object. ");
+            Parent.Attributes.Register("ObstructCollider", (Collider2D) _obstructCollider);
+
+            //get and assign the colliderType attribute for the entity.
+            if (_obstructCollider is CircleCollider2D) _colliderType = NodeManager.ColliderType.Circle;
+            else if (_obstructCollider is PolygonCollider2D) _colliderType = NodeManager.ColliderType.Polygon;
+            else if (_obstructCollider is BoxCollider2D) _colliderType = NodeManager.ColliderType.Box;
+            else { throw new Exception("ENTITY: Could not determine collider type. "); }
+            Parent.Attributes.Register("ObstructColliderType", _colliderType);
+
+            Parent.Attributes.Register("CurrentlyObstructing", _solid);
+            Enabled = true;
+            _collisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent));
+            Parent.Attributes.Register("CollisionNodes", _collisionNodes);
+
+            
+
+            
+        }
+
 
         public void OnUpdate() {
             

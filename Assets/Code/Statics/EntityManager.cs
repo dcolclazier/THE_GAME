@@ -23,10 +23,6 @@ namespace Assets.Code.Abstract
             Messenger.MarkAsPermanent("EntityDestroyed");
         }
 
-        static void CreateEntity(EntityInitializer initializer) {
-            
-        }
-
         static public void Cleanup() {
             NodeMgr.ClearEntities();
             MasterEntityList.Clear();
@@ -50,6 +46,10 @@ namespace Assets.Code.Abstract
 
         public static IEnumerable<Node> GetAllSolidNodes() {
             return NodeMgr.GetAllSolidNodes();
+        }
+
+        public static IEnumerable<Node> GetNodesForEntity(Entity entity) {
+            return NodeMgr.GetNodes(entity);
         }
     }
 

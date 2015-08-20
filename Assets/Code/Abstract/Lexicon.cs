@@ -7,7 +7,9 @@ namespace Assets.Code.Abstract {
 
         private void OnRegistering(string key, Type type) {
             if (_lexicon.ContainsKey(key)) throw new Exception("LEXICON: You are attempting to add a key that already exists.");
-            if (!(type is T)) throw new Exception("You did something wrong.");
+            if (typeof(T)!=type) throw new Exception(string.Format("You tried to register a value with " +
+                                                                "type {0}, but the type it needs to be is a {1}.",
+                                                                typeof(T) , type));
         }
 
         public void Register<T1>(string key, T1 value) {

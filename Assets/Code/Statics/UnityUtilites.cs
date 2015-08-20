@@ -1,7 +1,18 @@
+using System;
 using UnityEngine;
 
 namespace Assets.Code.Statics {
     static public class UnityUtilites {
+
+        static public T Cast<T>(object input)
+        {
+            return (T)input;
+        }
+
+        static public T ConvertCast<T>(object input)
+        {
+            return (T)Convert.ChangeType(input, typeof(T));
+        }
         static public Vector2 MouseWorldPoint()
         {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);

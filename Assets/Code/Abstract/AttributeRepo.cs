@@ -1,16 +1,22 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
+using Assets.Code.Statics;
+using UnityEngine;
 
 namespace Assets.Code.Abstract {
     public class AttributeRepo {
         private readonly Dictionary<string, object> _repository;
+        public AttributeRepo() {
+            _repository = new Dictionary<string, object>();
+        }
 
         public void Register<T>(string key, T value) {
             OnRegistering(key);
             _repository.Add(key, value);
         }
         private void OnRegistering(string key) {
-            if (_repository.ContainsKey(key)) throw new Exception("REPO: You are attempting to add a key that already exists.");
+            if (_repository.ContainsKey(key)) throw new Exception("REPO: You are attempting to add a key that already exists: Key = " + key);
         }
 
         public T Get<T>(string key) {
@@ -20,9 +26,10 @@ namespace Assets.Code.Abstract {
         }
 
         private void OnGetting(string key, Type type) {
+
             
             if (_repository[key].GetType() != type)
-                throw new ArrayTypeMismatchException(string.Format("You tried to retrieve a value from the lexicon with " +
+                Debug.Log(string.Format("You tried to retrieve a value from the lexicon with " +
                                                                    "type {0}, but the type you tried to retrieve was {1}.",
                     _repository[key].GetType(), type));
         }

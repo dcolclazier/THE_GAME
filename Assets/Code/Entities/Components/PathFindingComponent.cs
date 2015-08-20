@@ -12,7 +12,7 @@ namespace Assets.Code.Abstract {
         //public float Radius { get; private set; }
 
         private Vector2 _startPosition;
-        private readonly PathGraph _pathGraph;
+        private PathGraph _pathGraph;
         private VectorLine PlayerSelectCircle { get; set; }
         private VectorLine DestinationCircle { get; set; }
 
@@ -20,27 +20,9 @@ namespace Assets.Code.Abstract {
         private VectorLine _movePathLine;
         private Vector3 _pathGoal;
 
-        public PathFindingComponent(Entity parent) {
-            Parent = parent;
-            
-            
-            
-            DestinationCircle = new VectorLine("Destination Circle", new Vector3[720], null, line_thickness);
-            DestinationCircle.Draw3DAuto();
-            
-            _movePathLine = new VectorLine("Move Path Line", new Vector3[20], null, line_thickness, LineType.Continuous);
-            _movePathLine.Draw3DAuto();
-            
-            VectorLine.canvas3D.sortingLayerName = "Select Circles";
-            
-            _pathGraph = new PathGraph(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
-            
-            
-            Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
-        }
         private void OnSelected(GameObject selectedObject)
         {
-            if (selectedObject != Parent.Components.Get<GameObject>("GameObject")) {
+            if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) {
                 Selected = false;
                 return;
             }
@@ -51,13 +33,16 @@ namespace Assets.Code.Abstract {
             var circleCollider = Parent.Attributes.Get<CircleCollider2D>("SelectCollider");
             
             _startPosition = circleCollider.transform.position;
-            
+
             PlayerSelectCircle.MakeCircle(_startPosition, circleCollider.radius, 360);
             PlayerSelectCircle.active = true;
             
             if (DestinationCircle.active) DestinationCircle.active = false;
             if (_movePathLine.active) _movePathLine.active = false;
         }
+
+       
+        
 
         public List<string> Dependencies { get; private set; }
 
@@ -84,6 +69,21 @@ namespace Assets.Code.Abstract {
 
         public void OnStart() {
             throw new NotImplementedException();
+        }
+
+        public void Init() {
+            DestinationCircle = new VectorLine("Destination Circle", new Vector3[720], null, line_thickness);
+            DestinationCircle.Draw3DAuto();
+
+            _movePathLine = new VectorLine("Move Path Line", new Vector3[20], null, line_thickness, LineType.Continuous);
+            _movePathLine.Draw3DAuto();
+
+            VectorLine.canvas3D.sortingLayerName = "Select Circles";
+
+            _pathGraph = new PathGraph(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
+
+
+            Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
         }
 
         public void OnMessage() {
@@ -117,7 +117,7 @@ namespace Assets.Code.Abstract {
             _pathGoal = point;
         }
 
-        public Entity Parent { get; private set; }
+        public Entity Parent { get; set; }
         public bool Enabled { get; private set; }
         
     }

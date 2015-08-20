@@ -31,26 +31,13 @@ namespace Assets.Code.Statics
             _nodeGrabber[(int)ColliderType.Box] = GetBoxNodes;
             _nodeGrabber[(int)ColliderType.Polygon] = GetPolygonNodes;
         }
-        //Callback function for "EntityCreated" message broadcast
-        //private void EntityCreated(entity entity) {
-        //    var obstructCollider = entity.Attributes.Get<Collider2D>("ObstructCollider");
-        //    if (entity.Collider == null)
-        //    {
-        //        throw new NullReferenceException("Collider wasn't found - are you sure it was created prior to it's monobehaviour awake ran?");
-        //    }
-        //    if (Entities.Contains(entity))
-        //    {
-        //        throw new Exception("Duplicate entity detected - EntityCreated()");
-        //    }
-        //    Entities.Add(entity);
-        //    Debug.Log(string.Format("NODEMANAGER: new entity added: {0}, Solid? {1} Collider: {2}", entity.Collider.name, entity.Solid, entity.ColliderType));
-          
-        //}
-
+       
         //NodeGrabber method for expanding and retrieving nodes for BoxCollider2d
         private IEnumerable<Node> GetBoxNodes(Entity entity) {
-            var box = ((BoxCollider2D) entity.Attributes.Get<Collider2D>("ObstructCollider"));
+            var box = (entity.Attributes.Get<Collider2D>("ObstructCollider") as BoxCollider2D) ;
+            Debug.Log("Box is " + (box == null ? "null" : "not null"));
             var gameObject = entity.Attributes.Get<GameObject>("GameObject");
+            Debug.Log("gameObject is " + (gameObject == null ? "null" : "not null"));
             var scale = gameObject.transform.localScale;
             var position = box.transform.position;
             var buffer = 0.05f;
@@ -66,6 +53,7 @@ namespace Assets.Code.Statics
                                          box.offset.y - box.size.y*scale.y/2 + position.y - buffer))
                 };
             return nodes;
+            return null;
         }
 
         //NodeGrabber method for expanding and retrieving nodes for PolygonCollider2d - NOT WORKING
