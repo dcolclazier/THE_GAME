@@ -5,20 +5,6 @@ using UnityEngine;
 
 namespace Assets.Code.Abstract
 {
-
-    public class EntityManagerHelper : MonoBehaviour {
-        public void Awake() {
-           Messenger.Broadcast("OnAwake");
-        }
-
-        protected void Update() {
-            Messenger.Broadcast("OnUpdate");
-        }
-
-        protected void Start() {
-            Messenger.Broadcast("OnStart");
-        }
-    }
     public static class EntityManager {
         public static List<Entity> MasterEntityList { get; private set; }
         public static List<Entity> PermenantEntityList { get; private set; }
@@ -65,11 +51,6 @@ namespace Assets.Code.Abstract
         public static IEnumerable<Node> GetAllSolidNodes() {
             return NodeMgr.GetAllSolidNodes();
         }
-    }
-
-    public class EntityInitializer : MonoBehaviour {
-
-        
     }
 
     //public abstract class Entity : MonoBehaviour, IObstructable {
