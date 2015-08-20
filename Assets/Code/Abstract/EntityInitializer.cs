@@ -34,6 +34,7 @@ namespace Assets.Code.Abstract {
                 {"Pathfinding", typeof(PathFindingComponent)},
                 {"IronBowRangedAttack", typeof(IronBowRangedAttackComponent)},
                 {"Defender", typeof(DefenderCompononent)},
+                {"ObstructableUnit", typeof(ObstructableUnitComponent)},
 
 
             };

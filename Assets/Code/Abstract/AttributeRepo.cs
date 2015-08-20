@@ -27,7 +27,6 @@ namespace Assets.Code.Abstract {
 
         private void OnGetting(string key, Type type) {
 
-            
             if (_repository[key].GetType() != type)
                 Debug.Log(string.Format("You tried to retrieve a value from the lexicon with " +
                                                                    "type {0}, but the type you tried to retrieve was {1}.",

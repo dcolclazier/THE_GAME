@@ -50,8 +50,8 @@ public class Node {
 
     public bool CanSee(Node node) {
         var rayCast = Physics2D.Raycast(Position, node.Position - Position, DistanceTo(node), 1 << 11);
+        Debug.DrawRay(Position, node.Position - Position, rayCast.collider == null ? Color.green :Color.red);
         return rayCast.collider == null;
-        //Debug.DrawRay(position, node.position - position, Color.green);
     } 
 
     public Vector3 ToVector3() {

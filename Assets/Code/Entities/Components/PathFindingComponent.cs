@@ -30,7 +30,7 @@ namespace Assets.Code.Abstract {
             _pathGraph.UpdatePathGraph(_startPosition);
             Selected = true;
             
-            var circleCollider = Parent.Attributes.Get<CircleCollider2D>("SelectCollider");
+            CircleCollider2D circleCollider = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider");
             
             _startPosition = circleCollider.transform.position;
 
@@ -49,6 +49,7 @@ namespace Assets.Code.Abstract {
         public void OnUpdate() {
             if (!Selected || !Input.GetMouseButton(1)) return;
             
+            Debug.Log("Pathfinding ho! About to set destination circle.");
             SetDestinationCircle();
             if (_pathGraph.TargetNode == null) _pathGraph.TargetNode = new Node(_pathGoal);
             else _pathGraph.TargetNode.Position = _pathGoal;
@@ -72,6 +73,8 @@ namespace Assets.Code.Abstract {
         }
 
         public void Init() {
+
+            Debug.Log("Pathfinding init!");
             DestinationCircle = new VectorLine("Destination Circle", new Vector3[720], null, line_thickness);
             DestinationCircle.Draw3DAuto();
 
@@ -84,6 +87,7 @@ namespace Assets.Code.Abstract {
 
 
             Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
+            Messenger.AddListener("OnUpdate", OnUpdate);
         }
 
         public void OnMessage() {

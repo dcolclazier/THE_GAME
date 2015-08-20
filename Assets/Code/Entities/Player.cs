@@ -6,9 +6,9 @@ namespace Assets.Code.Entities {
         protected override void Awake() {
             ComponentsToInit = new List<string>() {
                 "GameObject",
-                "Obstructable",
+                "ObstructableUnit",
                 "Selectable",
-                //"Pathfinding"
+                "Pathfinding"
             };
             base.Awake();
         }

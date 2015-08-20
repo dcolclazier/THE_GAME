@@ -3,6 +3,7 @@
 namespace Assets.Code.Abstract {
     public class EntityManagerHelper : MonoBehaviour {
         public void Awake() {
+            DontDestroyOnLoad(this);
             Messenger.Broadcast("OnAwake");
         }
 

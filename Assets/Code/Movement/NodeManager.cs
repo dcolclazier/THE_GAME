@@ -6,42 +6,39 @@ using UnityEngine;
 
 namespace Assets.Code.Statics
 {
-    //after refactor - MUCH BETTER! 
-    //todo - I don't like that this is static - static is bad.
     //todo - add in capability to scale polygon colliders prior to node creation.
     public class NodeManager
     {
         public enum ColliderType { Box, Circle, Polygon, Count}
-
-        
-
         private readonly Func<Entity, IEnumerable<Node>>[] _nodeGrabber; 
-        //private readonly List<entity> Entities;
  
         //static constructor for NodeManager - creates a listener for "EntityCreated"
         //event, assigns delegate functions for Node Retrieval types
         public NodeManager()  {
-            //Messenger.AddListener<entity>("EntityCreated", EntityCreated);
-            //Messenger.MarkAsPermanent("EntityCreated");
             
-            //Entities = new List<entity>();
             _nodeGrabber = new Func<Entity, IEnumerable<Node>>[(int)ColliderType.Count];
             
             _nodeGrabber[(int)ColliderType.Circle] = GetCircleNodes;
             _nodeGrabber[(int)ColliderType.Box] = GetBoxNodes;
             _nodeGrabber[(int)ColliderType.Polygon] = GetPolygonNodes;
         }
+        public static ColliderType GetColliderType(Collider2D baseCollider)
+        {
+            ColliderType colliderType;
+            if (baseCollider is CircleCollider2D) colliderType = ColliderType.Circle;
+            else if (baseCollider is PolygonCollider2D) colliderType = ColliderType.Polygon;
+            else if (baseCollider is BoxCollider2D) colliderType = ColliderType.Box;
+            else { throw new Exception("ENTITY: Could not determine collider type. "); }
+            return colliderType;
+        }
        
         //NodeGrabber method for expanding and retrieving nodes for BoxCollider2d
         private IEnumerable<Node> GetBoxNodes(Entity entity) {
             var box = (entity.Attributes.Get<Collider2D>("ObstructCollider") as BoxCollider2D) ;
-            Debug.Log("Box is " + (box == null ? "null" : "not null"));
             var gameObject = entity.Attributes.Get<GameObject>("GameObject");
-            Debug.Log("gameObject is " + (gameObject == null ? "null" : "not null"));
             var scale = gameObject.transform.localScale;
             var position = box.transform.position;
             var buffer = 0.05f;
-            //box.Scale(expansionfactor);
             var nodes = new List<Node> {
                     new Node(new Vector2(box.offset.x - box.size.x*scale.x/2 + position.x - buffer, //top left
                                          box.offset.y + box.size.y*scale.y/2 + position.y + buffer)), 
@@ -58,16 +55,6 @@ namespace Assets.Code.Statics
 
         //NodeGrabber method for expanding and retrieving nodes for PolygonCollider2d - NOT WORKING
         private IEnumerable<Node> GetPolygonNodes(Entity entity) {
-            //if (entity.Collider == null) yield break;
-            
-            //var center = ((PolygonCollider2D) entity.Collider).GetCenter2D();
-            //foreach (var point in ((PolygonCollider2D)entity.Collider).points) {
-                //var newX = (1.01f*(point.x - center.x) + center.x) + entity.transform.position.x;
-                //var newY = (1.01f*(point.y - center.y) + center.y) + entity.transform.position.x;
-                //yield return new Node(newX,newY);
-                //yield return new Node(new Vector2(point.x + entity.transform.position.x,
-                 //                                   point.y + entity.transform.position.y));
-            //}
             throw new NotImplementedException();
         }
 
@@ -111,12 +98,6 @@ namespace Assets.Code.Statics
                     }));
             }
             return nodelist;
-        }
-
-        //Clears all entries from Entities list
-        public void ClearEntities() {
-            //Entities.Clear();
-            Debug.Log("NODEMANAGER Cleanup... All entity records cleared.");
         }
     }
 }
