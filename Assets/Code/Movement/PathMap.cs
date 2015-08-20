@@ -6,7 +6,7 @@ using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Components.Movement {
-    public class PathGraph {
+    public class PathMap {
         private List<Node> StaticNodes { get; set; }
         private Node SourceNode { get; set; }
         public Node TargetNode { get; set; }
@@ -20,12 +20,12 @@ namespace Assets.Components.Movement {
             }
             return vectors;
         }
-        public PathGraph(Node from) {
+        public PathMap(Node from) {
             StaticNodes = EntityManager.GetAllSolidNodes().ToList();
             SourceNode = from;
             TargetNode = null;
             Messenger.AddListener<Entity>("ObstructionAdded", EntityNodesChanged);
-            Messenger.AddListener<Entity>("Obstructionremoved", EntityNodesChanged);
+            Messenger.AddListener<Entity>("ObstructionRemoved", EntityNodesChanged);
         }
 
         private void EntityNodesChanged(Entity entity) {

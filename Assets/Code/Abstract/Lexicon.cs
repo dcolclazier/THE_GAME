@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Assets.Code.Abstract {
-    public class Lexicon<T> where T : class {
+    public sealed class Lexicon<T> where T : class {
         private readonly Dictionary<string, T> _lexicon = new Dictionary<string, T>();
 
         private void OnRegistering(string key, Type type) {

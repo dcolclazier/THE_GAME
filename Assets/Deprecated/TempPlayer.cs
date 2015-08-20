@@ -9,7 +9,7 @@
 //    public class TempPlayer : Entity {
 //        private float Radius { get; set; }
 //        private Vector2 Position { get; set; }
-//        private PathGraph MovementGraph { get; set; }
+//        private PathMap MovementGraph { get; set; }
 
 //        private VectorLine SelectCircle { get; set; }
 //        private VectorLine DestinationCircle { get; set; }
@@ -28,7 +28,7 @@
 //        //    _movePathLine = new VectorLine("Move Path Line", new Vector3[20], null, line_thickness, LineType.Continuous);
 //        //    _movePathLine.Draw3DAuto();
 //        //    VectorLine.canvas3D.sortingLayerName = "Select Circles";
-//        //    MovementGraph = new PathGraph(new Node(Position,true));
+//        //    MovementGraph = new PathMap(new Node(Position,true));
 //        //    Messenger.AddListener<GameObject>("PlayerSelected",OnSelected);
 //        //    Messenger.AddListener<GameObject>("PlayerMouseHover",OnMouseHover);
 //        //}

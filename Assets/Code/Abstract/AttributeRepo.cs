@@ -5,7 +5,7 @@ using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Code.Abstract {
-    public class AttributeRepo {
+    public sealed class AttributeRepo {
         private readonly Dictionary<string, object> _repository;
         public AttributeRepo() {
             _repository = new Dictionary<string, object>();

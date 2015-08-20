@@ -31,17 +31,13 @@ namespace Assets.Code.Abstract {
             Parent.Attributes.Update("Position", _transformPosition);
             Messenger.Broadcast("GameObjectMoved", this);
         }
-        public void OnAwake() {
-            
-        }
-        public void OnStart() {
-        }
-
         public void Init() {
-            Enabled = true;
-            if (Parent == null) return;
             Go = Parent.Attributes.Get<GameObject>("GameObject");
-            if (Go != null) Parent.Attributes.Register("Position", Go.transform.position.ToVector2());
+            Parent.Attributes.Register("Position", Go.transform.position.ToVector2());
+
+
+            Messenger.AddListener("OnUpdate",OnUpdate);
+            Enabled = true;
         }
 
         public void OnMessage() {

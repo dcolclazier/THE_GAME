@@ -9,17 +9,8 @@ using Vectrosity;
 namespace Assets.Code.Abstract {
     public class PathFindingComponent : IComponent {
 
-        //public float Radius { get; private set; }
-
-        private Vector2 _startPosition;
-        private PathGraph _pathGraph;
-        //private VectorLine PlayerSelectCircle { get; set; }
-        private VectorLine DestinationCircle { get; set; }
-
-        private readonly float line_thickness = 2.0f;  //used by vectrosity
-        private VectorLine _movePathLine;
-        private Vector3 _pathGoal;
-
+        public List<string> Dependencies { get; private set; }
+        
         private void OnSelected(GameObject selectedObject)
         {
             if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) {
@@ -27,7 +18,7 @@ namespace Assets.Code.Abstract {
                 return;
             }
             
-            _pathGraph.UpdatePathGraph(_startPosition);
+            _pathMap.UpdatePathGraph(_startPosition);
             Selected = true;
             
             CircleCollider2D circleCollider = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider");
@@ -41,20 +32,15 @@ namespace Assets.Code.Abstract {
             if (_movePathLine.active) _movePathLine.active = false;
         }
 
-       
-        
-
-        public List<string> Dependencies { get; private set; }
-
         public void OnUpdate() {
             if (!Selected || !Input.GetMouseButton(1)) return;
             
             Debug.Log("Pathfinding ho! About to set destination circle.");
             SetDestinationCircle();
-            if (_pathGraph.TargetNode == null) _pathGraph.TargetNode = new Node(_pathGoal);
-            else _pathGraph.TargetNode.Position = _pathGoal;
+            if (_pathMap.TargetNode == null) _pathMap.TargetNode = new Node(_pathGoal);
+            else _pathMap.TargetNode.Position = _pathGoal;
 
-            var path = _pathGraph.GetBestPath().ToArray();
+            var path = _pathMap.GetBestPath().ToArray();
 
 
             VectorLine.Destroy(ref _movePathLine);
@@ -63,15 +49,32 @@ namespace Assets.Code.Abstract {
             _movePathLine.Draw3DAuto();
             _movePathLine.active = true;
         }
+        void SetDestinationCircle()
+        {
 
-        public void OnAwake() {
-            throw new NotImplementedException();
+            var currentMousePos = UnityUtilites.MouseWorldPoint();
+            var radius = Parent.Attributes.Get<float>("ObstructRadius");
+            Debug.Log("Destination circle radius: " + radius);
+            //if mouse is over no walk collider, move destination location out of contact with colliders in scene
+            Collider2D overlap = Physics2D.OverlapCircle(currentMousePos, radius, 1 << 11);
+            if (overlap)
+            {
+                Ray2D ray = new Ray2D(overlap.transform.position, currentMousePos - overlap.transform.position.ToVector2());
+                float dist = Vector2.Distance(overlap.transform.position, currentMousePos);
+                while (overlap)
+                {
+
+                    dist += 0.1f;
+                    currentMousePos = ray.GetPoint(dist);
+                    overlap = Physics2D.OverlapCircle(currentMousePos, radius, 1 << 11);
+                }
+            }
+
+            //Draw Destination circle
+            DestinationCircle.MakeCircle(currentMousePos, radius, 360);
+            DestinationCircle.active = true;
+            _pathGoal = currentMousePos;
         }
-
-        public void OnStart() {
-            throw new NotImplementedException();
-        }
-
         public void Init() {
 
             Debug.Log("Pathfinding init!");
@@ -83,46 +86,22 @@ namespace Assets.Code.Abstract {
 
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
-            _pathGraph = new PathGraph(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
+            _pathMap = new PathMap(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
 
 
             Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
             Messenger.AddListener("OnUpdate", OnUpdate);
         }
-
-        public void OnMessage() {
-            throw new NotImplementedException();
-        }
-
-        public bool Selected { get; set; }
-
-        void SetDestinationCircle()
-        {
-            Vector3 point = UnityUtilites.MouseWorldPoint();
-            var radius = Parent.Attributes.Get<float>("Radius");
-            //if mouse is over no walk collider, move destination location out of contact with colliders in scene
-            Collider2D overlap = Physics2D.OverlapCircle(point, radius, 1 << 9);
-            if (overlap)
-            {
-                Ray2D ray = new Ray2D(overlap.transform.position, point - overlap.transform.position);
-                float dist = Vector2.Distance(overlap.transform.position, point);
-                while (overlap)
-                {
-
-                    dist += 0.1f;
-                    point = ray.GetPoint(dist);
-                    overlap = Physics2D.OverlapCircle(point, radius, 1 << 9);
-                }
-            }
-
-            //Draw Destination circle
-            DestinationCircle.MakeCircle(point, radius, 360);
-            DestinationCircle.active = true;
-            _pathGoal = point;
-        }
-
-        public Entity Parent { get; set; }
-        public bool Enabled { get; private set; }
         
+        
+        public bool Enabled { get; private set; }
+        private Vector2 _startPosition;
+        private PathMap _pathMap;
+        private VectorLine DestinationCircle { get; set; }
+        private readonly float line_thickness = 2.0f;  //used by vectrosity
+        private VectorLine _movePathLine;
+        private Vector3 _pathGoal;
+        public Entity Parent { get; set; }
+        public bool Selected { get; set; }
     }
 }

@@ -8,13 +8,12 @@ namespace Assets.Code.Abstract {
         
         public override void Init()
         {
-            //get the obstruct collider from the game object and register it as an attribute for the entity.
             ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponentInChildren<CircleCollider2D>();
             if (ObstructCollider == null) GetOuttaHere();
+            Parent.Attributes.Register("ObstructRadius", ((CircleCollider2D)ObstructCollider).radius);
 
             Parent.Attributes.Register("ObstructCollider", ObstructCollider);
             Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
-            Parent.Attributes.Register("ObstructRadius", ((CircleCollider2D)ObstructCollider).radius);
             Parent.Attributes.Register("CurrentlyObstructing", Solid);
             
             CollisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent));

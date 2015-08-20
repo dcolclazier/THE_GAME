@@ -7,8 +7,6 @@ namespace Assets.Code.Abstract {
         Entity Parent { get; set; }
         List<string> Dependencies { get; }
         void OnUpdate();
-        void OnAwake();
-        void OnStart();
         void Init();
     }
 }
