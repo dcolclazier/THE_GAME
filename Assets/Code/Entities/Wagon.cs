@@ -1,9 +1,14 @@
+using System.Collections.Generic;
 using Assets.Code.Abstract;
 
 namespace Assets.Code.Entities {
-    public class Wagon : Entity
-    {
-        //attached to prefab, this object is.
-
+    public class Wagon : EntityInitializer {
+        protected override void Awake() {
+            ComponentsToInit = new List<string>() {
+                "GameObject",
+                "Obstructable"
+            };
+            base.Awake();
+        }
     }
 }

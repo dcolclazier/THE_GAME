@@ -7,8 +7,16 @@ namespace Assets.Code.Statics {
             box.size = new Vector2(box.size.x + 2*expansionFactor, box.size.y + 2*expansionFactor);
         }
 
+        public static Vector2 ToVector2(this Vector3 that) {
+            return new Vector2(that.x,that.y);
+        }
+
         public static void Scale(this CircleCollider2D circle, float expansionFactor) {
             circle.radius += expansionFactor;
+        }
+
+        public static bool Equals(this Vector2 that, Vector2 rhs) {
+            return (that.x == rhs.x && that.y == rhs.y);
         }
 
         public static Vector2 GetCenter2D(this PolygonCollider2D poly)

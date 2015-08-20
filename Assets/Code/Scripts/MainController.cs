@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Code;
+using Assets.Code.Abstract;
 using Assets.Code.Statics;
 
 // ReSharper disable once CheckNamespace (only because Monobehaviour can't be in a custom namespace)
@@ -64,8 +65,9 @@ public class MainController : MonoBehaviour {
     //we shouldn't see any performance issues - just a bit higher memory useage.
     private void SceneStateReset(){
         System.GC.Collect();
-        NodeManager.ClearEntities();
+        
         Messenger.Cleanup();
+        EntityManager.Cleanup();
         _currentSceneState = SceneState.Preload;
     }
 
