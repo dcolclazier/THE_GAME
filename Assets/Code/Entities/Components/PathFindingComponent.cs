@@ -11,32 +11,29 @@ namespace Assets.Code.Abstract {
 
         public List<string> Dependencies { get; private set; }
         
-        private void OnSelected(GameObject selectedObject)
-        {
-            if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) {
-                Selected = false;
-                return;
-            }
+        private void OnSelected(GameObject selectedObject) {
+            if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
+
+
+            var circleCollider = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider");
+            _startPosition = circleCollider.transform.position;
             
             _pathMap.UpdatePathGraph(_startPosition);
-            Selected = true;
-            
-            CircleCollider2D circleCollider = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider");
-            
-            _startPosition = circleCollider.transform.position;
- 
+
+
             if (_destinationCircle.active) _destinationCircle.active = false;
             if (_pathLine.active) _pathLine.active = false;
         }
 
         public void OnUpdate() {
-            if (!Selected || !Input.GetMouseButton(1)) return;
+            if (!Parent.Attributes.Get<bool>("CurrentlySelected") || !Input.GetMouseButton(1)) return;
             
-            Debug.Log("Pathfinding ho! About to set destination circle.");
             SetDestinationCircle();
+
+
             if (_pathMap.TargetNode == null) _pathMap.TargetNode = new Node(_pathGoal);
             else _pathMap.TargetNode.Position = _pathGoal;
-
+            _pathMap.UpdatePathGraph(_startPosition);
             var path = _pathMap.GetBestPath().ToArray();
 
 
@@ -45,7 +42,6 @@ namespace Assets.Code.Abstract {
             _pathLine.Draw3DAuto();
             //_pathLine.active = true;
 
-            Debug.Log("Should the path line be enabled? Is the Player selected?" + Parent.Attributes.Get<bool>("CurrentlySelected"));
             _pathLine.active = Parent.Attributes.Get<bool>("CurrentlySelected");
         }
         void SetDestinationCircle()
@@ -53,7 +49,6 @@ namespace Assets.Code.Abstract {
 
             var currentMousePos = UnityUtilites.MouseWorldPoint();
             var radius = Parent.Attributes.Get<float>("ObstructRadius");
-            Debug.Log("Destination circle radius: " + radius);
             //if mouse is over no walk collider, move destination location out of contact with colliders in scene
             Collider2D overlap = Physics2D.OverlapCircle(currentMousePos, radius, 1 << 11);
             if (overlap)
@@ -82,7 +77,10 @@ namespace Assets.Code.Abstract {
             _pathLine.Draw3DAuto();
 
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
-            
+
+            //_startPosition = Parent.Attributes.Get<Vector2>("Position");
+            Debug.Log("Position X: " + _startPosition.x);
+            Debug.Log("Position Y: " + _startPosition.y);
             _pathMap = new PathMap(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
 
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
@@ -105,6 +103,5 @@ namespace Assets.Code.Abstract {
         private VectorLine _pathLine;
         private Vector3 _pathGoal;
         public Entity Parent { get; set; }
-        public bool Selected { get; set; }
     }
 }
