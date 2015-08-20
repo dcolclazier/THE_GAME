@@ -50,7 +50,6 @@ namespace Assets.Code.Statics
                                          box.offset.y - box.size.y*scale.y/2 + position.y - buffer))
                 };
             return nodes;
-            return null;
         }
 
         //NodeGrabber method for expanding and retrieving nodes for PolygonCollider2d - NOT WORKING
