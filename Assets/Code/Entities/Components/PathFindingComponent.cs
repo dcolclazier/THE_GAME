@@ -13,7 +13,7 @@ namespace Assets.Code.Abstract {
 
         private Vector2 _startPosition;
         private PathGraph _pathGraph;
-        private VectorLine PlayerSelectCircle { get; set; }
+        //private VectorLine PlayerSelectCircle { get; set; }
         private VectorLine DestinationCircle { get; set; }
 
         private readonly float line_thickness = 2.0f;  //used by vectrosity
@@ -34,8 +34,8 @@ namespace Assets.Code.Abstract {
             
             _startPosition = circleCollider.transform.position;
 
-            PlayerSelectCircle.MakeCircle(_startPosition, circleCollider.radius, 360);
-            PlayerSelectCircle.active = true;
+            //PlayerSelectCircle.MakeCircle(_startPosition, circleCollider.radius, 360);
+            //PlayerSelectCircle.active = true;
             
             if (DestinationCircle.active) DestinationCircle.active = false;
             if (_movePathLine.active) _movePathLine.active = false;
@@ -97,7 +97,7 @@ namespace Assets.Code.Abstract {
             Vector3 point = UnityUtilites.MouseWorldPoint();
             var radius = Parent.Attributes.Get<float>("Radius");
             //if mouse is over no walk collider, move destination location out of contact with colliders in scene
-            Collider2D overlap = Physics2D.OverlapCircle(point, radius, 1 << 10);
+            Collider2D overlap = Physics2D.OverlapCircle(point, radius, 1 << 9);
             if (overlap)
             {
                 Ray2D ray = new Ray2D(overlap.transform.position, point - overlap.transform.position);
@@ -107,7 +107,7 @@ namespace Assets.Code.Abstract {
 
                     dist += 0.1f;
                     point = ray.GetPoint(dist);
-                    overlap = Physics2D.OverlapCircle(point, radius, 1 << 10);
+                    overlap = Physics2D.OverlapCircle(point, radius, 1 << 9);
                 }
             }
 

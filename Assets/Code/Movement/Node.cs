@@ -49,7 +49,7 @@ public class Node {
     }
 
     public bool CanSee(Node node) {
-        var rayCast = Physics2D.Raycast(Position, node.Position - Position, DistanceTo(node), 1 << 10);
+        var rayCast = Physics2D.Raycast(Position, node.Position - Position, DistanceTo(node), 1 << 11);
         return rayCast.collider == null;
         //Debug.DrawRay(position, node.position - position, Color.green);
     } 

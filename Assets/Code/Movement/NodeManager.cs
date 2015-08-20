@@ -106,7 +106,7 @@ namespace Assets.Code.Statics
                 
                 nodelist.AddRange(entity.Attributes.Get<List<Node>>("CollisionNodes").Where(
                     e => {
-                        var collider = Physics2D.OverlapPoint(e.Position, 1 << 10);
+                        var collider = Physics2D.OverlapPoint(e.Position, 1 << 11);
                         return collider == null || collider.gameObject == entity.Attributes.Get<GameObject>("GameObject");
                     }));
             }

@@ -41,19 +41,20 @@ namespace Assets.Code.Abstract {
         }
 
         public void Init() {
+            
             _selectableCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponentInChildren<CircleCollider2D>();
             if (_selectableCollider == null)
                 throw new Exception(
                     "Trying to init an Obstructable Component, but init couldn't find the collider. " +
                     "Make sure it is attached to the child game object, not the child collider object. ");
-            
+
             Parent.Attributes.Register("SelectCollider", _selectableCollider);
             Parent.Attributes.Register("SelectRadius", _selectableCollider.radius);
             Parent.Attributes.Register("CurrentlySelected", false);
 
-
             SelectCircle = new VectorLine("Select Circle", new Vector3[720], null, _lineThickness);
             SelectCircle.Draw3DAuto();
+            VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
             Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
             Messenger.AddListener("GroundClicked", OnDeselect);
