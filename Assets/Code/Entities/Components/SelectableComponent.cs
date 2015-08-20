@@ -6,7 +6,10 @@ using Vectrosity;
 namespace Assets.Code.Abstract {
     public class SelectableComponent : IComponent, IToggle {
         private CircleCollider2D _selectableCollider;
-
+        private VectorLine SelectCircle { get; set; }
+        public Entity Parent { get; set; }
+        private float _lineThickness = 2.0f;
+        private bool _enabled;
         public List<string> Dependencies {
             get { return new List<string>() {
                     "GameObject",
@@ -21,6 +24,7 @@ namespace Assets.Code.Abstract {
             
             Parent.Attributes.Update("CurrentlySelected", Enabled);
             Debug.Log("Enabled after update = " + Enabled);
+            Debug.Log("Collider radius: " + _selectableCollider.radius);
             SelectCircle.MakeCircle(_selectableCollider.transform.position, _selectableCollider.radius, 360);
             Debug.Log("MakeCircleCalled");
             SelectCircle.active = true;
@@ -52,6 +56,15 @@ namespace Assets.Code.Abstract {
             SelectCircle.Draw3DAuto();
 
             Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
+            Messenger.AddListener("GroundClicked", OnDeselect);
+        }
+
+        private void OnDeselect() {
+            if (Enabled) {
+                Enabled = false;
+                Debug.Log("I was unclicked! Setting SelectCirle from " + SelectCircle.active + " to " + Enabled );
+                SelectCircle.active = false;
+            }
         }
 
         public void OnMessage() {
@@ -69,13 +82,10 @@ namespace Assets.Code.Abstract {
         }
         private void Toggle()
         {
-            SelectCircle.active = Enabled;
+            //SelectCircle.active = Enabled;
 
         }
-        private VectorLine SelectCircle { get; set; }
-        public Entity Parent { get; set; }
-        public float _lineThickness = 2.0f;
-        private bool _enabled;
+       
         
     }
 }
