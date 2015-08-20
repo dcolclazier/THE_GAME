@@ -1,3 +1,5 @@
+using Assets.Code.Abstract;
+
 namespace Assets.Code.Entities {
     public class Wagon : Entity
     {
