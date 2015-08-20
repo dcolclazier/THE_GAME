@@ -21,15 +21,15 @@ namespace Assets.Components.Movement {
             return vectors;
         }
         public PathGraph(Node from) {
-            StaticNodes = NodeManager.GetAllSolidNodes().ToList();
+            StaticNodes = EntityManager.GetAllSolidNodes().ToList();
             SourceNode = from;
             TargetNode = null;
-            Messenger.AddListener<Entity>("", EntityNodesChanged);
-            Messenger.AddListener<Entity>("EntityAppeared", EntityNodesChanged);
+            Messenger.AddListener<Entity>("ObstructionAdded", EntityNodesChanged);
+            Messenger.AddListener<Entity>("Obstructionremoved", EntityNodesChanged);
         }
 
         private void EntityNodesChanged(Entity entity) {
-            StaticNodes = NodeManager.GetAllSolidNodes().ToList();
+            StaticNodes = EntityManager.GetAllSolidNodes().ToList();
         }
 
         public IEnumerable<Vector3> GetBestPath() {
@@ -128,7 +128,7 @@ namespace Assets.Components.Movement {
             SourceNode.Position = selectedPlayer;
 
             //Update all solid nodes
-            StaticNodes = NodeManager.GetAllSolidNodes().ToList();
+            StaticNodes = EntityManager.GetAllSolidNodes().ToList();
 
             //If the list doesn't contain the sourcenode, add it.
             if (!StaticNodes.Contains(SourceNode)) StaticNodes.Add(SourceNode);
