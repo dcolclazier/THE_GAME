@@ -29,7 +29,7 @@
 //        //    _movePathLine.Draw3DAuto();
 //        //    VectorLine.canvas3D.sortingLayerName = "Select Circles";
 //        //    MovementGraph = new PathMap(new Node(Position,true));
-//        //    Messenger.AddListener<GameObject>("PlayerSelected",OnSelected);
+//        //    Messenger.AddListener<GameObject>("GameObjectSelected",OnSelected);
 //        //    Messenger.AddListener<GameObject>("PlayerMouseHover",OnMouseHover);
 //        //}
 

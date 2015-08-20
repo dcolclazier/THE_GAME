@@ -50,8 +50,8 @@ namespace Assets.Code.Abstract {
             CollisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent));
             Parent.Attributes.Register("CollisionNodes", CollisionNodes);
 
-            Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
-            Messenger.AddListener<GameObject>("PlayerDeselected", OnDeselected);
+            Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
+            Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
             Messenger.AddListener("OnUpdate", OnUpdate);
             Enabled = true;
         }

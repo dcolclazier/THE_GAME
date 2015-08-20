@@ -24,7 +24,7 @@ namespace Assets.Code.Abstract {
             _selectCircle.Draw3DAuto();
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
-            Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
+            Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener("GroundClicked", OnDeselect);
         }
         private void OnSelected(GameObject selectedObj) {
@@ -61,7 +61,7 @@ namespace Assets.Code.Abstract {
             
             Enabled = false;
             _selectCircle.active = false;
-            Messenger.Broadcast("PlayerDeselected", Parent.Attributes.Get<GameObject>("GameObject"));
+            Messenger.Broadcast("GameObjectDeselected", Parent.Attributes.Get<GameObject>("GameObject"));
         }
 
         //public bool Enabled

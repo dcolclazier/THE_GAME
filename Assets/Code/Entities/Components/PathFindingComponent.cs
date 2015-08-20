@@ -24,12 +24,9 @@ namespace Assets.Code.Abstract {
             CircleCollider2D circleCollider = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider");
             
             _startPosition = circleCollider.transform.position;
-
-            //PlayerSelectCircle.MakeCircle(_startPosition, circleCollider.radius, 360);
-            //PlayerSelectCircle.active = true;
-            
-            if (DestinationCircle.active) DestinationCircle.active = false;
-            if (_movePathLine.active) _movePathLine.active = false;
+ 
+            if (_destinationCircle.active) _destinationCircle.active = false;
+            if (_pathLine.active) _pathLine.active = false;
         }
 
         public void OnUpdate() {
@@ -43,11 +40,13 @@ namespace Assets.Code.Abstract {
             var path = _pathMap.GetBestPath().ToArray();
 
 
-            VectorLine.Destroy(ref _movePathLine);
-            _movePathLine = new VectorLine("Move Path Line", path, null, line_thickness, LineType.Continuous);
-            //movePathLine = new VectorLine("Move Path Line", new Vector3[0], null, line_thickness, LineType.Continuous);
-            _movePathLine.Draw3DAuto();
-            _movePathLine.active = true;
+            VectorLine.Destroy(ref _pathLine);
+            _pathLine = new VectorLine("Move Path Line", path, null, line_thickness, LineType.Continuous);
+            _pathLine.Draw3DAuto();
+            //_pathLine.active = true;
+
+            Debug.Log("Should the path line be enabled? Is the Player selected?" + Parent.Attributes.Get<bool>("CurrentlySelected"));
+            _pathLine.active = Parent.Attributes.Get<bool>("CurrentlySelected");
         }
         void SetDestinationCircle()
         {
@@ -71,35 +70,39 @@ namespace Assets.Code.Abstract {
             }
 
             //Draw Destination circle
-            DestinationCircle.MakeCircle(currentMousePos, radius, 360);
-            DestinationCircle.active = true;
+            _destinationCircle.MakeCircle(currentMousePos, radius, 360);
+            _destinationCircle.active = true;
             _pathGoal = currentMousePos;
         }
         public void Init() {
 
-            Debug.Log("Pathfinding init!");
-            DestinationCircle = new VectorLine("Destination Circle", new Vector3[720], null, line_thickness);
-            DestinationCircle.Draw3DAuto();
-
-            _movePathLine = new VectorLine("Move Path Line", new Vector3[20], null, line_thickness, LineType.Continuous);
-            _movePathLine.Draw3DAuto();
+            _destinationCircle = new VectorLine("Destination Circle", new Vector3[720], null, line_thickness);
+            _destinationCircle.Draw3DAuto();
+            _pathLine = new VectorLine("Move Path Line", new Vector3[20], null, line_thickness, LineType.Continuous);
+            _pathLine.Draw3DAuto();
 
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
-
+            
             _pathMap = new PathMap(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
 
-
-            Messenger.AddListener<GameObject>("PlayerSelected", OnSelected);
+            Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
+            Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
             Messenger.AddListener("OnUpdate", OnUpdate);
         }
-        
-        
+
+        private void OnDeselected(GameObject objectDeselected) {
+            //if()
+            _pathLine.active = false;
+            _destinationCircle.active = false;
+        }
+
+
         public bool Enabled { get; private set; }
         private Vector2 _startPosition;
         private PathMap _pathMap;
-        private VectorLine DestinationCircle { get; set; }
+        private VectorLine _destinationCircle;
         private readonly float line_thickness = 2.0f;  //used by vectrosity
-        private VectorLine _movePathLine;
+        private VectorLine _pathLine;
         private Vector3 _pathGoal;
         public Entity Parent { get; set; }
         public bool Selected { get; set; }
