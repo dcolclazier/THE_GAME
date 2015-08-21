@@ -50,7 +50,7 @@ namespace Assets.Components.Movement {
 
                 //pull the first element in line out of the queue
                 var current = openQueue.Dequeue();
-                UpdateTargetNode(current);
+                UpdateLOSToTarget(current);
                 
                 foreach (var neighbor in current.GetNeighbors()) {
 					if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current))
@@ -110,7 +110,7 @@ namespace Assets.Components.Movement {
             return ConvertToVectorArray(path);
         }
 
-        private void UpdateTargetNode(Node current) {
+        private void UpdateLOSToTarget(Node current) {
 
             //if the source node can see the target, make sure it is a neighbor. If it can't, remove it if it exists.
             if (SourceNode.CanSee(TargetNode)) SourceNode.AddOrUpdateNeighbor(TargetNode);
