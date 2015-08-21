@@ -46,9 +46,9 @@ namespace Assets.Components.Movement {
 
                 //sort the queue by TotalScoreF
                 var sortedQueue = new Queue<Node>(openQueue.OrderBy(z => z.TotalScoreF));
-                foreach (var item in sortedQueue) {
-                    Debug.Log("Sorted list: " + item.TotalScoreF);
-                }
+                //foreach (var item in sortedQueue) {
+                //    Debug.Log("Sorted list: " + item.TotalScoreF);
+                //}
 
                 //pull the first element in line out of the queue
                 var current = sortedQueue.Dequeue();
@@ -56,11 +56,11 @@ namespace Assets.Components.Movement {
                 UpdateLOSToTarget(current);
                 
                 foreach (var neighbor in current.GetNeighbors()) {
-					if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current))
+					if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current) || neighbor.PathDistanceG == 0)
 					{
 						neighbor.CameFrom = current;
-						neighbor.PathDistanceG = current.PathDistanceG + neighbor.DistanceTo(current);
-						neighbor.GuessH = neighbor.DistanceTo(TargetNode);
+						neighbor.PathDistanceG = current.PathDistanceG + (int)neighbor.DistanceTo(current);
+						neighbor.GuessH = (int)neighbor.DistanceTo(TargetNode);
 						neighbor.TotalScoreF = neighbor.PathDistanceG + neighbor.GuessH;
 					}
                     

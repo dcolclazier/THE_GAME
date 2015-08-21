@@ -9,9 +9,9 @@ public class Node {
 
     public bool IsSource { get; private set; }
     
-    public float TotalScoreF { get; set; } 
+    public int TotalScoreF { get; set; } 
     public float PathDistanceG { get; set; }
-    public float GuessH { get; set; }
+    public int GuessH { get; set; }
 	public Node CameFrom { get; set; }
 
     private readonly List<Node> _neighbors; 
