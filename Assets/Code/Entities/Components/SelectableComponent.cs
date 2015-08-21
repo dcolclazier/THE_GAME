@@ -21,11 +21,15 @@ namespace Assets.Code.Abstract {
             Parent.Attributes.Update("CurrentlySelected", Enabled);
             _selectCircle.active = Enabled;
 
-            //assign the radius to either the ObstructRadius, the SelectionRadius, or 0f for now
+            //assign the radius to either the ObstructRadius, the SelectionRadius, or 0f for now - bad code
             var radius = 0f;
-            if (Parent.Attributes.Contains("ObstructRadius")) radius = Parent.Attributes.Get<float>("ObstructRadius");
+            var position = _selectCollider.transform.position;
+            if (Parent.Attributes.Contains("ObstructRadius")) {
+                radius = Parent.Attributes.Get<float>("ObstructRadius");
+                position = Parent.Attributes.Get<Collider2D>("ObstructCollider").transform.position;
+            }
             else if (Parent.Attributes.Contains("SelectionRadius")) radius = Parent.Attributes.Get<float>("SelectionRadius");
-            _selectCircle.MakeCircle(_selectCollider.transform.position, radius, 360);
+            _selectCircle.MakeCircle(position, radius, 360);
 
         }
      
