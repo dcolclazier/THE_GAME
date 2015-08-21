@@ -44,26 +44,26 @@ namespace Assets.Components.Movement {
              // make sure any nodes that can see target have it as their neighbor
             int i = 0;
             while (openQueue.Any()) {
+                var scrub = false;
                 i++;
                 if (i == 100) {
                     Debug.Log("Infinite Loop detected");
                     break;
                 }
+               // Debug.Log("while loop ran " + i + " times");
                 //sort the queue by TotalScoreF
                 var sortedQueue = new Queue<Node>(openQueue.OrderBy(z => z.TotalScoreF));
-                //foreach (var item in sortedQueue) {
-                //    Debug.Log("Sorted list: " + item.TotalScoreF);
-                //}
-
-                //pull the first element in line out of the queue
-                var current = sortedQueue.Dequeue();
                 openQueue = sortedQueue;
+                //pull the first element in line out of the queue
+                var current = openQueue.Dequeue();
+                Debug.Log("Open queue count " + openQueue.Count);
                 UpdateLOSToTarget(current);
-                
+                Debug.Log("Current neighbor count? " + current.GetNeighbors().Count());
                 foreach (var neighbor in current.GetNeighbors()) {
+                    //Debug.Log("Neighbor's neighbor count? " + neighbor.GetNeighbors().Count());
                     if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current) || neighbor.PathDistanceG == 0f)
                     {
-                        Debug.Log("Got here.");
+                        //Debug.Log("Got here.");
 						neighbor.CameFrom = current;
 						neighbor.PathDistanceG = current.PathDistanceG + neighbor.DistanceTo(current);
 						neighbor.GuessH = neighbor.DistanceTo(TargetNode);
@@ -77,21 +77,23 @@ namespace Assets.Components.Movement {
                   
 
                     var tempNeighbor = neighbor;
-                    var openSimiliar = openQueue.Where(p => p.Position == tempNeighbor.Position).Where(p => p.TotalScoreF < tempNeighbor.TotalScoreF);
-                    var closedSimiliar = closedList.Where(p => p.Position == tempNeighbor.Position).Where(p => p.TotalScoreF < tempNeighbor.TotalScoreF);
 
-                    if (openSimiliar.Any()) { 
-                        Debug.Log("Open similiar triggered...");
-                        continue;
+                    foreach (var node in openQueue) {
+                        if (node.Position == tempNeighbor.Position && node.TotalScoreF < tempNeighbor.TotalScoreF)
+                            scrub = true;
                     }
-                    if (closedSimiliar.Any()) {
-                        Debug.Log("Closed Similiar triggered");
-                        continue;
+                    foreach (var node in closedList) {
+                        if (node.Position == neighbor.Position && node.TotalScoreF < neighbor.TotalScoreF) 
+                            scrub = true;
                     }
-                    if (closedList.Contains(neighbor)) {
+
+                    if (closedList.Contains(neighbor))
+                    {
                         Debug.Log("Found a node in the closed list!");
-                        
+                        continue;
                     }
+                    if (scrub) continue;
+
                     openQueue.Enqueue(neighbor);
                 }
                 closedList.Add(current);
@@ -159,6 +161,10 @@ namespace Assets.Components.Movement {
             foreach (var node in StaticNodes.Where(node => node.CanSee(SourceNode))) {
                 SourceNode.AddOrUpdateNeighbor(node);
             }
+        }
+
+        public void Clear() {
+            
         }
     }
 }

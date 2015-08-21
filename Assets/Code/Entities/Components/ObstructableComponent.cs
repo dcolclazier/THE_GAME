@@ -20,7 +20,7 @@ namespace Assets.Code.Abstract {
         }
         protected void OnSelected(GameObject selectedObject) {
             if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
-            Debug.Log("I was selected!");
+            //Debug.Log("I was selected!");
             Solid = false;
         }
 

@@ -16,14 +16,22 @@ namespace Assets.Code.Abstract {
 
 
             var circleCollider = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider");
-            _startPosition = circleCollider.transform.position;
-            
-            _pathMap.UpdatePathGraph(_startPosition);
+            //_startPosition = circleCollider.transform.position;
+
+            _pathMap = new PathMap(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
+            _pathMap.UpdatePathGraph(circleCollider.transform.position);
 
 
             if (_destinationCircle.active) _destinationCircle.active = false;
             if (_pathLine.active) _pathLine.active = false;
 			_destinationCircle.Draw3DAuto();
+        }
+        private void OnDeselected(GameObject objectDeselected)
+        {
+            //if()
+            _pathMap.Clear();
+            _pathLine.active = false;
+            _destinationCircle.active = false;
         }
 
         public void OnUpdate() {
@@ -81,26 +89,15 @@ namespace Assets.Code.Abstract {
 
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
-            //_startPosition = Parent.Attributes.Get<Vector2>("Position");
-            var asdf = Parent.Attributes.Get<Vector2>("Position");
-            Debug.Log("Position X: " + asdf.x);
-            Debug.Log("Position Y: " + asdf.y);
-            _pathMap = new PathMap(new Node(asdf, true));
-
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
             Messenger.AddListener("OnUpdate", OnUpdate);
         }
 
-        private void OnDeselected(GameObject objectDeselected) {
-            //if()
-            _pathLine.active = false;
-            _destinationCircle.active = false;
-        }
+        
 
 
         public bool Enabled { get; private set; }
-        private Vector2 _startPosition;
         private PathMap _pathMap;
         private VectorLine _destinationCircle;
         private readonly float line_thickness = 2.0f;  //used by vectrosity
