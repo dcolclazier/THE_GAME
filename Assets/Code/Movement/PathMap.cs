@@ -41,7 +41,7 @@ namespace Assets.Components.Movement {
 
             openQueue.Enqueue(SourceNode); //adds starting point to the queue
         
-            UpdateTargetNode(); // make sure any nodes that can see target have it as their neighbor
+             // make sure any nodes that can see target have it as their neighbor
             while (openQueue.Any()) {
 
                 //sort the queue by TotalScoreF
@@ -50,7 +50,7 @@ namespace Assets.Components.Movement {
 
                 //pull the first element in line out of the queue
                 var current = openQueue.Dequeue();
-                
+                UpdateTargetNode(current);
                 
                 foreach (var neighbor in current.GetNeighbors()) {
 					if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current))
@@ -68,8 +68,8 @@ namespace Assets.Components.Movement {
                   
 
                     var tempNeighbor = neighbor;
-                    var openSimiliar = openQueue.Where(p => p.Position == tempNeighbor.Position).Where(p => p.PathDistanceG < tempNeighbor.PathDistanceG);
-                    var closedSimiliar = closedList.Where(p => p.Position == tempNeighbor.Position).Where(p => p.PathDistanceG < tempNeighbor.PathDistanceG);
+                    var openSimiliar = openQueue.Where(p => p.Position == tempNeighbor.Position).Where(p => p.TotalScoreF < tempNeighbor.TotalScoreF);
+                    var closedSimiliar = closedList.Where(p => p.Position == tempNeighbor.Position).Where(p => p.TotalScoreF < tempNeighbor.TotalScoreF);
 
                     if (openSimiliar.Any()) { 
                         Debug.Log("Open similiar triggered...");
@@ -79,8 +79,10 @@ namespace Assets.Components.Movement {
                         Debug.Log("Closed Similiar triggered");
                         continue;
                     }
-                    if (closedList.Contains(neighbor)) continue;
-                    
+                    if (closedList.Contains(neighbor)) {
+                        Debug.Log("Found a node in the closed list!");
+                        
+                    }
                     openQueue.Enqueue(neighbor);
                 }
                 closedList.Add(current);
@@ -90,41 +92,38 @@ namespace Assets.Components.Movement {
         }
 
         private IEnumerable<Vector3> BuildPath(Node endpoint) {
-            //bug - UGH! This bug has been bugging me forever...
-            //bug - seems to be creating infinitly long paths. :-\
             var path = new List<Node> {endpoint};
-        
             int i = 0;
-            
             while (endpoint.CameFrom != null) {
                 i++;
-				Debug.Log("Number of while loops executed in BuildPath:  " + i);
-                if (i == 10) {
-                    Debug.Log("BUG!!! BuildPath had more than 10 endpoints or infinite loop.");
+				Debug.Log("Number of while loops executed in BuildPath:  " + i); 
+                if (i == 20) {
+                    Debug.Log("BUG!!! Max number of path segments reached");
                     break;
                 }
                 if (!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom); //stop it from adding same point multiple times
                 if (endpoint.IsSource) break;
                 endpoint = endpoint.CameFrom;
-                //Debug.Log("Is the current Parent we're looking at : Source?" + endpoint.CameFrom.IsSource);
             }
             path.Add(SourceNode);
         
             return ConvertToVectorArray(path);
         }
 
-        private void UpdateTargetNode() {
+        private void UpdateTargetNode(Node current) {
 
             //if the source node can see the target, make sure it is a neighbor. If it can't, remove it if it exists.
             if (SourceNode.CanSee(TargetNode)) SourceNode.AddOrUpdateNeighbor(TargetNode);
             else SourceNode.RemoveNeighbor(TargetNode); 
         
+            if(current.CanSee(TargetNode)) current.AddOrUpdateNeighbor(TargetNode);
+            else current.RemoveNeighbor(TargetNode);
             //update every node in Static nodes - if it can see the target, add it to neighbors.
             // if not, remove it from neighbors if it exists.
-            foreach (var node in StaticNodes) {
-                if (node.CanSee(TargetNode)) node.AddOrUpdateNeighbor(TargetNode);
-                else node.RemoveNeighbor(TargetNode);
-            }
+            //foreach (var node in StaticNodes) {
+            //    if (node.CanSee(TargetNode)) node.AddOrUpdateNeighbor(TargetNode);
+            //    else node.RemoveNeighbor(TargetNode);
+            //}
         
         }
 

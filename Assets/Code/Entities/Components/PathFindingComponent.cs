@@ -36,7 +36,7 @@ namespace Assets.Code.Abstract {
 
             if (_pathMap.TargetNode == null) _pathMap.TargetNode = new Node(_pathGoal);
             else _pathMap.TargetNode.Position = _pathGoal;
-            _pathMap.UpdatePathGraph(_startPosition);
+            //_pathMap.UpdatePathGraph(_startPosition);
             var path = _pathMap.GetBestPath().ToArray();
 
 

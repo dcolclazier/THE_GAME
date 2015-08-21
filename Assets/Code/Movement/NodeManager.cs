@@ -36,8 +36,9 @@ namespace Assets.Code.Statics
         private IEnumerable<Node> GetBoxNodes(Entity entity) {
             var box = (entity.Attributes.Get<Collider2D>("ObstructCollider") as BoxCollider2D) ;
             var gameObject = entity.Attributes.Get<GameObject>("GameObject");
-            var scale = gameObject.transform.localScale;
-            var position = box.transform.position;
+            //var scale = box.transform.localScale;
+            var scale = new Vector2(1,1);
+            var position = gameObject.transform.position;
             var buffer = 0.05f;
             var nodes = new List<Node> {
                     new Node(new Vector2(box.offset.x - box.size.x*scale.x/2 + position.x - buffer, //top left
