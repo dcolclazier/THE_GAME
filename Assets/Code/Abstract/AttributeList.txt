@@ -1,23 +1,31 @@
 ﻿This file contains a list of every Attribute that is use in the application, along
 with a brief description as to their use.
 
-"GameObject" - returns the Unity.GameObject associated with the entity.
+"GameObject" - GameObjectComponent - returns the Unity.GameObject associated with the entity.
 
-"Position" - returns a Unity.Vector2 with the position of the object at any time. Updated
-				every frame.
+"Position" - GameObjectComponent - returns a Unity.Vector2 with the position of the object at any time. Updated
+									every frame.
 
-"CurrentlyObstructing" - returns a bool - on every entity with an obstructable component, accurate at any time.
+"ObstructCollider" - ObstructableComponent - returns a Collider2D parent object containing the collider used by 
+											obstructable component - keep in mind, it doesn't
+											know about which type of child collider it is.
 
-"ObstructCollider" - returns a Collider2D parent object containing the collider used by obstructable component - keep in mind, it doesn't
-					know about which type of child collider it is.
+"ObstructColliderType" - ObstructableComponent - the ColliderType of the "ObstructCollider" - can be 
+										ColliderType.Box, ColliderType.Circle, or ColliderType.Polygon
 
-"ObstructColliderType" - the ColliderType of the "ObstructCollider" - can be ColliderType.Box, ColliderType.Circle, or ColliderType.Polygon
+"CurrentlyObstructing" - ObstructableComponent - returns a bool - on every entity with an obstructable component, accurate at any time.
+
+"CollisionNodes" - ObstructableComponent - returns a List<Node> of the collision nodes for an entity
 
 "ObstructRadius" - ObstructableUnitComponent - returns the radius of the obstruction circle collider of a unit character as a float
 
-"CollisionNodes" - returns a List<Node> of the collision nodes for an entity
+"CurrentlySelected" - SelectableComponent - returns true if the entity with a selectable component is currently selected.
 
-"CurrentlySelected" - returns true if the entity with a selectable component is currently selected.
+"SelectCollider" - SelectableComponent - returns the Collider2D parent object of the selectable component's collider
+
+"SelectColliderType" - SelectableComponent - returns the ColliderType of the selectable component's collider
+
+
 
 
 

@@ -48,6 +48,7 @@ namespace Assets.Code.Entities.Components {
             _selectCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<Collider2D>();
             if (_selectCollider == null) GetOuttaHere();
 
+            Parent.Attributes.Register("SelectCollider", _selectCollider);
             Parent.Attributes.Register("SelectColliderType", NodeManager.GetColliderType(_selectCollider));
             Parent.Attributes.Register("CurrentlySelected", false);
 
