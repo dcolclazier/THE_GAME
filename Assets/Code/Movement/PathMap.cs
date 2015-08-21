@@ -53,15 +53,19 @@ namespace Assets.Components.Movement {
                 
                 
                 foreach (var neighbor in current.GetNeighbors()) {
-                    neighbor.CameFrom = current;
-                
-                    if (neighbor == TargetNode) {
-                        return BuildPath(neighbor);
+					if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current))
+					{
+						neighbor.CameFrom = current;
+						neighbor.PathDistanceG = current.PathDistanceG + neighbor.DistanceTo(current);
+						neighbor.GuessH = neighbor.DistanceTo(TargetNode);
+						neighbor.TotalScoreF = neighbor.PathDistanceG + neighbor.GuessH;
+					}
+                    
+					if (neighbor == TargetNode) {
+						neighbor.CameFrom = current;
+						return BuildPath(neighbor);
                     }
-
-                    neighbor.PathDistanceG = current.PathDistanceG + neighbor.DistanceTo(current);
-                    neighbor.GuessH = neighbor.DistanceTo(TargetNode);
-                    neighbor.TotalScoreF = neighbor.PathDistanceG + neighbor.GuessH;
+                  
 
                     var tempNeighbor = neighbor;
                     var openSimiliar = openQueue.Where(p => p.Position == tempNeighbor.Position).Where(p => p.PathDistanceG < tempNeighbor.PathDistanceG);
@@ -91,14 +95,14 @@ namespace Assets.Components.Movement {
             var path = new List<Node> {endpoint};
         
             int i = 0;
-        
             while (endpoint.CameFrom != SourceNode) {
                 i++;
+				Debug.Log("Number of while loops executed in BuildPath:  " + i);
                 if (i == 10) {
                     Debug.Log("BUG!!! BuildPath had more than 10 endpoints or infinite loop.");
                     break;
                 }
-                if (!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom);
+                if (!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom); //stop it from adding same point multiple times
                 if (endpoint.IsSource) break;
                 endpoint = endpoint.CameFrom;
                 //Debug.Log("Is the current Parent we're looking at : Source?" + endpoint.CameFrom.IsSource);

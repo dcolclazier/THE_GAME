@@ -36,12 +36,14 @@ public class Node {
     public Node(Vector2 pos) {
         Position = pos;
         _neighbors = new List<Node>();
+		PathDistanceG = Mathf.Infinity;
     }
     public Node(Vector2 pos, bool isSource) {
         IsSource = isSource;
 		if (IsSource) CameFrom = null;
         Position = pos;
         _neighbors = new List<Node>();
+		PathDistanceG = Mathf.Infinity;
     }
    
     public float DistanceTo(Node target) {
@@ -50,7 +52,7 @@ public class Node {
 
     public bool CanSee(Node node) {
         var rayCast = Physics2D.Raycast(Position, node.Position - Position, DistanceTo(node), 1 << 11);
-        Debug.DrawRay(Position, node.Position - Position, rayCast.collider == null ? Color.green :Color.red);
+        Debug.DrawRay(Position, node.Position - Position, rayCast.collider == null ? Color.green :Color.clear);
         return rayCast.collider == null;
     } 
 

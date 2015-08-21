@@ -23,6 +23,7 @@ namespace Assets.Code.Abstract {
 
             if (_destinationCircle.active) _destinationCircle.active = false;
             if (_pathLine.active) _pathLine.active = false;
+			_destinationCircle.Draw3DAuto();
         }
 
         public void OnUpdate() {

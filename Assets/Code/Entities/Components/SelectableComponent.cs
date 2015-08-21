@@ -30,6 +30,7 @@ namespace Assets.Code.Abstract {
             }
             else if (Parent.Attributes.Contains("SelectionRadius")) radius = Parent.Attributes.Get<float>("SelectionRadius");
             _selectCircle.MakeCircle(position, radius, 360);
+			_selectCircle.Draw3DAuto();
 
         }
      
