@@ -1,0 +1,49 @@
+﻿This file contains a list of all of the string tags that are used by the Messenger, and a brief description
+of what they are for:
+
+....Samplee useage:  Say you wanted to include the entity with the broadcast...
+
+Messenger.Broadcast("String tag", thingToInclude, otherThingToInclude, thirdThingToInclude);  <---- up to 3.
+
+....or none at all!!
+
+Messenger.Broadcast("Heartbeat");
+
+....easy as pie. Listening for the broadcast and doing something is almost as easy:
+....if we were listening for that first broadcast that included three datatypes, we'd need two things:
+....	a message to the Messenger telling the name of the function to run, and what message we're listening for.
+....	a function to run when the message is received
+....    for this example, thingToInclude is a Entity, otherThingToInclude is another entity, and 
+....		thirdThingToInclude is a number. (damage from one entity to another, maybe?)
+
+Messenger.AddListener("String tag", MyFunctionToRun);
+
+private void MyFunctionToRun(Entity firstThing, Entity otherThing, float thirdThing){
+		//Do stuff with the datatypes that were broadcast!
+
+}
+
+
+
+
+
+
+
+"GameObjectMoved" - includes the entity that moved... Is broadcasts every time an object moves
+
+"OnUpdate" - no object included - broadcasts every update frame, and should be used by components
+			that need to perform an action in the Unity Update() method.
+
+"EntityCreated" - Broadcast whenever the EntityInitializer finishes constructing an entity - listened for by
+				the entity manager, who adds the entity to the master list.
+
+"EntityDestroyed" - Not Implemented yet
+
+"ObstructionAdded" - Broadcast whenever an obstructable component switches from being disabled to enabled
+
+"ObstructionRemoved" - Broadcast whenever an obstructable component switches from being enabled to disabled
+
+
+
+
+					

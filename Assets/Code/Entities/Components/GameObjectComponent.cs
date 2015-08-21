@@ -30,7 +30,7 @@ namespace Assets.Code.Entities.Components {
             
             _transformPosition = Go.transform.position;
             Parent.Attributes.Update("Position", _transformPosition);
-            Messenger.Broadcast("GameObjectMoved", this);
+            Messenger.Broadcast("GameObjectMoved", Parent);
         }
         public void Init() {
             Go = Parent.Attributes.Get<GameObject>("GameObject");
