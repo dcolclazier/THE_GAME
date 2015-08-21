@@ -42,8 +42,13 @@ namespace Assets.Components.Movement {
             openQueue.Enqueue(SourceNode); //adds starting point to the queue
         
              // make sure any nodes that can see target have it as their neighbor
+            int i = 0;
             while (openQueue.Any()) {
-
+                i++;
+                if (i == 100) {
+                    Debug.Log("Infinite Loop detected");
+                    break;
+                }
                 //sort the queue by TotalScoreF
                 var sortedQueue = new Queue<Node>(openQueue.OrderBy(z => z.TotalScoreF));
                 //foreach (var item in sortedQueue) {
@@ -56,14 +61,14 @@ namespace Assets.Components.Movement {
                 UpdateLOSToTarget(current);
                 
                 foreach (var neighbor in current.GetNeighbors()) {
-                    //if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current))
-                    //{
-                        //Debug.Log("Got here.");
+                    if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current) || neighbor.PathDistanceG == 0f)
+                    {
+                        Debug.Log("Got here.");
 						neighbor.CameFrom = current;
 						neighbor.PathDistanceG = current.PathDistanceG + neighbor.DistanceTo(current);
 						neighbor.GuessH = neighbor.DistanceTo(TargetNode);
 						neighbor.TotalScoreF = neighbor.PathDistanceG + neighbor.GuessH;
-					//}
+					}
                     
 					if (neighbor == TargetNode) {
 						neighbor.CameFrom = current;

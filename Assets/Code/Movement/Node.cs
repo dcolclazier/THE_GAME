@@ -9,9 +9,9 @@ public class Node {
 
     public bool IsSource { get; private set; }
     
-    public double TotalScoreF { get; set; } 
-    public double PathDistanceG { get; set; }
-    public double GuessH { get; set; }
+    public float TotalScoreF { get; set; } 
+    public float PathDistanceG { get; set; }
+    public float GuessH { get; set; }
 	public Node CameFrom { get; set; }
 
     private readonly List<Node> _neighbors; 
@@ -36,14 +36,14 @@ public class Node {
     public Node(Vector2 pos) {
         Position = pos;
         _neighbors = new List<Node>();
-		PathDistanceG = Mathf.Infinity;
+		//PathDistanceG = Mathf.Infinity;
     }
     public Node(Vector2 pos, bool isSource) {
         IsSource = isSource;
 		if (IsSource) CameFrom = null;
         Position = pos;
         _neighbors = new List<Node>();
-		PathDistanceG = Mathf.Infinity;
+		//PathDistanceG = Mathf.Infinity;
     }
    
     public float DistanceTo(Node target) {
