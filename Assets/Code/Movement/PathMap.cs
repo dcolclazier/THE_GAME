@@ -46,10 +46,13 @@ namespace Assets.Components.Movement {
 
                 //sort the queue by TotalScoreF
                 var sortedQueue = new Queue<Node>(openQueue.OrderBy(z => z.TotalScoreF));
-                openQueue = sortedQueue;
+                foreach (var item in sortedQueue) {
+                    Debug.Log("Sorted list: " + item.TotalScoreF);
+                }
 
                 //pull the first element in line out of the queue
-                var current = openQueue.Dequeue();
+                var current = sortedQueue.Dequeue();
+                openQueue = sortedQueue;
                 UpdateLOSToTarget(current);
                 
                 foreach (var neighbor in current.GetNeighbors()) {
