@@ -26,7 +26,9 @@ namespace Assets.Code.Abstract {
         }
 
         public void OnUpdate() {
+            
             if (!Parent.Attributes.Get<bool>("CurrentlySelected") || !Input.GetMouseButton(1)) return;
+
             
             SetDestinationCircle();
 
@@ -79,9 +81,10 @@ namespace Assets.Code.Abstract {
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
             //_startPosition = Parent.Attributes.Get<Vector2>("Position");
-            Debug.Log("Position X: " + _startPosition.x);
-            Debug.Log("Position Y: " + _startPosition.y);
-            _pathMap = new PathMap(new Node(Parent.Attributes.Get<Vector2>("Position"), true));
+            var asdf = Parent.Attributes.Get<Vector2>("Position");
+            Debug.Log("Position X: " + asdf.x);
+            Debug.Log("Position Y: " + asdf.y);
+            _pathMap = new PathMap(new Node(asdf, true));
 
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);

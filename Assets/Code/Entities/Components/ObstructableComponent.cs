@@ -21,18 +21,20 @@ namespace Assets.Code.Abstract {
         protected void OnSelected(GameObject selectedObject) {
             if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
             Debug.Log("I was selected!");
-            Enabled = false;
+            Solid = false;
         }
 
         protected void OnDeselected(GameObject deselectedObject) {
             if (deselectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
             Debug.Log("I was deselected!");
-            Enabled = true;
+            Solid = true;
         }
 
         public virtual void OnUpdate() {
-            if (_obstructionChanged) {
-                ObstructCollider.enabled = Solid;
+            if (Solid!=Enabled) {
+                Enabled = Solid;
+                Debug.Log("Obstruction changed!!!");
+                //ObstructCollider.enabled = Solid;
                 Parent.Attributes.Update("CurrentlyObstructing", Solid);
                 Messenger.Broadcast(Enabled ? "ObstructionAdded" : "ObstructionRemoved", Parent);
             }
@@ -53,18 +55,10 @@ namespace Assets.Code.Abstract {
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
             Messenger.AddListener("OnUpdate", OnUpdate);
-            Enabled = true;
+            Solid = true;
         }
-        public bool Enabled {
-            get {
-                return Solid;
-            }
-            protected set {
-                _obstructionChanged = value != Solid;
-                Solid = value;
-            }
-        }
-        protected bool Solid = true;
+        public bool Enabled { get; private set; }
+        protected bool Solid;
 
         //No logic below here. 
         protected Collider2D ObstructCollider;

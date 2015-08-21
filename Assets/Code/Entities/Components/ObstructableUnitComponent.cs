@@ -21,7 +21,8 @@ namespace Assets.Code.Abstract {
 
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
-            Enabled = true;
+            Messenger.AddListener("OnUpdate",OnUpdate);
+            Solid = true;
         }
 
         public override void GetOuttaHere() {
