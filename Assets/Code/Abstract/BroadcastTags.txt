@@ -43,6 +43,11 @@ private void MyFunctionToRun(Entity firstThing, Entity otherThing, float thirdTh
 
 "ObstructionRemoved" - Broadcast whenever an obstructable component switches from being enabled to disabled
 
+"GameObjectSelected" - includes the GameObject that was selected - broadcast whenever a left mouse click is placed
+						over a unit character with a ... obstructable component? that'll have to be fixed...
+
+"GameObjectDeselected" - reverse of above, includes the GameObject that was deselected.
+
 
 
 

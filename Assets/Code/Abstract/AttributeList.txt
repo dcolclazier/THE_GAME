@@ -13,5 +13,11 @@ with a brief description as to their use.
 
 "ObstructColliderType" - the ColliderType of the "ObstructCollider" - can be ColliderType.Box, ColliderType.Circle, or ColliderType.Polygon
 
+"ObstructRadius" - ObstructableUnitComponent - returns the radius of the obstruction circle collider of a unit character as a float
+
 "CollisionNodes" - returns a List<Node> of the collision nodes for an entity
+
+"CurrentlySelected" - returns true if the entity with a selectable component is currently selected.
+
+
 
