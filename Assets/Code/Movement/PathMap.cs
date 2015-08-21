@@ -53,12 +53,15 @@ namespace Assets.Components.Movement {
                // Debug.Log("while loop ran " + i + " times");
                 //sort the queue by TotalScoreF
                 var sortedQueue = new Queue<Node>(openQueue.OrderBy(z => z.TotalScoreF));
+                foreach (var item in sortedQueue) {
+                    
+                }
                 openQueue = sortedQueue;
                 //pull the first element in line out of the queue
                 var current = openQueue.Dequeue();
-                Debug.Log("Open queue count " + openQueue.Count);
+                //Debug.Log("Open queue count " + openQueue.Count);
                 UpdateLOSToTarget(current);
-                Debug.Log("Current neighbor count? " + current.GetNeighbors().Count());
+               // Debug.Log("Current neighbor count? " + current.GetNeighbors().Count());
                 foreach (var neighbor in current.GetNeighbors()) {
                     //Debug.Log("Neighbor's neighbor count? " + neighbor.GetNeighbors().Count());
                     if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current) || neighbor.PathDistanceG == 0f)
@@ -95,7 +98,7 @@ namespace Assets.Components.Movement {
 
                     if (closedList.Contains(neighbor))
                     {
-                        Debug.Log("Found a node in the closed list!");
+                        //Debug.Log("Found a node in the closed list!");
                         continue;
                     }
                     if (scrub) continue;
