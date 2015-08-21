@@ -56,13 +56,14 @@ namespace Assets.Components.Movement {
                 UpdateLOSToTarget(current);
                 
                 foreach (var neighbor in current.GetNeighbors()) {
-					if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current) || neighbor.PathDistanceG == 0)
-					{
+                    //if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current))
+                    //{
+                        //Debug.Log("Got here.");
 						neighbor.CameFrom = current;
-						neighbor.PathDistanceG = current.PathDistanceG + (int)neighbor.DistanceTo(current);
-						neighbor.GuessH = (int)neighbor.DistanceTo(TargetNode);
+						neighbor.PathDistanceG = current.PathDistanceG + neighbor.DistanceTo(current);
+						neighbor.GuessH = neighbor.DistanceTo(TargetNode);
 						neighbor.TotalScoreF = neighbor.PathDistanceG + neighbor.GuessH;
-					}
+					//}
                     
 					if (neighbor == TargetNode) {
 						neighbor.CameFrom = current;
@@ -100,7 +101,7 @@ namespace Assets.Components.Movement {
             while (endpoint.CameFrom != null) {
                 i++;
 				Debug.Log("Number of while loops executed in BuildPath:  " + i); 
-                if (i == 20) {
+                if (i == 10) {
                     Debug.Log("BUG!!! Max number of path segments reached");
                     break;
                 }
