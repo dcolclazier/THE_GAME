@@ -67,7 +67,7 @@ public class MainController : MonoBehaviour {
         System.GC.Collect();
         
         Messenger.Cleanup();
-        EntityManager.Cleanup();
+        //EntityManager.Cleanup();
         _currentSceneState = SceneState.Preload;
     }
 

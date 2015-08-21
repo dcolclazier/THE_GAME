@@ -95,7 +95,8 @@ namespace Assets.Components.Movement {
             var path = new List<Node> {endpoint};
         
             int i = 0;
-            while (endpoint.CameFrom != SourceNode) {
+            
+            while (endpoint.CameFrom != null) {
                 i++;
 				Debug.Log("Number of while loops executed in BuildPath:  " + i);
                 if (i == 10) {

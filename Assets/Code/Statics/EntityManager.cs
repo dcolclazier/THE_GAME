@@ -10,10 +10,11 @@ namespace Assets.Code.Abstract
         public static List<Entity> PermenantEntityList { get; private set; }
 
         public static NodeManager NodeMgr { get; private set; }
-        
-        private static EntityManagerHelper _helper = (new GameObject("EntityManagerHelper").AddComponent<EntityManagerHelper>());
+
+        private static readonly EntityManagerHelper Helper;
 
         static EntityManager()  {
+             if(Helper == null) Helper = (new GameObject("EntityManagerHelper").AddComponent<EntityManagerHelper>());
             NodeMgr = new NodeManager();
             MasterEntityList = new List<Entity>();
             PermenantEntityList = new List<Entity>();
