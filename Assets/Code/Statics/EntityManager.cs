@@ -9,7 +9,7 @@ namespace Assets.Code.Statics
 {
     public static class EntityManager {
         public static List<Entity> MasterEntityList { get; private set; }
-        //public static List<Entity> PermenantEntityList { get; private set; }
+        public static List<Entity> PermenantEntityList { get; private set; }
 
         public static NodeManager NodeMgr { get; private set; }
 

@@ -25,10 +25,6 @@ private void MyFunctionToRun(Entity firstThing, Entity otherThing, float thirdTh
 
 
 
-
-
-
-
 "GameObjectMoved" - includes the entity that moved... Is broadcasts every time an object moves
 
 "OnUpdate" - no object included - broadcasts every update frame, and should be used by components

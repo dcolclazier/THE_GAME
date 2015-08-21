@@ -59,6 +59,7 @@ namespace Assets.Code.Entities.Components {
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener("GroundClicked", OnDeselect);
             
+            
         }
 
         private float _lineThickness = 2.0f;
