@@ -76,16 +76,22 @@ namespace Assets.Components.Movement {
                     }
                   
 
-                    var tempNeighbor = neighbor;
+                    //var tempNeighbor = neighbor;
 
                     foreach (var node in openQueue) {
-                        if (node.Position == tempNeighbor.Position && node.TotalScoreF < tempNeighbor.TotalScoreF)
+                        if (node.Position == neighbor.Position)
                             scrub = true;
+						if (node.Equals(neighbor))
+						    scrub = true;
                     }
-                    foreach (var node in closedList) {
+                    /*
+					foreach (var node in closedList) {
                         if (node.Position == neighbor.Position && node.TotalScoreF < neighbor.TotalScoreF) 
                             scrub = true;
+						if (node.Equals(tempNeighbor))
+							scrub = true;
                     }
+                    */
 
                     if (closedList.Contains(neighbor))
                     {
