@@ -99,5 +99,16 @@ namespace Assets.Code.Statics
             }
             return nodelist;
         }
+
+        public static void ClearNodes() {
+            foreach (var entity in EntityManager.MasterEntityList) {
+                foreach (var node in entity.Attributes.Get<List<Node>>("CollisionNodes")) {
+                    node.GuessH = 0;
+                    node.CameFrom = null;
+                    node.TotalScoreF = 0;
+                    node.PathDistanceG = 0;
+                }
+            }
+        }
     }
 }

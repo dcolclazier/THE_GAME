@@ -77,9 +77,6 @@ namespace Assets.Components.Movement {
 						neighbor.CameFrom = current;
 						return BuildPath(neighbor);
                     }
-                  
-
-                    //var tempNeighbor = neighbor;
 
                     foreach (var node in openQueue) {
                         if (node.Position == neighbor.Position)
@@ -87,18 +84,8 @@ namespace Assets.Components.Movement {
 						if (node.Equals(neighbor))
 						    scrub = true;
                     }
-                    /*
-					foreach (var node in closedList) {
-                        if (node.Position == neighbor.Position && node.TotalScoreF < neighbor.TotalScoreF) 
-                            scrub = true;
-						if (node.Equals(tempNeighbor))
-							scrub = true;
-                    }
-                    */
-
-                    if (closedList.Contains(neighbor))
-                    {
-                        //Debug.Log("Found a node in the closed list!");
+                   
+                    if (closedList.Contains(neighbor)) {
                         continue;
                     }
                     if (scrub) continue;
@@ -108,6 +95,7 @@ namespace Assets.Components.Movement {
                 closedList.Add(current);
             }
             Debug.Log("No path found.");
+            NodeManager.ClearNodes();
             return new Vector3[0];
         }
 
@@ -126,7 +114,8 @@ namespace Assets.Components.Movement {
                 endpoint = endpoint.CameFrom;
             }
             path.Add(SourceNode);
-        
+            NodeManager.ClearNodes();
+
             return ConvertToVectorArray(path);
         }
 
