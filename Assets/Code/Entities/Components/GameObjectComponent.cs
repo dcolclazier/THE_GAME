@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Assets.Code.Abstract;
 using Assets.Code.Statics;
 using UnityEngine;
 
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Entities.Components {
     public class GameObjectComponent : IComponent {
 
         public GameObject Go { get; private set; }
@@ -34,7 +35,6 @@ namespace Assets.Code.Abstract {
         public void Init() {
             Go = Parent.Attributes.Get<GameObject>("GameObject");
             Parent.Attributes.Register("Position", Go.transform.position.ToVector2());
-
 
             Messenger.AddListener("OnUpdate",OnUpdate);
             Enabled = true;

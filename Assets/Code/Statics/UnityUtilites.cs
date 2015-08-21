@@ -4,15 +4,6 @@ using UnityEngine;
 namespace Assets.Code.Statics {
     static public class UnityUtilites {
 
-        static public T Cast<T>(object input)
-        {
-            return (T)input;
-        }
-
-        static public T ConvertCast<T>(object input)
-        {
-            return (T)Convert.ChangeType(input, typeof(T));
-        }
         static public Vector2 MouseWorldPoint()
         {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -27,7 +18,7 @@ namespace Assets.Code.Statics {
 
         }
 
-        public static RaycastHit2D CheckHitLayer8()
+        public static RaycastHit2D GetHitOnLayer8()
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //1 << 8 raycasts only against layer 8 which has unit sprite hit boxes for unit selection

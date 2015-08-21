@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using Assets.Code.Abstract;
+using Assets.Code.Movement;
 using Assets.Code.Statics;
 using UnityEngine;
+
 /*Notes about component:
 * Setting Enabled will update entity's "CurrentlyObstructing" attribute accordingly
 * If you you set Enabled to something it wasn't, it will broadcast a 
 * "ObstructionAdded" and a "ObstructionRemoved" event including the entity object.
 */
         
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Entities.Components {
     public class ObstructableComponent : IComponent, IToggle {
 
         public List<string> Dependencies {
@@ -20,24 +23,20 @@ namespace Assets.Code.Abstract {
         }
         protected void OnSelected(GameObject selectedObject) {
             if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
-            //Debug.Log("I was selected!");
             Solid = false;
         }
 
         protected void OnDeselected(GameObject deselectedObject) {
             if (deselectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
-            Debug.Log("I was deselected!");
             Solid = true;
         }
 
         public virtual void OnUpdate() {
-            if (Solid!=Enabled) {
-                Enabled = Solid;
-                Debug.Log("Obstruction changed!!!");
-                //ObstructCollider.enabled = Solid;
-                Parent.Attributes.Update("CurrentlyObstructing", Solid);
-                Messenger.Broadcast(Enabled ? "ObstructionAdded" : "ObstructionRemoved", Parent);
-            }
+            if (Solid == Enabled) return;
+            
+            Enabled = Solid;
+            Parent.Attributes.Update("CurrentlyObstructing", Solid);
+            Messenger.Broadcast(Enabled ? "ObstructionAdded" : "ObstructionRemoved", Parent);
         }
         public virtual void Init()
         {
@@ -66,8 +65,7 @@ namespace Assets.Code.Abstract {
         protected List<Node> CollisionNodes;
         private bool _obstructionChanged;
         public Entity Parent { get; set; }
-        public virtual void GetOuttaHere()
-        {
+        public virtual void GetOuttaHere() {
 
             throw new Exception(
                     "Trying to init an Obstructable Component, but init couldn't find the collider. " +

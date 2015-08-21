@@ -8,7 +8,10 @@ namespace Assets.Code.Entities {
         {
             ComponentsToInit = new List<string>() {
                 "GameObject",
-                "Obstructable"
+                "ObstructableUnit",
+                "Selectable",
+                "Pathfinding"
+
             };
             base.Awake();
         }

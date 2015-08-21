@@ -1,14 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Assets.Code.Exceptions;
+using UnityEngine;
 
-namespace Assets.Code {
+namespace Assets.Code.Statics {
     // C# messenger by David Colclazier v1.0
     // Based on Rod Hyde's "CSharpMessenger" and Magnus Wolffelt's "CSharpMessenger Extended" and Ilya Suzdalnitski's "Advanced C# Messenger"
-
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-
+    
     public delegate void Callback();
     public delegate void Callback<T>(T arg1);
     public delegate void Callback<T, T2>(T arg1, T2 arg2);

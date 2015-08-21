@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
+using Assets.Code.Entities;
 
 namespace Assets.Code.Abstract {
     public interface IComponent {

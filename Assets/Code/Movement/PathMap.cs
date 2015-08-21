@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.Code;
-using Assets.Code.Abstract;
+using Assets.Code.Entities;
 using Assets.Code.Statics;
 using UnityEngine;
 
-namespace Assets.Components.Movement {
+namespace Assets.Code.Movement {
     public class PathMap {
         private List<Node> StaticNodes { get; set; }
         private Node SourceNode { get; set; }
@@ -32,41 +31,26 @@ namespace Assets.Components.Movement {
             StaticNodes = EntityManager.GetAllSolidNodes().ToList();
         }
 
-        public IEnumerable<Vector3> GetBestPath() {
+        public IEnumerable<Vector3> GetBestPath(Vector2 target, Entity entity) {
 
-            //A* algorithm
+            if (TargetNode == null) TargetNode = new Node(target, entity);
+            else TargetNode.Position = target;
 
-            var openQueue = new Queue<Node>(); // think of a queue like a line at the grocery store - first in, first out.
+            var openQueue = new Queue<Node>(); 
             var closedList = new List<Node>(); 
 
-            openQueue.Enqueue(SourceNode); //adds starting point to the queue
+            openQueue.Enqueue(SourceNode); 
         
-             // make sure any nodes that can see target have it as their neighbor
             int i = 0;
             while (openQueue.Any()) {
                 var scrub = false;
-                i++;
-                if (i == 100) {
-                    Debug.Log("Infinite Loop detected");
-                    break;
-                }
-               // Debug.Log("while loop ran " + i + " times");
-                //sort the queue by TotalScoreF
                 var sortedQueue = new Queue<Node>(openQueue.OrderBy(z => z.TotalScoreF));
-                foreach (var item in sortedQueue) {
-                    
-                }
                 openQueue = sortedQueue;
-                //pull the first element in line out of the queue
                 var current = openQueue.Dequeue();
-                //Debug.Log("Open queue count " + openQueue.Count);
-                UpdateLOSToTarget(current);
-               // Debug.Log("Current neighbor count? " + current.GetNeighbors().Count());
+                UpdateLosToTarget(current);
                 foreach (var neighbor in current.GetNeighbors()) {
-                    //Debug.Log("Neighbor's neighbor count? " + neighbor.GetNeighbors().Count());
                     if(neighbor.PathDistanceG > current.PathDistanceG + neighbor.DistanceTo(current) || neighbor.PathDistanceG == 0f)
                     {
-                        //Debug.Log("Got here.");
 						neighbor.CameFrom = current;
 						neighbor.PathDistanceG = current.PathDistanceG + neighbor.DistanceTo(current);
 						neighbor.GuessH = neighbor.DistanceTo(TargetNode);
@@ -101,53 +85,33 @@ namespace Assets.Components.Movement {
 
         private IEnumerable<Vector3> BuildPath(Node endpoint) {
             var path = new List<Node> {endpoint};
-            int i = 0;
+            
             while (endpoint.CameFrom != null) {
-                i++;
-				Debug.Log("Number of while loops executed in BuildPath:  " + i); 
-                if (i == 10) {
-                    Debug.Log("BUG!!! Max number of path segments reached");
-                    break;
-                }
-                if (!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom); //stop it from adding same point multiple times
+                if (!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom); 
                 if (endpoint.IsSource) break;
                 endpoint = endpoint.CameFrom;
             }
             path.Add(SourceNode);
+            
+            path.RemoveAt(path.Count - (path.Count>2? 2:1)); //fix for pathfinding_bug
             NodeManager.ClearNodes();
 
             return ConvertToVectorArray(path);
         }
 
-        private void UpdateLOSToTarget(Node current) {
+        private void UpdateLosToTarget(Node current) {
 
-            //if the source node can see the target, make sure it is a neighbor. If it can't, remove it if it exists.
-            if (SourceNode.CanSee(TargetNode)) SourceNode.AddOrUpdateNeighbor(TargetNode);
-            else SourceNode.RemoveNeighbor(TargetNode); 
-        
             if(current.CanSee(TargetNode)) current.AddOrUpdateNeighbor(TargetNode);
             else current.RemoveNeighbor(TargetNode);
-            //update every node in Static nodes - if it can see the target, add it to neighbors.
-            // if not, remove it from neighbors if it exists.
-            //foreach (var node in StaticNodes) {
-            //    if (node.CanSee(TargetNode)) node.AddOrUpdateNeighbor(TargetNode);
-            //    else node.RemoveNeighbor(TargetNode);
-            //}
-        
         }
 
         public void UpdatePathGraph(Vector2 selectedPlayer) {
-            //update SourceNode position
+            
             SourceNode.Position = selectedPlayer;
-
-            //Update all solid nodes
             StaticNodes = EntityManager.GetAllSolidNodes().ToList();
 
-            //If the list doesn't contain the sourcenode, add it.
             if (!StaticNodes.Contains(SourceNode)) StaticNodes.Add(SourceNode);
 
-            //for each node in Static Nodes, update list of neighbors with other nodes
-            //which are in LOS
             foreach (var node in StaticNodes) {
                 var node1 = node;
                 foreach (var childnode in StaticNodes.Where(n => n.CanSee(node1))) {
@@ -155,14 +119,9 @@ namespace Assets.Components.Movement {
                 }
             }
 
-            //for each node that can see the sourceNode, make sure the sourcenode has it as a neighbor.
             foreach (var node in StaticNodes.Where(node => node.CanSee(SourceNode))) {
                 SourceNode.AddOrUpdateNeighbor(node);
             }
-        }
-
-        public void Clear() {
-            
         }
     }
 }

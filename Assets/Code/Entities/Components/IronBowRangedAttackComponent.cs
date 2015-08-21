@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
+using Assets.Code.Abstract;
+using Assets.Code.Statics;
 
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Entities.Components {
     public class IronBowRangedAttackComponent : IComponent {
         public Entity Parent { get; set; }
         public List<string> Dependencies {
@@ -14,7 +17,8 @@ namespace Assets.Code.Abstract {
         private float minRange;
 
         private void OnFiredWeapon(Entity weaponFired, Entity whoFired) {
-            if (weaponFired != Parent) return;
+            throw new NotImplementedException();
+            //if (weaponFired != Parent) return;
             //if this weapon doesn't belong to whoFired, return
             // other cases I shouldn't run this code, return
             
@@ -29,15 +33,15 @@ namespace Assets.Code.Abstract {
         }
 
         public void OnUpdate() {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void OnAwake() {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void OnStart() {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void Init() {

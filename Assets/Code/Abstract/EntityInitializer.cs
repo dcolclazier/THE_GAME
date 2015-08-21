@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Assets.Code.Entities;
+using Assets.Code.Entities.Components;
+using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Code.Abstract {

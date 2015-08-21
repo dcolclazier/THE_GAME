@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Assets.Code.Abstract;
+using Assets.Code.Movement;
 using Assets.Code.Statics;
 using UnityEngine;
 using Vectrosity;
 
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Entities.Components {
     public class SelectableComponent : IComponent, IToggle {
         public List<string> Dependencies {
             get { return new List<string>() {
@@ -36,9 +38,9 @@ namespace Assets.Code.Abstract {
      
         private void OnDeselect() {
             if (!Enabled) return;
-            
             Enabled = false;
             _selectCircle.active = false;
+            Parent.Attributes.Update("CurrentlySelected", Enabled);
             Messenger.Broadcast("GameObjectDeselected", Parent.Attributes.Get<GameObject>("GameObject"));
         }
         public void Init()
@@ -55,6 +57,7 @@ namespace Assets.Code.Abstract {
 
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener("GroundClicked", OnDeselect);
+            
         }
 
         private float _lineThickness = 2.0f;

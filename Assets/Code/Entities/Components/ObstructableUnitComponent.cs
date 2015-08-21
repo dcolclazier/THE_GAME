@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Assets.Code.Abstract;
+using Assets.Code.Movement;
 using Assets.Code.Statics;
 using UnityEngine;
 
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Entities.Components {
     public class ObstructableUnitComponent : ObstructableComponent {
         
         public override void Init()
@@ -28,7 +30,7 @@ namespace Assets.Code.Abstract {
         public override void GetOuttaHere() {
             throw new Exception(
                     "Trying to init an ObstructableUnit Component, but init couldn't find the collider. " +
-                    "Make sure a circle collider is attached to the game object(It's the same collider as" +
+                    "Make sure a circle collider is attached to the game object - It's the same collider as" +
                     "the selection circle.... ");
         }
 

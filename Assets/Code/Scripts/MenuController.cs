@@ -1,68 +1,63 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
-public class MenuController : MonoBehaviour
-{
+namespace Assets.Code.Scripts {
+    public class MenuController : MonoBehaviour
+    {
 
-    //private static MenuController _menuController;
+        //private static MenuController _menuController;
 
-    public Canvas QuitMenu;
-    public Button SingleP;
-    public Button MultiP;
-    public Button Options;
-    public Button Cancel;
-    public Button Exit;
-    public Button Confirm;
+        public Canvas QuitMenu;
+        public Button SingleP;
+        public Button MultiP;
+        public Button Options;
+        public Button Cancel;
+        public Button Exit;
+        public Button Confirm;
 
-	// Use this for initialization
-	protected void Awake () {
-	    //_menuController = this;
-	    Options = Options.GetComponent<Button>();
-	    QuitMenu = QuitMenu.GetComponent<Canvas>();
-	    SingleP = SingleP.GetComponent<Button>();
-	    MultiP = MultiP.GetComponent<Button>();
-	    Exit = Exit.GetComponent<Button>();
-	    QuitMenu.enabled = false;
+        // Use this for initialization
+        protected void Awake () {
+            //_menuController = this;
+            Options = Options.GetComponent<Button>();
+            QuitMenu = QuitMenu.GetComponent<Canvas>();
+            SingleP = SingleP.GetComponent<Button>();
+            MultiP = MultiP.GetComponent<Button>();
+            Exit = Exit.GetComponent<Button>();
+            QuitMenu.enabled = false;
 
-	}
+        }
 
-    protected void OnDestroy() {
-        //_menuController = null;
+        protected void OnDestroy() {
+            //_menuController = null;
         
-    }
+        }
 
-    public void ExitPress() {
+        public void ExitPress() {
         
-        SingleP.enabled = MultiP.enabled = Options.enabled = Exit.enabled = false;
-        QuitMenu.enabled = true;
+            SingleP.enabled = MultiP.enabled = Options.enabled = Exit.enabled = false;
+            QuitMenu.enabled = true;
 
+        }
+
+        public void ConfirmPress() {
+            Application.Quit();
+        }
+
+        public void CancelPress() {
+            SingleP.enabled = MultiP.enabled = Options.enabled = Exit.enabled = true;
+            QuitMenu.enabled = false;
+        }
+
+        public void SinglepPress() {
+            MainController.SwitchScene("Test Scene");
+        }
+
+        public void MultipPress() {
+            //load network lobby
+        }
+
+        public void OptionsPress() {
+            MainController.SwitchScene("Sandbox");
+        }
     }
-
-    public void ConfirmPress() {
-        Application.Quit();
-    }
-
-    public void CancelPress() {
-        SingleP.enabled = MultiP.enabled = Options.enabled = Exit.enabled = true;
-        QuitMenu.enabled = false;
-    }
-
-    public void SinglepPress() {
-
-        MainController.SwitchScene("Test Scene");
-    }
-
-    public void MultipPress() {
-        //load network lobby
-    }
-
-    public void OptionsPress() {
-        MainController.SwitchScene("Sandbox");
-    }
-  
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

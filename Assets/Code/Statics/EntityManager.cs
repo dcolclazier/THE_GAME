@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Code.Statics;
+using Assets.Code.Entities;
+using Assets.Code.Movement;
+using Assets.Code.Scripts;
 using UnityEngine;
 
-namespace Assets.Code.Abstract
+namespace Assets.Code.Statics
 {
     public static class EntityManager {
         public static List<Entity> MasterEntityList { get; private set; }
-        public static List<Entity> PermenantEntityList { get; private set; }
+        //public static List<Entity> PermenantEntityList { get; private set; }
 
         public static NodeManager NodeMgr { get; private set; }
 
@@ -17,7 +19,7 @@ namespace Assets.Code.Abstract
              if(Helper == null) Helper = (new GameObject("EntityManagerHelper").AddComponent<EntityManagerHelper>());
             NodeMgr = new NodeManager();
             MasterEntityList = new List<Entity>();
-            PermenantEntityList = new List<Entity>();
+            //PermenantEntityList = new List<Entity>();
 
             Messenger.AddListener<Entity>("EntityCreated",OnEntityCreated);
             Messenger.MarkAsPermanent("EntityCreated");
@@ -48,7 +50,7 @@ namespace Assets.Code.Abstract
 
 
         public static IEnumerable<Node> GetAllSolidNodes() {
-            return NodeMgr.GetAllSolidNodes();
+            return NodeManager.GetAllSolidNodes();
         }
 
         public static IEnumerable<Node> GetNodesForEntity(Entity entity) {

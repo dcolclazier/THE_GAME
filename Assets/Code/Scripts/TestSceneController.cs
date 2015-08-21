@@ -10,7 +10,7 @@ namespace Assets.Code.Scripts {
             if (Input.GetMouseButtonDown(0))
             {
                 //Check to see if a player was clicked on. If so, broadcast the player to necessary listeners.
-                var playerClicked = UnityUtilites.CheckHitLayer8(); // Layer 8 for player characters
+                var playerClicked = UnityUtilites.GetHitOnLayer8(); // Layer 8 for player characters
                 if (playerClicked) Messenger.Broadcast("GameObjectSelected", playerClicked.transform.gameObject); 
                 if (playerClicked.collider == null) Messenger.Broadcast("GroundClicked");
             }

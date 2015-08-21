@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Assets.Code.Statics;
 using UnityEngine;
 
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Scripts {
     public class EntityManagerHelper : MonoBehaviour {
 
 
@@ -12,7 +12,7 @@ namespace Assets.Code.Abstract {
         }
 
         protected void Update() {
-            GameObject obj = GameObject.Find("EntityManagerHelper");
+            var obj = GameObject.Find("EntityManagerHelper");
             if (obj != null && obj != gameObject) {
                 Debug.Log("Deleted a copy of me...");
                 Destroy(obj);

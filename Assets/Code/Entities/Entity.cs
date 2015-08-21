@@ -1,7 +1,6 @@
-﻿using System.Runtime.InteropServices;
-using JetBrains.Annotations;
+﻿using Assets.Code.Abstract;
 
-namespace Assets.Code.Abstract {
+namespace Assets.Code.Entities {
     public class Entity{
 
         public Lexicon<IComponent> Components { get; private set; }
