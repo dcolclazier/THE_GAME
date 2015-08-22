@@ -20,6 +20,10 @@ namespace Assets.Code.Scripts {
                 UnityUtilites.ScreenDrag();
             }
         }
+
+        public void Click1Test() {
+            
+        }
     }
 }
 

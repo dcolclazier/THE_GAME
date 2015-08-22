@@ -41,7 +41,7 @@ namespace Assets.Code.Entities.Components {
         public virtual void Init()
         {
             //get the obstruct collider from the game object and register it as an attribute for the entity.
-            ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponentInChildren<Collider2D>();
+            ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<Collider2D>();
             if (ObstructCollider == null) GetOuttaHere();
 
             Parent.Attributes.Register("ObstructCollider", ObstructCollider);

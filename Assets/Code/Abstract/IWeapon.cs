@@ -6,9 +6,9 @@ namespace Assets.Code.Entities.Components {
         float SecondaryAttackModifier { get; }
         float ParryModifier { get; }
 
-        void OnMainAttack(Entity attackedEntity);
-        void OnSecondaryAttack(Entity attackedEntity);
-        void OnParry(Entity attackingEntity);
+        void OnMainAttack(Entity attacker, Entity target, Entity weaponUsed);
+        void OnSecondaryAttack(Entity attacker, Entity target, Entity weaponUsed);
+        void OnParry(Entity attacker, Entity target, Entity weaponUsed);
         int WeaponRange { get; }
 
     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.Code.Abstract;
+using Assets.Code.Statics;
 
 namespace Assets.Code.Entities.Components {
     internal class DefenderCompononent : IComponent {
@@ -11,6 +12,7 @@ namespace Assets.Code.Entities.Components {
 
         public void OnUpdate() {
             throw new System.NotImplementedException();
+            
         }
 
         public void Init() {

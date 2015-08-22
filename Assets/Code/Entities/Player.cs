@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Assets.Code.Abstract;
 
@@ -15,7 +16,21 @@ namespace Assets.Code.Entities {
                 "FullyEquipped",
                 "CanWieldAll"
             };
+            EntitysToInclude = new List<string>() {
+                "BasicWoodenSword",
+            };
+            NumericalAttributesToSet = new Dictionary<string, int>() {
+                 {"Strength", 18},
+                 {"Agility", 2}
+            };
+            StringAttributesToSet = new Dictionary<string, string>() {
+                {"Name", "David"},
+            };
+              
             base.Awake();
+
+            //entity's he should be wielding at spawn, and where they go
+            
         }
     }
 }

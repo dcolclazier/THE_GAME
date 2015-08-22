@@ -9,7 +9,10 @@ namespace Assets.Code.Entities {
             ComponentsToInit = new List<string>() {
                 "GameObject",
                 "Obstructable"
-            };
+           };
+            NumericalAttributesToSet = new Dictionary<string, int>();
+            StringAttributesToSet = new Dictionary<string, string>();
+            EntitysToInclude = new List<string>();
             base.Awake();
         }
     }

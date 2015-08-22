@@ -50,7 +50,7 @@ namespace Assets.Code.Entities.Components {
         }
         public void Init()
         {
-            _selectCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<Collider2D>();
+            _selectCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponentInChildren<Collider2D>();
             if (_selectCollider == null) GetOuttaHere();
 
             Parent.Attributes.Register("SelectCollider", _selectCollider);

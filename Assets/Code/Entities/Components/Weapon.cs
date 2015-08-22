@@ -10,6 +10,11 @@ namespace Assets.Code.Entities.Components {
         protected Weapon(Entity owner) {
             Owner = owner;
         }
+
+        protected Weapon() {
+            
+        }
+
         public WeaponType WeaponType { get; protected set; }
 
         public float MainAttackModifier { get; protected set; }
@@ -18,31 +23,36 @@ namespace Assets.Code.Entities.Components {
 
         public float ParryModifier { get; protected set; }
        
-        public virtual void OnMainAttack(Entity attackedEntity) {
-            OnAttack(attackedEntity);
+        public virtual void OnMainAttack(Entity attacker, Entity target, Entity weaponUsed) {
+            if (Owner != attacker) return;
+            if (weaponUsed != this) return;
+            OnAttack(target);
+
             Owner.Attributes.Update("MainAttackModifier", MainAttackModifier);
             Debug.Log("I added my attack damage to the weapon modifier!" + MainAttackModifier);
         }
 
-        private void OnAttack(Entity attackedEntity) {
+        private void OnAttack(Entity target)
+        {
             if (Owner == null) {
                 Debug.Log("How can a weapon attack if it doesn't have an owner? Shennanigans!");
                 throw new NullReferenceException();
             }
-            if (attackedEntity == null) throw new NullReferenceException("You passed in a null attackedEntity to attack??");
-            if (!attackedEntity.Attributes.Contains("AttackableComponent") || !attackedEntity.Attributes.Get<bool>("AttackableComponent")) {
+            if (target == null) throw new NullReferenceException("You passed in a null target to attack??");
+            if (!target.Attributes.Contains("AttackableComponent") || !target.Attributes.Get<bool>("AttackableComponent")) {
                 Debug.Log("You tried to attack something, but you can't do that!");
             }
         }
 
-        public virtual void OnSecondaryAttack(Entity attackedEntity)
+        public virtual void OnSecondaryAttack(Entity attacker, Entity target, Entity weaponUsed)
         {
-            OnAttack(attackedEntity);
+            if (Owner != attacker || weaponUsed != this) return;
+            OnAttack(target);
             Owner.Attributes.Update("SecondaryAttackModifier", SecondaryAttackModifier);
             Debug.Log("I added my attack damage to the weapon modifier! "+SecondaryAttackModifier);
         }
 
-        public virtual void OnParry(Entity attackedEntity)
+        public virtual void OnParry(Entity attacker, Entity target, Entity weaponUsed)
         {
             if (Owner == null) {
                 Debug.Log("How can a weapon parry if it doesn't have an owner? Shennanigans!");
@@ -54,12 +64,16 @@ namespace Assets.Code.Entities.Components {
 
         public int WeaponRange { get; protected set; }
 
-        public Entity Owner { get; private set; }
-        public virtual void Pickup(Entity pickedUpBy) {
-            Owner = pickedUpBy;
+        public virtual void PickupWeapon(Entity owner) {
+            if(Owner != owner) Owner = owner;
             if (!Owner.Attributes.Contains("MainAttackModifier")) Owner.Attributes.Register("MainAttackModifier", MainAttackModifier);
-            if (!Owner.Attributes.Contains("SecondaryAttackModifier")) Owner.Attributes.Register("MainAttackModifier", SecondaryAttackModifier);
-            if (!Owner.Attributes.Contains("ParryModifier")) Owner.Attributes.Register("MainAttackModifier", ParryModifier);
+            if (!Owner.Attributes.Contains("SecondaryAttackModifier")) Owner.Attributes.Register("SecondaryAttackModifier", SecondaryAttackModifier);
+            if (!Owner.Attributes.Contains("ParryModifier")) Owner.Attributes.Register("ParryModifier", ParryModifier);
         }
+
+        public override void Init(Entity owner) {
+            Owner = this;
+        }
+
     }
 }

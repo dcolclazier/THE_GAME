@@ -12,11 +12,14 @@ namespace Assets.Code.Abstract {
         }
 
         public void Register<T>(string key, T value) {
-            OnRegistering(key);
+            OnRegistering(key, value);
             _repository.Add(key, value);
         }
-        private void OnRegistering(string key) {
-            if (_repository.ContainsKey(key)) throw new Exception("REPO: You are attempting to add a key that already exists: Key = " + key);
+        private void OnRegistering<T>(string key, T value) {
+            if (_repository.ContainsKey(key)) {
+                Debug.Log("Tried to register a value " + key + " that already exists.. updating instead - are you sure this was intended?");
+                Update(key,value);
+            }
         }
 
         public T Get<T>(string key) {
@@ -42,7 +45,10 @@ namespace Assets.Code.Abstract {
 
         private void OnUpdating(string key, Type type) {
             if (!_repository.ContainsKey(key)) throw new Exception("LEXICON: You are attempting to update a value that does not exist.");
-
+            if (_repository[key] == null) {
+                Debug.Log("Updating a null value in the lexicon - be careful!");
+                return;
+            }
             var t = _repository[key].GetType();
             if (t != type)
                 throw new ArrayTypeMismatchException(string.Format("You tried to update an attribute with " +
@@ -52,6 +58,14 @@ namespace Assets.Code.Abstract {
 
         public bool Contains(string currentlyselected) {
             return _repository.ContainsKey(currentlyselected);
+        }
+
+        public void UpdateOrRegister(string key, object value) {
+            if(_repository.ContainsKey(key))
+                Update(key,value);
+            else {
+                
+            }
         }
     }
 }
