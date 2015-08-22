@@ -36,6 +36,7 @@ namespace Assets.Code.Abstract {
         public void Update<T>(string key, T value) {
             
             OnUpdating(key, typeof(T));
+            
             _repository[key] = value;
         }
 

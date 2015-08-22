@@ -36,8 +36,13 @@ namespace Assets.Code.Entities.Components {
 
         }
      
-        private void OnDeselect() {
+        private void OnDeselect(Vector2 position) {
             if (!Enabled) return;
+            var pathTarget = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
+            var radius = Parent.Attributes.Get<float>("ObstructRadius");
+            if (Parent.Attributes.Get<bool>("PathIsActive") && Vector2.Distance(pathTarget, position) < radius) return;
+
+
             Enabled = false;
             _selectCircle.active = false;
             Parent.Attributes.Update("CurrentlySelected", Enabled);
@@ -57,7 +62,7 @@ namespace Assets.Code.Entities.Components {
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-            Messenger.AddListener("GroundClicked", OnDeselect);
+            Messenger.AddListener<Vector2>("GroundClicked", OnDeselect);
             
             
         }

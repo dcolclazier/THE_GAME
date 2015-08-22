@@ -27,21 +27,28 @@ namespace Assets.Code.Entities.Components {
             _pathLine.active = true;
 
 			_destinationCircle.Draw3DAuto();
-
+            Parent.Attributes.Update("PathIsActive", true);
         }
         private void OnDeselected(GameObject objectDeselected) {
             _pathLine.active = false;
             _destinationCircle.active = false;
+            Parent.Attributes.Update("PathIsActive", false);
         }
 
         public void OnUpdate() {
             if (!Parent.Attributes.Get<bool>("CurrentlySelected")) return;
-            if (!Input.GetMouseButton(1)) return;
-            
-            var path = _pathMap.GetBestPath(SetDestinationCircle(), Parent).ToArray();
+            if (!Input.GetMouseButton(1)) {
+                Parent.Attributes.Update("CurrentlyPathing",false);
+                return;
+            }
+            Parent.Attributes.Update("CurrentlyPathing",true);
+
+            var path = _pathMap.GetBestPath(SetDestinationCircle(), Parent);
+            var enumerable = path as IList<Vector3> ?? path.ToList();
+            Parent.Attributes.Update("CurrentPath", enumerable.ToList());
                 
             VectorLine.Destroy(ref _pathLine);
-            _pathLine = new VectorLine("Move Path Line", path, null, line_thickness, LineType.Continuous);
+            _pathLine = new VectorLine("Move Path Line", enumerable.ToArray(), null, line_thickness, LineType.Continuous);
             _pathLine.Draw3DAuto();
         }
         
@@ -58,6 +65,11 @@ namespace Assets.Code.Entities.Components {
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
             Messenger.AddListener("OnUpdate", OnUpdate);
+
+            Parent.Attributes.Register("CurrentlyPathing", false);
+            Parent.Attributes.Register("CurrentPathTarget", new Vector2());
+            Parent.Attributes.Register("PathIsActive", false);
+            Parent.Attributes.Register("CurrentPath", new List<Vector3>());
         }
         private Vector2 SetDestinationCircle()
         {
@@ -77,7 +89,7 @@ namespace Assets.Code.Entities.Components {
                 }
             }
             _destinationCircle.MakeCircle(currentMousePos, radius, 360);
-            _pathGoal = currentMousePos;
+            Parent.Attributes.Update("CurrentPathTarget", currentMousePos);
             return currentMousePos;
         }
 
@@ -86,7 +98,7 @@ namespace Assets.Code.Entities.Components {
         private VectorLine _destinationCircle;
         private readonly float line_thickness = 2.0f;  //used by vectrosity
         private VectorLine _pathLine;
-        private Vector3 _pathGoal;
+        
         public Entity Parent { get; set; }
     }
 }

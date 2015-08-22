@@ -1,10 +1,12 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.Code.Abstract;
 using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Code.Entities.Components {
-    public class GameObjectComponent : IComponent {
+    public class GameObjectComponent : MonoBehaviour, IComponent {
 
         public GameObject Go { get; private set; }
 
@@ -38,9 +40,16 @@ namespace Assets.Code.Entities.Components {
 
             Messenger.AddListener("OnUpdate",OnUpdate);
             Enabled = true;
+
+            Parent.Attributes.Register("GameObjectComponent",this);
         }
 
         public void OnMessage() {
+        }
+
+        public void StartUnityCoroutine(Func<IEnumerator> moveRoutine) {
+
+            StartCoroutine(moveRoutine());
         }
     }
 }

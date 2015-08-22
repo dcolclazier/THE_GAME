@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Code.Statics {
     static public class Extensions {
@@ -15,8 +16,8 @@ namespace Assets.Code.Statics {
             circle.radius += expansionFactor;
         }
 
-        public static bool Equals(this Vector2 that, Vector2 rhs) {
-            return (that.x == rhs.x && that.y == rhs.y);
+        public static bool PositionEquals(this Vector2 that, Vector2 rhs) {
+            return (Math.Abs(that.x - rhs.x) < .01f && Math.Abs(that.y - rhs.y) < .01f);
         }
 
         public static Vector2 GetCenter2D(this PolygonCollider2D poly)
@@ -35,6 +36,11 @@ namespace Assets.Code.Statics {
             var xCenter = (highestX + lowestX) / 2;
             var yCenter = (highestY + lowestY) / 2;
             return new Vector2(xCenter, yCenter);
-        } 
+        }
+
+        static public float DistanceTo(this Vector2 that, Vector2 rhs) {
+
+            return Vector2.Distance(that, rhs);
+        }
     }
 }

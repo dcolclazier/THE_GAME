@@ -25,7 +25,33 @@ with a brief description as to their use.
 
 "SelectColliderType" - SelectableComponent - returns the ColliderType of the selectable component's collider
 
+"Strength"
 
+"Concentration"
+
+"Perception"
+
+"Magic"
+
+"Agility"
+
+"Wit"
+
+"Wisdom"
+
+"AttackSpeed"
+
+"MovementSpeed"
+
+"CurrentPath"
+
+"CurrentPathTarget"
+
+"CurrentlyPathing"
+
+"PathIsActive"
+
+"CurrentPath"
 
 
 

@@ -12,6 +12,9 @@ namespace Assets.Code.Movement
         public enum ColliderType { Box, Circle, Polygon, Count}
         private readonly Func<Entity, IEnumerable<Node>>[] _nodeGrabber; 
  
+
+        //Action
+        //Func
         public NodeManager()  {
             
             _nodeGrabber = new Func<Entity, IEnumerable<Node>>[(int)ColliderType.Count];

@@ -21,17 +21,30 @@ namespace Assets.Code.Abstract {
                 {"IronBowRangedAttack", typeof(IronBowRangedAttackComponent)},
                 {"Defender", typeof(DefenderCompononent)},
                 {"ObstructableUnit", typeof(ObstructableUnitComponent)},
-
+                {"UnitStats", typeof(UnitStatsComponent)},
+                {"Moveable", typeof(MoveableComponent)},
+                {"AttackableComponent", typeof(AttackableComponent)},
+                {"FullyEquipped", typeof(FullyEquippedComponent)},
+                {"CanWieldAll", typeof(CanWieldAllComponent)},
 
             };
+            
             foreach (var c in ComponentsToInit) {
-                var temp = Activator.CreateInstance(componentList[c]);
-                var component = temp as IComponent;
-                if (component == null) continue;
 
-                component.Parent = myParent;
-                component.Init();
-                myParent.Components.Register(c, component);
+                if (c == "GameObject") {
+                    var test = gameObject.AddComponent<GameObjectComponent>();
+                    test.Parent = myParent;
+                    test.Init();
+                    myParent.Components.Register(c, test as IComponent);
+                }
+                else {
+                    var temp = Activator.CreateInstance(componentList[c]);
+                    var component = temp as IComponent;
+                    if (component == null) continue;
+                    component.Parent = myParent;
+                    component.Init();
+                    myParent.Components.Register(c, component);
+                }
             }
             Messenger.Broadcast("EntityCreated", myParent);
         }
