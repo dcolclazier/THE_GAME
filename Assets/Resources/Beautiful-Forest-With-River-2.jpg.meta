@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: e5022ad46e2b24c4a8f0a3ac13eba790
-timeCreated: 1440224190
+guid: df24052762e245447b417b8a34a45e73
+timeCreated: 1440225706
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Runestone-User-Interface_0
-    21300002: Runestone-User-Interface_1
-    21300004: Runestone-User-Interface_2
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -33,14 +30,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,37 +48,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: Runestone-User-Interface_0
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 515
-        width: 72
-        height: 72
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Runestone-User-Interface_1
-      rect:
-        serializedVersion: 2
-        x: 806
-        y: 421
-        width: 75
-        height: 74
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Runestone-User-Interface_2
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 620
-        width: 393
-        height: 128
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

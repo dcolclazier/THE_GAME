@@ -1,0 +1,1298 @@
+fileFormatVersion: 2
+guid: 9a5b35414f0ea5742b4227fac1944b7c
+timeCreated: 1440224136
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: diablo_pack_0
+    21300002: diablo_pack_1
+    21300004: diablo_pack_2
+    21300006: diablo_pack_3
+    21300008: diablo_pack_4
+    21300010: diablo_pack_5
+    21300012: diablo_pack_6
+    21300014: diablo_pack_7
+    21300016: diablo_pack_8
+    21300018: diablo_pack_9
+    21300020: diablo_pack_10
+    21300022: diablo_pack_11
+    21300024: diablo_pack_12
+    21300026: diablo_pack_13
+    21300028: diablo_pack_14
+    21300030: diablo_pack_15
+    21300032: diablo_pack_16
+    21300034: diablo_pack_17
+    21300036: diablo_pack_18
+    21300038: diablo_pack_19
+    21300040: diablo_pack_20
+    21300042: diablo_pack_21
+    21300044: diablo_pack_22
+    21300046: diablo_pack_23
+    21300048: diablo_pack_24
+    21300050: diablo_pack_25
+    21300052: diablo_pack_26
+    21300054: diablo_pack_27
+    21300056: diablo_pack_28
+    21300058: diablo_pack_29
+    21300060: diablo_pack_30
+    21300062: diablo_pack_31
+    21300064: diablo_pack_32
+    21300066: diablo_pack_33
+    21300068: diablo_pack_34
+    21300070: diablo_pack_35
+    21300072: diablo_pack_36
+    21300074: diablo_pack_37
+    21300076: diablo_pack_38
+    21300078: diablo_pack_39
+    21300080: diablo_pack_40
+    21300082: diablo_pack_41
+    21300084: diablo_pack_42
+    21300086: diablo_pack_43
+    21300088: diablo_pack_44
+    21300090: diablo_pack_45
+    21300092: diablo_pack_46
+    21300094: diablo_pack_47
+    21300096: diablo_pack_48
+    21300098: diablo_pack_49
+    21300100: diablo_pack_50
+    21300102: diablo_pack_51
+    21300104: diablo_pack_52
+    21300106: diablo_pack_53
+    21300108: diablo_pack_54
+    21300110: diablo_pack_55
+    21300112: diablo_pack_56
+    21300114: diablo_pack_57
+    21300116: diablo_pack_58
+    21300118: diablo_pack_59
+    21300120: diablo_pack_60
+    21300122: diablo_pack_61
+    21300124: diablo_pack_62
+    21300126: diablo_pack_63
+    21300128: diablo_pack_64
+    21300130: diablo_pack_65
+    21300132: diablo_pack_66
+    21300134: diablo_pack_67
+    21300136: diablo_pack_68
+    21300138: diablo_pack_69
+    21300140: diablo_pack_70
+    21300142: diablo_pack_71
+    21300144: diablo_pack_72
+    21300146: diablo_pack_73
+    21300148: diablo_pack_74
+    21300150: diablo_pack_75
+    21300152: diablo_pack_76
+    21300154: diablo_pack_77
+    21300156: diablo_pack_78
+    21300158: diablo_pack_79
+    21300160: diablo_pack_80
+    21300162: diablo_pack_81
+    21300164: diablo_pack_82
+    21300166: diablo_pack_83
+    21300168: diablo_pack_84
+    21300170: diablo_pack_85
+    21300172: diablo_pack_86
+    21300174: diablo_pack_87
+    21300176: diablo_pack_88
+    21300178: diablo_pack_89
+    21300180: diablo_pack_90
+    21300182: diablo_pack_91
+    21300184: diablo_pack_92
+    21300186: diablo_pack_93
+    21300188: diablo_pack_94
+    21300190: diablo_pack_95
+    21300192: diablo_pack_96
+    21300194: diablo_pack_97
+    21300196: diablo_pack_98
+    21300198: diablo_pack_99
+    21300200: diablo_pack_100
+    21300202: diablo_pack_101
+    21300204: diablo_pack_102
+    21300206: diablo_pack_103
+    21300208: diablo_pack_104
+    21300210: diablo_pack_105
+    21300212: diablo_pack_106
+    21300214: diablo_pack_107
+    21300216: diablo_pack_108
+    21300218: diablo_pack_109
+    21300220: diablo_pack_110
+    21300222: diablo_pack_111
+    21300224: diablo_pack_112
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: diablo_pack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_3
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_4
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_5
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_6
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_7
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_8
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_9
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 726
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_11
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_12
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_13
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_14
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_15
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_16
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_17
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_18
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_19
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 660
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_21
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_22
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_23
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_24
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_25
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_26
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_27
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_28
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_29
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 594
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_31
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_32
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_33
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_34
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_35
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_36
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_37
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_38
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_39
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 528
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_41
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_42
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_43
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_44
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_45
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_46
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_47
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_48
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_49
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 462
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_51
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_52
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_53
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_54
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_55
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_56
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_57
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_58
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_59
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 396
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_61
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_62
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_63
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_64
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_65
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_66
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_67
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_68
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_69
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 330
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_71
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_72
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_73
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_74
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_75
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_76
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_77
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_78
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_79
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 264
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_81
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_82
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_83
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_84
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_85
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_86
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_87
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_88
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_89
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 198
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_91
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_92
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_93
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_94
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_95
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_96
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_97
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_98
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_99
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 132
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_100
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_101
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_102
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_103
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_104
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_105
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_106
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_107
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_108
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_109
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 66
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_110
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_111
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: diablo_pack_112
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

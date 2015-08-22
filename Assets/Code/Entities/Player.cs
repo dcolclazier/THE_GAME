@@ -14,7 +14,8 @@ namespace Assets.Code.Entities {
                 "Moveable",
                 //"AttackableComponent",
                 "FullyEquipped",
-                "CanWieldAll"
+                "CanWieldAll",
+				"BasicAttack"
             };
             EntitysToInclude = new List<string>() {
                 "BasicWoodenSword",
@@ -32,5 +33,11 @@ namespace Assets.Code.Entities {
             //entity's he should be wielding at spawn, and where they go
             
         }
+
+		public void test()
+		{
+
+		}
+
     }
 }

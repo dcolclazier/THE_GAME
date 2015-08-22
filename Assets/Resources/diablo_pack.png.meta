@@ -1,122 +1,122 @@
 fileFormatVersion: 2
-guid: 1cf5a5c191f5e8146af9b477a67f4163
-timeCreated: 1439958103
+guid: dd5347843bf354c4e9423c0ff3ea2bd4
+timeCreated: 1440225751
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_0
-    21300002: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_1
-    21300004: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_2
-    21300006: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_3
-    21300008: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_4
-    21300010: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_5
-    21300012: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_6
-    21300014: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_7
-    21300016: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_8
-    21300018: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_9
-    21300020: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_10
-    21300022: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_11
-    21300024: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_12
-    21300026: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_13
-    21300028: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_14
-    21300030: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_15
-    21300032: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_16
-    21300034: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_17
-    21300036: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_18
-    21300038: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_19
-    21300040: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_20
-    21300042: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_21
-    21300044: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_22
-    21300046: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_23
-    21300048: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_24
-    21300050: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_25
-    21300052: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_26
-    21300054: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_27
-    21300056: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_28
-    21300058: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_29
-    21300060: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_30
-    21300062: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_31
-    21300064: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_32
-    21300066: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_33
-    21300068: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_34
-    21300070: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_35
-    21300072: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_36
-    21300074: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_37
-    21300076: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_38
-    21300078: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_39
-    21300080: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_40
-    21300082: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_41
-    21300084: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_42
-    21300086: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_43
-    21300088: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_44
-    21300090: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_45
-    21300092: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_46
-    21300094: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_47
-    21300096: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_48
-    21300098: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_49
-    21300100: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_50
-    21300102: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_51
-    21300104: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_52
-    21300106: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_53
-    21300108: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_54
-    21300110: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_55
-    21300112: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_56
-    21300114: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_57
-    21300116: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_58
-    21300118: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_59
-    21300120: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_60
-    21300122: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_61
-    21300124: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_62
-    21300126: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_63
-    21300128: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_64
-    21300130: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_65
-    21300132: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_66
-    21300134: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_67
-    21300136: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_68
-    21300138: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_69
-    21300140: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_70
-    21300142: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_71
-    21300144: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_72
-    21300146: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_73
-    21300148: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_74
-    21300150: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_75
-    21300152: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_76
-    21300154: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_77
-    21300156: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_78
-    21300158: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_79
-    21300160: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_80
-    21300162: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_81
-    21300164: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_82
-    21300166: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_83
-    21300168: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_84
-    21300170: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_85
-    21300172: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_86
-    21300174: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_87
-    21300176: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_88
-    21300178: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_89
-    21300180: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_90
-    21300182: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_91
-    21300184: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_92
-    21300186: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_93
-    21300188: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_94
-    21300190: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_95
-    21300192: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_96
-    21300194: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_97
-    21300196: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_98
-    21300198: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_99
-    21300200: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_100
-    21300202: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_101
-    21300204: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_102
-    21300206: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_103
-    21300208: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_104
-    21300210: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_105
-    21300212: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_106
-    21300214: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_107
-    21300216: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_108
-    21300218: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_109
-    21300220: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_110
-    21300222: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_111
-    21300224: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_112
+    21300000: diablo_pack_0
+    21300002: diablo_pack_1
+    21300004: diablo_pack_2
+    21300006: diablo_pack_3
+    21300008: diablo_pack_4
+    21300010: diablo_pack_5
+    21300012: diablo_pack_6
+    21300014: diablo_pack_7
+    21300016: diablo_pack_8
+    21300018: diablo_pack_9
+    21300020: diablo_pack_10
+    21300022: diablo_pack_11
+    21300024: diablo_pack_12
+    21300026: diablo_pack_13
+    21300028: diablo_pack_14
+    21300030: diablo_pack_15
+    21300032: diablo_pack_16
+    21300034: diablo_pack_17
+    21300036: diablo_pack_18
+    21300038: diablo_pack_19
+    21300040: diablo_pack_20
+    21300042: diablo_pack_21
+    21300044: diablo_pack_22
+    21300046: diablo_pack_23
+    21300048: diablo_pack_24
+    21300050: diablo_pack_25
+    21300052: diablo_pack_26
+    21300054: diablo_pack_27
+    21300056: diablo_pack_28
+    21300058: diablo_pack_29
+    21300060: diablo_pack_30
+    21300062: diablo_pack_31
+    21300064: diablo_pack_32
+    21300066: diablo_pack_33
+    21300068: diablo_pack_34
+    21300070: diablo_pack_35
+    21300072: diablo_pack_36
+    21300074: diablo_pack_37
+    21300076: diablo_pack_38
+    21300078: diablo_pack_39
+    21300080: diablo_pack_40
+    21300082: diablo_pack_41
+    21300084: diablo_pack_42
+    21300086: diablo_pack_43
+    21300088: diablo_pack_44
+    21300090: diablo_pack_45
+    21300092: diablo_pack_46
+    21300094: diablo_pack_47
+    21300096: diablo_pack_48
+    21300098: diablo_pack_49
+    21300100: diablo_pack_50
+    21300102: diablo_pack_51
+    21300104: diablo_pack_52
+    21300106: diablo_pack_53
+    21300108: diablo_pack_54
+    21300110: diablo_pack_55
+    21300112: diablo_pack_56
+    21300114: diablo_pack_57
+    21300116: diablo_pack_58
+    21300118: diablo_pack_59
+    21300120: diablo_pack_60
+    21300122: diablo_pack_61
+    21300124: diablo_pack_62
+    21300126: diablo_pack_63
+    21300128: diablo_pack_64
+    21300130: diablo_pack_65
+    21300132: diablo_pack_66
+    21300134: diablo_pack_67
+    21300136: diablo_pack_68
+    21300138: diablo_pack_69
+    21300140: diablo_pack_70
+    21300142: diablo_pack_71
+    21300144: diablo_pack_72
+    21300146: diablo_pack_73
+    21300148: diablo_pack_74
+    21300150: diablo_pack_75
+    21300152: diablo_pack_76
+    21300154: diablo_pack_77
+    21300156: diablo_pack_78
+    21300158: diablo_pack_79
+    21300160: diablo_pack_80
+    21300162: diablo_pack_81
+    21300164: diablo_pack_82
+    21300166: diablo_pack_83
+    21300168: diablo_pack_84
+    21300170: diablo_pack_85
+    21300172: diablo_pack_86
+    21300174: diablo_pack_87
+    21300176: diablo_pack_88
+    21300178: diablo_pack_89
+    21300180: diablo_pack_90
+    21300182: diablo_pack_91
+    21300184: diablo_pack_92
+    21300186: diablo_pack_93
+    21300188: diablo_pack_94
+    21300190: diablo_pack_95
+    21300192: diablo_pack_96
+    21300194: diablo_pack_97
+    21300196: diablo_pack_98
+    21300198: diablo_pack_99
+    21300200: diablo_pack_100
+    21300202: diablo_pack_101
+    21300204: diablo_pack_102
+    21300206: diablo_pack_103
+    21300208: diablo_pack_104
+    21300210: diablo_pack_105
+    21300212: diablo_pack_106
+    21300214: diablo_pack_107
+    21300216: diablo_pack_108
+    21300218: diablo_pack_109
+    21300220: diablo_pack_110
+    21300222: diablo_pack_111
+    21300224: diablo_pack_112
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -162,7 +162,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_0
+    - name: diablo_pack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -172,7 +172,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_1
+    - name: diablo_pack_1
       rect:
         serializedVersion: 2
         x: 66
@@ -182,7 +182,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_2
+    - name: diablo_pack_2
       rect:
         serializedVersion: 2
         x: 132
@@ -192,7 +192,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_3
+    - name: diablo_pack_3
       rect:
         serializedVersion: 2
         x: 198
@@ -202,7 +202,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_4
+    - name: diablo_pack_4
       rect:
         serializedVersion: 2
         x: 264
@@ -212,7 +212,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_5
+    - name: diablo_pack_5
       rect:
         serializedVersion: 2
         x: 330
@@ -222,7 +222,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_6
+    - name: diablo_pack_6
       rect:
         serializedVersion: 2
         x: 396
@@ -232,7 +232,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_7
+    - name: diablo_pack_7
       rect:
         serializedVersion: 2
         x: 462
@@ -242,7 +242,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_8
+    - name: diablo_pack_8
       rect:
         serializedVersion: 2
         x: 528
@@ -252,7 +252,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_9
+    - name: diablo_pack_9
       rect:
         serializedVersion: 2
         x: 594
@@ -262,7 +262,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_10
+    - name: diablo_pack_10
       rect:
         serializedVersion: 2
         x: 0
@@ -272,7 +272,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_11
+    - name: diablo_pack_11
       rect:
         serializedVersion: 2
         x: 66
@@ -282,7 +282,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_12
+    - name: diablo_pack_12
       rect:
         serializedVersion: 2
         x: 132
@@ -292,7 +292,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_13
+    - name: diablo_pack_13
       rect:
         serializedVersion: 2
         x: 198
@@ -302,7 +302,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_14
+    - name: diablo_pack_14
       rect:
         serializedVersion: 2
         x: 264
@@ -312,7 +312,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_15
+    - name: diablo_pack_15
       rect:
         serializedVersion: 2
         x: 330
@@ -322,7 +322,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_16
+    - name: diablo_pack_16
       rect:
         serializedVersion: 2
         x: 396
@@ -332,7 +332,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_17
+    - name: diablo_pack_17
       rect:
         serializedVersion: 2
         x: 462
@@ -342,7 +342,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_18
+    - name: diablo_pack_18
       rect:
         serializedVersion: 2
         x: 528
@@ -352,7 +352,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_19
+    - name: diablo_pack_19
       rect:
         serializedVersion: 2
         x: 594
@@ -362,7 +362,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_20
+    - name: diablo_pack_20
       rect:
         serializedVersion: 2
         x: 0
@@ -372,7 +372,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_21
+    - name: diablo_pack_21
       rect:
         serializedVersion: 2
         x: 66
@@ -382,7 +382,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_22
+    - name: diablo_pack_22
       rect:
         serializedVersion: 2
         x: 132
@@ -392,7 +392,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_23
+    - name: diablo_pack_23
       rect:
         serializedVersion: 2
         x: 198
@@ -402,7 +402,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_24
+    - name: diablo_pack_24
       rect:
         serializedVersion: 2
         x: 264
@@ -412,7 +412,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_25
+    - name: diablo_pack_25
       rect:
         serializedVersion: 2
         x: 330
@@ -422,7 +422,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_26
+    - name: diablo_pack_26
       rect:
         serializedVersion: 2
         x: 396
@@ -432,7 +432,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_27
+    - name: diablo_pack_27
       rect:
         serializedVersion: 2
         x: 462
@@ -442,7 +442,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_28
+    - name: diablo_pack_28
       rect:
         serializedVersion: 2
         x: 528
@@ -452,7 +452,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_29
+    - name: diablo_pack_29
       rect:
         serializedVersion: 2
         x: 594
@@ -462,7 +462,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_30
+    - name: diablo_pack_30
       rect:
         serializedVersion: 2
         x: 0
@@ -472,7 +472,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_31
+    - name: diablo_pack_31
       rect:
         serializedVersion: 2
         x: 66
@@ -482,7 +482,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_32
+    - name: diablo_pack_32
       rect:
         serializedVersion: 2
         x: 132
@@ -492,7 +492,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_33
+    - name: diablo_pack_33
       rect:
         serializedVersion: 2
         x: 198
@@ -502,7 +502,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_34
+    - name: diablo_pack_34
       rect:
         serializedVersion: 2
         x: 264
@@ -512,7 +512,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_35
+    - name: diablo_pack_35
       rect:
         serializedVersion: 2
         x: 330
@@ -522,7 +522,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_36
+    - name: diablo_pack_36
       rect:
         serializedVersion: 2
         x: 396
@@ -532,7 +532,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_37
+    - name: diablo_pack_37
       rect:
         serializedVersion: 2
         x: 462
@@ -542,7 +542,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_38
+    - name: diablo_pack_38
       rect:
         serializedVersion: 2
         x: 528
@@ -552,7 +552,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_39
+    - name: diablo_pack_39
       rect:
         serializedVersion: 2
         x: 594
@@ -562,7 +562,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_40
+    - name: diablo_pack_40
       rect:
         serializedVersion: 2
         x: 0
@@ -572,7 +572,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_41
+    - name: diablo_pack_41
       rect:
         serializedVersion: 2
         x: 66
@@ -582,7 +582,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_42
+    - name: diablo_pack_42
       rect:
         serializedVersion: 2
         x: 132
@@ -592,7 +592,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_43
+    - name: diablo_pack_43
       rect:
         serializedVersion: 2
         x: 198
@@ -602,7 +602,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_44
+    - name: diablo_pack_44
       rect:
         serializedVersion: 2
         x: 264
@@ -612,7 +612,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_45
+    - name: diablo_pack_45
       rect:
         serializedVersion: 2
         x: 330
@@ -622,7 +622,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_46
+    - name: diablo_pack_46
       rect:
         serializedVersion: 2
         x: 396
@@ -632,7 +632,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_47
+    - name: diablo_pack_47
       rect:
         serializedVersion: 2
         x: 462
@@ -642,7 +642,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_48
+    - name: diablo_pack_48
       rect:
         serializedVersion: 2
         x: 528
@@ -652,7 +652,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_49
+    - name: diablo_pack_49
       rect:
         serializedVersion: 2
         x: 594
@@ -662,7 +662,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_50
+    - name: diablo_pack_50
       rect:
         serializedVersion: 2
         x: 0
@@ -672,7 +672,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_51
+    - name: diablo_pack_51
       rect:
         serializedVersion: 2
         x: 66
@@ -682,7 +682,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_52
+    - name: diablo_pack_52
       rect:
         serializedVersion: 2
         x: 132
@@ -692,7 +692,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_53
+    - name: diablo_pack_53
       rect:
         serializedVersion: 2
         x: 198
@@ -702,7 +702,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_54
+    - name: diablo_pack_54
       rect:
         serializedVersion: 2
         x: 264
@@ -712,7 +712,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_55
+    - name: diablo_pack_55
       rect:
         serializedVersion: 2
         x: 330
@@ -722,7 +722,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_56
+    - name: diablo_pack_56
       rect:
         serializedVersion: 2
         x: 396
@@ -732,7 +732,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_57
+    - name: diablo_pack_57
       rect:
         serializedVersion: 2
         x: 462
@@ -742,7 +742,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_58
+    - name: diablo_pack_58
       rect:
         serializedVersion: 2
         x: 528
@@ -752,7 +752,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_59
+    - name: diablo_pack_59
       rect:
         serializedVersion: 2
         x: 594
@@ -762,7 +762,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_60
+    - name: diablo_pack_60
       rect:
         serializedVersion: 2
         x: 0
@@ -772,7 +772,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_61
+    - name: diablo_pack_61
       rect:
         serializedVersion: 2
         x: 66
@@ -782,7 +782,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_62
+    - name: diablo_pack_62
       rect:
         serializedVersion: 2
         x: 132
@@ -792,7 +792,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_63
+    - name: diablo_pack_63
       rect:
         serializedVersion: 2
         x: 198
@@ -802,7 +802,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_64
+    - name: diablo_pack_64
       rect:
         serializedVersion: 2
         x: 264
@@ -812,7 +812,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_65
+    - name: diablo_pack_65
       rect:
         serializedVersion: 2
         x: 330
@@ -822,7 +822,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_66
+    - name: diablo_pack_66
       rect:
         serializedVersion: 2
         x: 396
@@ -832,7 +832,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_67
+    - name: diablo_pack_67
       rect:
         serializedVersion: 2
         x: 462
@@ -842,7 +842,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_68
+    - name: diablo_pack_68
       rect:
         serializedVersion: 2
         x: 528
@@ -852,7 +852,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_69
+    - name: diablo_pack_69
       rect:
         serializedVersion: 2
         x: 594
@@ -862,7 +862,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_70
+    - name: diablo_pack_70
       rect:
         serializedVersion: 2
         x: 0
@@ -872,7 +872,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_71
+    - name: diablo_pack_71
       rect:
         serializedVersion: 2
         x: 66
@@ -882,7 +882,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_72
+    - name: diablo_pack_72
       rect:
         serializedVersion: 2
         x: 132
@@ -892,7 +892,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_73
+    - name: diablo_pack_73
       rect:
         serializedVersion: 2
         x: 198
@@ -902,7 +902,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_74
+    - name: diablo_pack_74
       rect:
         serializedVersion: 2
         x: 264
@@ -912,7 +912,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_75
+    - name: diablo_pack_75
       rect:
         serializedVersion: 2
         x: 330
@@ -922,7 +922,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_76
+    - name: diablo_pack_76
       rect:
         serializedVersion: 2
         x: 396
@@ -932,7 +932,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_77
+    - name: diablo_pack_77
       rect:
         serializedVersion: 2
         x: 462
@@ -942,7 +942,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_78
+    - name: diablo_pack_78
       rect:
         serializedVersion: 2
         x: 528
@@ -952,7 +952,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_79
+    - name: diablo_pack_79
       rect:
         serializedVersion: 2
         x: 594
@@ -962,7 +962,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_80
+    - name: diablo_pack_80
       rect:
         serializedVersion: 2
         x: 0
@@ -972,7 +972,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_81
+    - name: diablo_pack_81
       rect:
         serializedVersion: 2
         x: 66
@@ -982,7 +982,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_82
+    - name: diablo_pack_82
       rect:
         serializedVersion: 2
         x: 132
@@ -992,7 +992,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_83
+    - name: diablo_pack_83
       rect:
         serializedVersion: 2
         x: 198
@@ -1002,7 +1002,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_84
+    - name: diablo_pack_84
       rect:
         serializedVersion: 2
         x: 264
@@ -1012,7 +1012,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_85
+    - name: diablo_pack_85
       rect:
         serializedVersion: 2
         x: 330
@@ -1022,7 +1022,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_86
+    - name: diablo_pack_86
       rect:
         serializedVersion: 2
         x: 396
@@ -1032,7 +1032,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_87
+    - name: diablo_pack_87
       rect:
         serializedVersion: 2
         x: 462
@@ -1042,7 +1042,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_88
+    - name: diablo_pack_88
       rect:
         serializedVersion: 2
         x: 528
@@ -1052,7 +1052,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_89
+    - name: diablo_pack_89
       rect:
         serializedVersion: 2
         x: 594
@@ -1062,7 +1062,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_90
+    - name: diablo_pack_90
       rect:
         serializedVersion: 2
         x: 0
@@ -1072,7 +1072,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_91
+    - name: diablo_pack_91
       rect:
         serializedVersion: 2
         x: 66
@@ -1082,7 +1082,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_92
+    - name: diablo_pack_92
       rect:
         serializedVersion: 2
         x: 132
@@ -1092,7 +1092,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_93
+    - name: diablo_pack_93
       rect:
         serializedVersion: 2
         x: 198
@@ -1102,7 +1102,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_94
+    - name: diablo_pack_94
       rect:
         serializedVersion: 2
         x: 264
@@ -1112,7 +1112,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_95
+    - name: diablo_pack_95
       rect:
         serializedVersion: 2
         x: 330
@@ -1122,7 +1122,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_96
+    - name: diablo_pack_96
       rect:
         serializedVersion: 2
         x: 396
@@ -1132,7 +1132,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_97
+    - name: diablo_pack_97
       rect:
         serializedVersion: 2
         x: 462
@@ -1142,7 +1142,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_98
+    - name: diablo_pack_98
       rect:
         serializedVersion: 2
         x: 528
@@ -1152,7 +1152,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_99
+    - name: diablo_pack_99
       rect:
         serializedVersion: 2
         x: 594
@@ -1162,7 +1162,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_100
+    - name: diablo_pack_100
       rect:
         serializedVersion: 2
         x: 0
@@ -1172,7 +1172,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_101
+    - name: diablo_pack_101
       rect:
         serializedVersion: 2
         x: 66
@@ -1182,7 +1182,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_102
+    - name: diablo_pack_102
       rect:
         serializedVersion: 2
         x: 132
@@ -1192,7 +1192,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_103
+    - name: diablo_pack_103
       rect:
         serializedVersion: 2
         x: 198
@@ -1202,7 +1202,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_104
+    - name: diablo_pack_104
       rect:
         serializedVersion: 2
         x: 264
@@ -1212,7 +1212,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_105
+    - name: diablo_pack_105
       rect:
         serializedVersion: 2
         x: 330
@@ -1222,7 +1222,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_106
+    - name: diablo_pack_106
       rect:
         serializedVersion: 2
         x: 396
@@ -1232,7 +1232,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_107
+    - name: diablo_pack_107
       rect:
         serializedVersion: 2
         x: 462
@@ -1242,7 +1242,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_108
+    - name: diablo_pack_108
       rect:
         serializedVersion: 2
         x: 528
@@ -1252,7 +1252,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_109
+    - name: diablo_pack_109
       rect:
         serializedVersion: 2
         x: 594
@@ -1262,7 +1262,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_110
+    - name: diablo_pack_110
       rect:
         serializedVersion: 2
         x: 0
@@ -1272,7 +1272,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_111
+    - name: diablo_pack_111
       rect:
         serializedVersion: 2
         x: 66
@@ -1282,7 +1282,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: macro_icon_pack_from_diablo_3_by_arakara-d4ahr1o_112
+    - name: diablo_pack_112
       rect:
         serializedVersion: 2
         x: 132

@@ -25,13 +25,14 @@ namespace Assets.Code.Abstract {
                 {"Obstructable", typeof(ObstructableComponent)},
                 {"Pathfinding", typeof(PathFindingComponent)},
                 {"IronBowRangedAttack", typeof(IronBowRangedAttackComponent)},
-                {"Defender", typeof(DefenderCompononent)},
+                //{"Defender", typeof(DefenderCompononent)},
                 {"ObstructableUnit", typeof(ObstructableUnitComponent)},
                 {"UnitStats", typeof(UnitStatsComponent)},
                 {"Moveable", typeof(MoveableComponent)},
                 {"AttackableComponent", typeof(AttackableComponent)},
                 {"FullyEquipped", typeof(FullyEquippedComponent)},
                 {"CanWieldAll", typeof(CanWieldAllComponent)},
+				{"BasicAttack", typeof(BasicAttackComponent)},
 
             };
             var validEntityList = new Dictionary<string, Type> {
