@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace Assets.Code.Entities.Components {
 
-    [Flags] public enum LayerFlag { // IN ORDER OF PRIORITY HANDLING
-        Ui = 1 << 5,
+    [Flags] public enum LayerFlag {
         Default = 0,
         TransparentFx = 1,
         IgnoreRayCast = 1 << 2,
