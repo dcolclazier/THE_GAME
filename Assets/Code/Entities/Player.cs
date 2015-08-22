@@ -34,10 +34,5 @@ namespace Assets.Code.Entities {
             
         }
 
-		public void test()
-		{
-
-		}
-
     }
 }

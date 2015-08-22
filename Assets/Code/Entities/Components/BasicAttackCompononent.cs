@@ -56,7 +56,6 @@ namespace Assets.Code.Entities.Components {
 			//draw gold box around ability
 			//show range of ability even without mouse hovering over, from unit current local
 			//change enemies in range tint red to show targetable
-
 		}
 		private void DoAttack()
 		{
