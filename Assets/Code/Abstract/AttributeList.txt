@@ -45,7 +45,7 @@ with a brief description as to their use.
 
 "CurrentPath"
 
-"CurrentPathTarget"
+"CurrentPathTarget" - returns Vector2 - 
 
 "CurrentlyPathing"
 

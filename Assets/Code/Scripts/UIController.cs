@@ -104,6 +104,15 @@ public class UIController : MonoBehaviour {
 	{
 		Messenger.Broadcast("AbilityFiveClicked");
 	}
+	public void MouseEnterAbility(int buttonNumber)
+	{
+		Messenger.Broadcast("MouseEnterAbility" + buttonNumber);
+		Debug.Log("Over Button:  " + buttonNumber);
+	}
+	public void MouseExitAbility(int buttonNumber)
+	{
+		Messenger.Broadcast("MouseExitAbility" + buttonNumber);
+	}
 
     public void TestMethod(Vector2 position) {
         
