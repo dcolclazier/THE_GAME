@@ -1,4 +1,5 @@
 using System;
+using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Code.Entities.Components {
@@ -20,6 +21,9 @@ namespace Assets.Code.Entities.Components {
             WeaponRange = 2;
             
             //temp code - shuld go in inventory
+            Messenger.AddListener<Entity, Entity, Entity>("OnMainAttack", OnMainAttack);
+            Messenger.AddListener<Entity, Entity, Entity>("OnSecondaryAttack", OnMainAttack);
+            Messenger.AddListener<Entity, Entity, Entity>("OnParry", OnMainAttack);
             PickupWeapon(Owner);
         }
 
