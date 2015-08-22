@@ -60,7 +60,7 @@ namespace Assets.Code.Entities.Components {
             _selectCircle = new VectorLine("Select Circle", new Vector3[720], null, _lineThickness);
             _selectCircle.Draw3DAuto();
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
-           
+
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener<Vector2>("GroundClicked", OnDeselect);
             

@@ -19,7 +19,10 @@ namespace Assets.Code.Statics {
         public static bool PositionEquals(this Vector2 that, Vector2 rhs) {
             return (Math.Abs(that.x - rhs.x) < .01f && Math.Abs(that.y - rhs.y) < .01f);
         }
-
+        public static bool IsSet(this Enum input, Enum matchTo)
+        {
+            return (Convert.ToUInt32(input) & Convert.ToUInt32(matchTo)) != 0;
+        }
         public static Vector2 GetCenter2D(this PolygonCollider2D poly)
         {
             var highestX = -100000000f;

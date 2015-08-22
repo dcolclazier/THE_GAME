@@ -2,6 +2,20 @@ using System;
 using UnityEngine;
 
 namespace Assets.Code.Entities.Components {
+
+    [Flags] public enum LayerFlag { // IN ORDER OF PRIORITY HANDLING
+        Ui = 1 << 5,
+        Default = 0,
+        TransparentFx = 1,
+        IgnoreRayCast = 1 << 2,
+        Water = 1 << 4,
+        Props = 1 << 8,
+        SelectCircle = 1 << 9,
+        Ground = 1 << 10,
+        NoWalk = 1 << 11,
+        //All = Default | TransparentFx | IgnoreRayCast | Water | Ui | Props | SelectCircle | Ground | NoWalk
+    }
+    
     public abstract class Weapon : Entity, IWeapon, IOwnable, IPickupable {
         public virtual void Wield() {
             throw new System.NotImplementedException();
