@@ -74,9 +74,4 @@ namespace Assets.Code.Entities.Components {
 
         public Entity Parent { get; set; }
     }
-
-
-    public enum WeaponType {
-        OneHand, TwoHand, Dual, ShortRange, LongRange
-    }
 }

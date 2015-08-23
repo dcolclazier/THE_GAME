@@ -37,7 +37,7 @@ namespace Assets.Code.Abstract {
 
             };
             var validEntityList = new Dictionary<string, Type> {
-                {"BasicWoodenSword", typeof(BasicWoodenSword)},
+                //{"BasicWoodenSword", typeof(BasicWoodenSword)},
             };
             
             foreach (var c in ComponentsToInit) {
@@ -74,24 +74,6 @@ namespace Assets.Code.Abstract {
                 else myParent.Attributes.Update(entry.Key, entry.Value);
             }
             Messenger.Broadcast("EntityCreated", myParent);
-        }
-    }
-
-    public class TooltipComponent : IComponent {
-        public Entity Parent { get; set; }
-
-        public List<string> Dependencies {
-            get { return new List<string>() {
-                "GameObject"
-            }; }
-        }
-
-        public void OnUpdate() {
-            throw new NotImplementedException();
-        }
-
-        public void Init() {
-            Parent.Attributes.Register("TooltipMessage","JUST THE TOOLTIP");
         }
     }
 }

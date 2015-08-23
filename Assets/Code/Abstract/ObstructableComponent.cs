@@ -12,7 +12,7 @@ using UnityEngine;
 */
         
 namespace Assets.Code.Entities.Components {
-    public class ObstructableComponent : IComponent, IToggle {
+    public abstract class ObstructableComponent : IComponent, IToggle {
 
         public List<string> Dependencies {
             get {
@@ -21,14 +21,12 @@ namespace Assets.Code.Entities.Components {
                 };
             }
         }
-        protected void OnSelected(GameObject selectedObject) {
-            if (selectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
-            Solid = false;
+        protected virtual void OnSelected(Entity selectedEntity) {
+            if (selectedEntity != Parent) return;
         }
 
-        protected void OnDeselected(GameObject deselectedObject) {
-            if (deselectedObject != Parent.Attributes.Get<GameObject>("GameObject")) return;
-            Solid = true;
+        protected virtual void OnDeselected(Entity deselectedObject) {
+            if (deselectedObject != Parent) return;
         }
 
         public virtual void OnUpdate() {
@@ -40,9 +38,9 @@ namespace Assets.Code.Entities.Components {
         }
         public virtual void Init()
         {
-            //get the obstruct collider from the game object and register it as an attribute for the entity.
-            ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<Collider2D>();
-            if (ObstructCollider == null) GetOuttaHere();
+            ////get the obstruct collider from the game object and register it as an attribute for the entity.
+            //ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<Collider2D>();
+            //if (ObstructCollider == null) GetOuttaHere();
 
             Parent.Attributes.Register("ObstructCollider", ObstructCollider);
             Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
@@ -50,9 +48,16 @@ namespace Assets.Code.Entities.Components {
 
             CollisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent));
             Parent.Attributes.Register("CollisionNodes", CollisionNodes);
+            
+            //This is deprecated - use "EntitySelected" instead.
+            //Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
+            //Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
+            
+            Messenger.AddListener<Entity>("EntitySelected", OnDeselected);
+            Messenger.AddListener<Entity>("EntityDeselected", OnDeselected);
 
-            Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-            Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
+
+            
             Messenger.AddListener("OnUpdate", OnUpdate);
             Solid = true;
         }

@@ -36,46 +36,7 @@ namespace Assets.Code.Abstract {
                     _lexicon[key].GetType() , type));        
         }
     }
-    static class DictionaryExtensions
-    {
-        public static T Get<T>(this IDictionary<string, object> dictionary, string key)
-        {
-            return (T)dictionary[key];
-        }
 
-        public static bool TryGet<T>(this IDictionary<string, object> dictionary,
-                                     string key, out T value)
-        {
-            object result;
-            if (dictionary.TryGetValue(key, out result) && result is T)
-            {
-                value = (T)result;
-                return true;
-            }
-            value = default(T);
-            return false;
-        }
-
-        public static void Set(this IDictionary<string, object> dictionary,
-                               string key, object value)
-        {
-            dictionary[key] = value;
-        }
-    }
-    public class TestDictionary
-    {
-        private Dictionary<string, object> _dict = new Dictionary<string, object>();
-
-        public void Add<T>(string key, T value) where T : class
-        {
-            _dict.Add(key, value);
-        }
-
-        public T GetValue<T>(string key) where T : class
-        {
-            return _dict[key] as T;
-        }
-    }
     //public sealed class Lexicon : IEnumerable 
     //{
     //    private readonly Dictionary<string, object> _lexicon = new Dictionary<string, object>();

@@ -39,6 +39,7 @@ private void MyFunctionToRun(Entity firstThing, Entity otherThing, float thirdTh
 
 "ObstructionRemoved" - Broadcast whenever an obstructable component switches from being enabled to disabled
 
+This is deprecated... Use EntitySelected instead
 "GameObjectSelected" - includes the GameObject that was selected - broadcast whenever a left mouse click is placed
 						over a unit character in the TestController scene - needs to be refactored to be generic.
 

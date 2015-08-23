@@ -18,34 +18,35 @@ namespace Assets.Code.Entities.Components {
 
             Enabled = true;
             _selectCircle.active = true;
+            
             Parent.Attributes.Update("CurrentlySelected", Enabled);
+            if (Parent.Attributes.Contains("ObstructRadius")) DrawSelected();
 
-            //assign the radius to either the ObstructRadius, the SelectionRadius, or 0f for now - bad code
-
-            var radius = 0f;
-            var position = _selectCollider.transform.position;
-            if (Parent.Attributes.Contains("ObstructRadius"))
-            {
-                radius = Parent.Attributes.Get<float>("ObstructRadius");
-                position = Parent.Attributes.Get<Collider2D>("ObstructCollider").transform.position;
-            }
-            else if (Parent.Attributes.Contains("SelectionRadius")) radius = Parent.Attributes.Get<float>("SelectionRadius");
-            _selectCircle.MakeCircle(position, radius, 360);
-			_selectCircle.Draw3DAuto();
+            //This is deprecated - use "EntitySelected" instead.
             Messenger.Broadcast("GameObjectSelected", Parent.Attributes.Get<GameObject>("GameObject"));
+
+            Messenger.Broadcast("EntitySelected", Parent);
+
         }
-     
+
+        private void DrawSelected() {
+            var radius = Parent.Attributes.Get<float>("ObstructRadius");
+            var position = Parent.Attributes.Get<Collider2D>("ObstructCollider").transform.position;
+            _selectCircle.MakeCircle(position, radius, 360);
+            _selectCircle.Draw3DAuto();
+        }
+
         private void OnDeselect() {
-            //if (!Enabled) return;
-            //var pathTarget = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
-            //var radius = Parent.Attributes.Get<float>("ObstructRadius");
-            //if (Parent.Attributes.Get<bool>("PathIsActive") && Vector2.Distance(pathTarget, position) < radius) return;
             
             Enabled = false;
             _selectCircle.active = false;
 
             Parent.Attributes.Update("CurrentlySelected", Enabled);
+
+            //This is deprecated - use "EntitySelected" instead.
             Messenger.Broadcast("GameObjectDeselected", Parent.Attributes.Get<GameObject>("GameObject"));
+
+            Messenger.Broadcast("EntityDeselected", Parent);
         }
         public void Init() {
             _myGameObject = Parent.Attributes.Get<GameObject>("GameObject");
@@ -59,28 +60,15 @@ namespace Assets.Code.Entities.Components {
             _selectCircle = new VectorLine("Select Circle", new Vector3[720], null, _lineThickness);
             _selectCircle.Draw3DAuto();
             VectorLine.canvas3D.sortingLayerName = "Select Circle";
-
-            
-
-            //Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-            //Messenger.AddListener<Vector2>("GroundClicked", OnDeselect);
             
             Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown",OnLeftMouseDown);
         }
 
         private void OnLeftMouseDown(LayerFlag layer, RaycastHit2D objClicked) {
-            Debug.Log("Got here...");
             if (_myGameObject.layer != UnityUtilites.ConvertBinaryFlag(layer)) return;
 
-            if (objClicked.transform.gameObject != _myGameObject) {
-                OnDeselect();
-            }
-            else {
-                OnSelected(objClicked.transform.gameObject);
-            }
-
-            Debug.Log("A selectable component was clicked on!");
-            //if(myGO != objClicked.)
+            if (objClicked.transform.gameObject != _myGameObject) OnDeselect();
+            else OnSelected(objClicked.transform.gameObject);
         }
 
         private float _lineThickness = 2.0f;
