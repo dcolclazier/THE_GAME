@@ -34,13 +34,13 @@ namespace Assets.Code.Entities.Components {
 			button = GameObject.Find("Button_" + AbilityNum);
 			defaultSprite = button.GetComponent<Image>().sprite;
 			Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-<<<<<<< HEAD
+
 			Messenger.AddListener<Vector2>("GameObjectDeselected", OnDeselect); //method of deselecting should change
 			//Messenger.AddListener<?>("Ability#3Clicked", IAmActivated);
 			//Messenger.AddListener<Entity>("AttackableEnemyClicked", DoAttack);
 
             //Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown");
-=======
+
 			Messenger.AddListener<Vector2>("GroundClicked", OnDeselect); //method of deselecting should change
 			Messenger.AddListener("AbilityOneClicked", IAmActivated);
 			Messenger.AddListener("MouseEnterAbility1", mouseEnter);
@@ -50,7 +50,7 @@ namespace Assets.Code.Entities.Components {
 			rangeCircle.Draw3DAuto();
 			rangeCircle.color = Color.green;
 			//VectorLine.canvas3D.sortingLayerName = "Select Circles";
->>>>>>> 4c14bffd4583ba7a57140995a82a0db2f22474b5
+
 
 		}
 		private void OnSelected(GameObject selectedObj)
