@@ -33,7 +33,8 @@ namespace Assets.Code.Abstract {
                 {"FullyEquipped", typeof(FullyEquippedComponent)},
                 {"CanWieldAll", typeof(CanWieldAllComponent)},
 				{"BasicAttack", typeof(BasicAttackComponent)},
-                {"ToolTip", typeof(TooltipComponent)}
+                {"ToolTip", typeof(TooltipComponent)},
+				{"ArcAttack", typeof(ArcAttackComponent)},
 
             };
             var validEntityList = new Dictionary<string, Type> {
