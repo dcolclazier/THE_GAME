@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Assets.Code.Abstract;
 using UnityEngine.UI;
 using UnityEngine;
-using Assets.Code.Abstract;
 using Assets.Code.Statics;
 using Vectrosity;
 
@@ -19,7 +18,7 @@ namespace Assets.Code.Entities.Components {
 
 		private float range = 1.2f;
 		private int damage = 1;
-		private float _lineThickness = 0.5f;
+		private float _lineThickness = 2.2f;
 
 		public List<string> Dependencies {
 			get { return new List<string>() {
@@ -42,6 +41,7 @@ namespace Assets.Code.Entities.Components {
 			//Messenger.AddListener<Entity>("AttackableEnemyClicked", DoAttack);
 			rangeCircle = new VectorLine("Select Circle", new Vector3[720], null, _lineThickness);
 			rangeCircle.Draw3DAuto();
+			rangeCircle.color = Color.green;
 			//VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
 		}
@@ -83,11 +83,13 @@ namespace Assets.Code.Entities.Components {
 			if (enabled)
 			{
 				//should call this stuff from an external function probably
-				Vector2 where = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
-				if (where == null) where = Parent.Attributes.Get<Vector2>("Position");
-				rangeCircle.MakeCircle(where, range);
+				Vector2 whereMe = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
+				if (whereMe == null) whereMe = Parent.Attributes.Get<Vector2>("Position");
+				rangeCircle.MakeCircle(whereMe, range);
 				rangeCircle.active = true;
-
+				//see if enemy units would be in range
+				Messenger.Broadcast("AttackableInRange", whereMe, range);
+				//tooltip popup
 			}
 		}
 		private void mouseExit()

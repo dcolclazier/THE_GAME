@@ -1,83 +1,81 @@
 ﻿using System;
-using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using Assets.Code.Entities.Components;
 using Assets.Code.Statics;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIController : MonoBehaviour {
+namespace Assets.Code.Scripts {
+    public class UiController : MonoBehaviour {
 
+        private EventSystem _eventSystem; 
+        public void MouseOver(GameObject who) {
+        }
+
+        public void Awake() {
+            _eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+            Messenger.AddListener<Vector2>("RightMouseDown",TestMethod);
+            Messenger.MarkAsPermanent("RightMouseDown");
+        }
+
+        public void Update() {
+            var hoverDelay = .75f;
+            if (Input.GetMouseButtonDown(0)) HandleMouseClick("LeftMouseDown");
+            if (Input.GetMouseButtonDown(1)) HandleMouseClick("RightMouseDown");
+
+            if (_eventSystem.IsPointerOverGameObject()) StartCoroutine("HandleUiHover", hoverDelay);
+            else {
+                StopCoroutine("HandleHover");
+                Messenger.Broadcast("UIHoverStopped");
+            }
+
+        }
+
+        private void HandleMouseClick(string eventToBroadcast) {
+            if (_eventSystem.IsPointerOverGameObject()) return;
+            foreach (LayerFlag layer in Enum.GetValues(typeof(LayerFlag))) {
+                var hit = UnityUtilites.CheckHitOnLayer(layer);
+                if (hit.collider != null) {
+                    Messenger.Broadcast(eventToBroadcast, layer, hit);
+                    Debug.Log("Mouse down on layer " + layer);
+                    break;
+                }
+            }
+        }
+
+        private IEnumerator HandleUiHover(float seconds) {
+            int i = 0;
+            yield return new WaitForSeconds(seconds);
+            if (_eventSystem.IsPointerOverGameObject()) {
+                if (i < 1) {
+                    Messenger.Broadcast("UIHover", Input.mousePosition);
+                    i++;
+                }
+                Debug.Log("Tooltip Appeared here!");
+            }
+        }
     
-
-    private EventSystem _eventSystem; 
-	public void MouseOver(GameObject who) {
-	}
-
-    public void Awake() {
-        _eventSystem = GameObject.Find("EventSystem").GetComponent<UnityEngine.EventSystems.EventSystem>();
-        Messenger.AddListener<Vector2>("RightMouseDown",TestMethod);
-        Messenger.MarkAsPermanent("RightMouseDown");
-    }
-
-    public void Start() {
-        
-
-    }
-    public void Update() {
-        Debug.Log("Running UI Update");
-        if (Input.GetMouseButtonDown(0)) HandleLeftClick();
-        if (Input.GetMouseButtonDown(1)) HandleRightClick();
-    
-    }
-
-    private void HandleRightPress() {
-        if (UIClicked()) return;
-        foreach (LayerFlag layer in Enum.GetValues(typeof(LayerFlag)))
+        public void ClickedButton1()
         {
-            if (UnityUtilites.CheckHitOnLayer(layer))
-            {
-                Messenger.Broadcast("RightMouseHeld", UnityUtilites.MouseWorldPoint(), layer);
-                Debug.Log("Mouse down on layer " + layer);
-            }
+            Messenger.Broadcast("AbilityOneClicked");
         }
-    }
-
-    private void HandleLeftPress() {
-        if (UIClicked()) return;
-        foreach (LayerFlag layer in Enum.GetValues(typeof(LayerFlag)))
+        public void ClickedButton2()
         {
-            if (UnityUtilites.CheckHitOnLayer(layer))
-            {
-                Messenger.Broadcast("LeftMouseHeld", UnityUtilites.MouseWorldPoint(), layer);
-                Debug.Log("Mouse down on layer " + layer);
-            }
+            Messenger.Broadcast("AbilityTwoClicked");
         }
-
-    }
-
-    private void HandleRightClick() {
-        if (UIClicked()) return;
-        foreach (LayerFlag layer in Enum.GetValues(typeof(LayerFlag)))
+        public void ClickedButton3()
         {
-            if (UnityUtilites.CheckHitOnLayer(layer))
-            {
-                Messenger.Broadcast("RightMouseDown", UnityUtilites.MouseWorldPoint(), layer);
-                Debug.Log("Mouse down on layer " + layer);
-            }
+            Messenger.Broadcast("AbilityThreeClicked");
         }
-
-    }
-
-    private void HandleLeftClick() {
-        if (UIClicked()) return;
-        
-        foreach (LayerFlag layer in Enum.GetValues(typeof(LayerFlag))) {
-            if (UnityUtilites.CheckHitOnLayer(layer)) {
-                Messenger.Broadcast("LeftMouseDown",UnityUtilites.MouseWorldPoint(),layer);
-                Debug.Log("Mouse down on layer " + layer);
-            }
+        public void ClickedButton4()
+        {
+            Messenger.Broadcast("AbilityFourClicked");
         }
+        public void ClickedButton5()
+        {
+            Messenger.Broadcast("AbilityFiveClicked");
+        }
+<<<<<<< HEAD
     }
 
     bool UIClicked() {
@@ -113,10 +111,13 @@ public class UIController : MonoBehaviour {
 	{
 		Messenger.Broadcast("MouseExitAbility" + buttonNumber);
 	}
+=======
+>>>>>>> aafafadc2935da9f088f3cc7671efb0cf07b64c1
 
-    public void TestMethod(Vector2 position) {
+        public void TestMethod(Vector2 position) {
         
       
-    }
+        }
 	
+    }
 }

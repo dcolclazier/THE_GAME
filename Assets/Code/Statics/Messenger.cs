@@ -91,8 +91,9 @@ namespace Assets.Code.Statics {
         }
 
         private static BroadcastException CreateBroadcastSignatureException(string eventType) {
-            return new BroadcastException(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
-
+            //return new BroadcastException(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
+            Debug.Log(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
+            return null;
         }
 
 
@@ -153,7 +154,8 @@ namespace Assets.Code.Statics {
             
             var callback = listeners as Callback;
             if (callback != null) callback();
-            else throw CreateBroadcastSignatureException(eventType);
+            else Debug.Log(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
+            //else throw CreateBroadcastSignatureException(eventType);
         }
 
         static public void Broadcast<T>(string eventType, T arg1)
@@ -165,7 +167,8 @@ namespace Assets.Code.Statics {
             
             var callback = listeners as Callback<T>;
             if (callback != null) callback(arg1);
-            else throw CreateBroadcastSignatureException(eventType);
+            else Debug.Log(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
+            //else throw CreateBroadcastSignatureException(eventType);
             
         }
 
@@ -178,7 +181,8 @@ namespace Assets.Code.Statics {
             
             var callback = listeners as Callback<T, T2>;
             if (callback != null) callback(arg1, arg2);
-            else throw CreateBroadcastSignatureException(eventType);
+            else Debug.Log(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
+            //else throw CreateBroadcastSignatureException(eventType);
         }
 
         public static void Broadcast<T, T2, T3>(string eventType, T arg1, T2 arg2, T3 arg3) {
@@ -189,7 +193,8 @@ namespace Assets.Code.Statics {
 
             var callback = listeners as Callback<T, T2, T3>;
             if (callback != null) callback(arg1, arg2, arg3);
-            else throw CreateBroadcastSignatureException(eventType);
+            else Debug.Log(string.Format("Broadcasting message \"{0}\" but no listener found. Try marking the message with Messenger.MarkAsPermanent.", eventType));
+            //else throw CreateBroadcastSignatureException(eventType);
         }
     }
 }

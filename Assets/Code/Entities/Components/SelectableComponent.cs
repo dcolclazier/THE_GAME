@@ -48,9 +48,9 @@ namespace Assets.Code.Entities.Components {
             Parent.Attributes.Update("CurrentlySelected", Enabled);
             Messenger.Broadcast("GameObjectDeselected", Parent.Attributes.Get<GameObject>("GameObject"));
         }
-        public void Init()
-        {
-            _selectCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponentInChildren<Collider2D>();
+        public void Init() {
+            _myGameObject = Parent.Attributes.Get<GameObject>("GameObject");
+            _selectCollider = _myGameObject.GetComponentInChildren<Collider2D>();
             if (_selectCollider == null) GetOuttaHere();
 
             Parent.Attributes.Register("SelectCollider", _selectCollider);
@@ -64,7 +64,19 @@ namespace Assets.Code.Entities.Components {
             Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
             Messenger.AddListener<Vector2>("GroundClicked", OnDeselect);
             
+            //Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown",OnLeftMouseDown);
+        }
+
+        private void OnLeftMouseDown(LayerFlag layer, RaycastHit2D objClicked) {
             
+
+
+
+
+            if (_myGameObject.transform.gameObject.layer != (int)layer) return;
+            Debug.Log(string.Format("My layer is {0} and the layer clicked was {1}",_myGameObject.transform.gameObject.layer, layer));
+            Debug.Log("A selectable component was clicked on!");
+            //if(myGO != objClicked.)
         }
 
         private float _lineThickness = 2.0f;
@@ -73,6 +85,7 @@ namespace Assets.Code.Entities.Components {
         private Collider2D _selectCollider;
         private NodeManager.ColliderType _colliderType;
         private VectorLine _selectCircle;
+        private GameObject _myGameObject;
         public bool Enabled { get; set; }
         private static void GetOuttaHere()
         {

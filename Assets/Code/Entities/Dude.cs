@@ -10,7 +10,7 @@ namespace Assets.Code.Entities {
                 "GameObject",
                 "Obstructable",
                 "Selectable",
-                
+                "AttackableComponent",
 
             };
             NumericalAttributesToSet = new Dictionary<string, int>();

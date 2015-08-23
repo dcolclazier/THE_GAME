@@ -24,8 +24,8 @@ namespace Assets.Code.Entities.Components {
 
             var selected = Parent.Attributes.Get<bool>("CurrentlySelected");
             var pathActive = Parent.Attributes.Get<bool>("PathIsActive");
-            Debug.Log("Currently Selected? " + selected );
-            Debug.Log("Path active? " + pathActive );
+            //Debug.Log("Currently Selected? " + selected );
+            //Debug.Log("Path active? " + pathActive );
             if (!selected) return;
             //if (Parent.Attributes.Get<bool>("CurrentlyPathing")) return;
             if (!pathActive) return;

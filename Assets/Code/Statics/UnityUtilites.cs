@@ -24,18 +24,18 @@ namespace Assets.Code.Statics {
             return hit;
         }
 
-        public static IEnumerable<LayerFlag> GetFlags(int input) {
-            var flag = (LayerFlag)input;
-            foreach (LayerFlag value in Enum.GetValues(flag.GetType()))
-            {
-                if (value.IsSet((LayerFlag) input)) {
-                    Debug.Log("Got one!");
-                    yield return value;
-                }
-            }
+        //public static IEnumerable<LayerFlag> GetFlags(int input) {
+        //    var flag = (LayerFlag)input;
+        //    foreach (LayerFlag value in Enum.GetValues(flag.GetType()))
+        //    {
+        //        if (value.IsSet((LayerFlag) input)) {
+        //            Debug.Log("Got one!");
+        //            yield return value;
+        //        }
+        //    }
                 
 
-        }
+        //}
         
     }
 }
