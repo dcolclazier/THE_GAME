@@ -35,7 +35,7 @@ namespace Assets.Code.Entities.Components {
             Messenger.Broadcast("GameObjectSelected", Parent.Attributes.Get<GameObject>("GameObject"));
         }
      
-        private void OnDeselect(Vector2 position) {
+        private void OnDeselect() {
             //if (!Enabled) return;
             //var pathTarget = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
             //var radius = Parent.Attributes.Get<float>("ObstructRadius");
@@ -73,7 +73,7 @@ namespace Assets.Code.Entities.Components {
             if (_myGameObject.layer != UnityUtilites.ConvertBinaryFlag(layer)) return;
 
             if (objClicked.transform.gameObject != _myGameObject) {
-                OnDeselect(Input.mousePosition);
+                OnDeselect();
             }
             else {
                 OnSelected(objClicked.transform.gameObject);

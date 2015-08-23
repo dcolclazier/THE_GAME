@@ -35,13 +35,13 @@ namespace Assets.Code.Entities.Components {
 			defaultSprite = button.GetComponent<Image>().sprite;
 			Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
 
-			Messenger.AddListener<Vector2>("GameObjectDeselected", OnDeselect); //method of deselecting should change
+			Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselect); //method of deselecting should change
 			//Messenger.AddListener<?>("Ability#3Clicked", IAmActivated);
 			//Messenger.AddListener<Entity>("AttackableEnemyClicked", DoAttack);
 
             //Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown");
 
-			Messenger.AddListener<Vector2>("GroundClicked", OnDeselect); //method of deselecting should change
+			Messenger.AddListener<GameObject>("GroundClicked", OnDeselect); //method of deselecting should change
 			Messenger.AddListener("AbilityOneClicked", IAmActivated);
 			Messenger.AddListener("MouseEnterAbility1", mouseEnter);
 			Messenger.AddListener("MouseExitAbility1", mouseExit);
@@ -64,7 +64,7 @@ namespace Assets.Code.Entities.Components {
 		        Debug.Log ("SHOW THE ABILITY ICON");
 		    }
 		}
-		private void OnDeselect(Vector2 blah)
+		private void OnDeselect(GameObject deselectedObject)
 		{
 			if (!enabled || Parent.Attributes.Get<bool>("CurrentlySelected")) return;
             Debug.Log("HIDE THE ABILITY ICON");
