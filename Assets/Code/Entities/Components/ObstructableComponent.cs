@@ -12,7 +12,7 @@ using UnityEngine;
 */
         
 namespace Assets.Code.Entities.Components {
-    public class ObstructableComponent : IComponent, IToggle {
+    public abstract class ObstructableComponent : IComponent, IToggle {
 
         public List<string> Dependencies {
             get {

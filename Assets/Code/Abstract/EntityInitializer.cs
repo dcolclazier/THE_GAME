@@ -52,7 +52,7 @@ namespace Assets.Code.Abstract {
                 else {
                     var temp = Activator.CreateInstance(componentList[c]);
                     var component = temp as IComponent;
-                    if (component == null) continue;
+					if (component == null) throw new NullReferenceException("NULL REF EXECPTION FOUND IN ENTITY INITIALIZER");
                     component.Parent = myParent;
                     component.Init();
                     myParent.Components.Register(c, component);

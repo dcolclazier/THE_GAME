@@ -7,74 +7,44 @@ using Vectrosity;
 
 
 namespace Assets.Code.Entities.Components {
-	internal class ArcAttackComponent : IComponent {
-		
-		private Sprite[] sprite = Resources.LoadAll<Sprite>("diablo_pack");
-		private int spriteNum = 10;
-		private int AbilityNum = 1;
-		private GameObject button;
-		private Sprite defaultSprite;
-		private bool enabled;
-		private VectorLine rangeCircle;
-		
-		private float range = 1.2f;
-		private int damage = 1;
-		private float _lineThickness = 2.2f;
-		
-		public List<string> Dependencies {
-			get { return new List<string>() {
-					"Selectable"	
-				}; }
+	public class ArcAttackComponent : UnitAbility {
+
+		public override void Init() {
+			sprite = Resources.LoadAll<Sprite>("diablo_pack");
+			spriteNum = 8;
+			AbilityNum = 1;
+			damage = 1;
+			range = 3;
+			base.Init();
 		}
-		
-		public void OnUpdate() {
+
+		public override void OnUpdate() {
 			throw new System.NotImplementedException();
 		}
-		
-		public void Init() {
-			button = GameObject.Find("Button_" + AbilityNum);
-			defaultSprite = button.GetComponent<Image>().sprite;
-			Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-			Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselect); //method of deselecting should change
-			//Messenger.AddListener<Entity>("AttackableEnemyClicked", DoAttack);
-			Messenger.AddListener<GameObject>("GroundClicked", OnDeselect); //method of deselecting should change
-			Messenger.AddListener("AbilityOneClicked", IAmActivated);
-			Messenger.AddListener("MouseEnterAbility1", mouseEnter);
-			Messenger.AddListener("MouseExitAbility1", mouseExit);
 
-			rangeCircle = new VectorLine("Select Circle", new Vector3[720], null, _lineThickness);
-			rangeCircle.Draw3DAuto();
-			rangeCircle.color = Color.green;
-		}
 
-		private void OnSelected(GameObject selectedObj)
+		protected override void OnSelected(GameObject selectedObj)
 		{
-			//if the object selected was us, enabled = true - otherwise, enable = false.
-			enabled = selectedObj == Parent.Attributes.Get<GameObject>("GameObject");			
-			if (enabled && Parent.Attributes.Get<bool>("CurrentlySelected")) 
-			{
-				button.GetComponent<Image>().sprite = sprite[spriteNum];
-			}
+
+			base.OnSelected(selectedObj);
 		}
 
-		private void OnDeselect(GameObject deselectedObject)
+		protected override void OnDeselect(GameObject deselectedObject)
 		{
-			if (!enabled || Parent.Attributes.Get<bool>("CurrentlySelected")) return;
-			button.GetComponent<Image>().sprite = defaultSprite;
+
+			base.OnDeselect(deselectedObject);
 		}
 
-		private void IAmActivated()
+		protected override void IAmActivated()
 		{
-			if (enabled)
-			{
-				//Activated = true;
-				//draw gold box around ability
-				//show range of ability even without mouse hovering over, from unit current local
-				//change enemies in range tint red to show targetable
-			}
+			if (!enabled) return;
+			//Activated = true;
+			//draw gold box around ability
+			//show range of ability even without mouse hovering over, from unit current local
+			//change enemies in range tint red to show targetable
 		}
 
-		private void DoAttack()
+		protected override void DoAttack()
 		{
 			//if (activated = true) do the attack stuff 
 			//calculate to damage done
@@ -82,27 +52,16 @@ namespace Assets.Code.Entities.Components {
 			//play animation
 		}
 
-		private void mouseEnter()
+		protected override void mouseEnter()
 		{
-			if (enabled)
-			{
-				//should call this stuff from an external function probably
-				Vector2 whereMe = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
-				if (whereMe == null) whereMe = Parent.Attributes.Get<Vector2>("Position");
-				rangeCircle.MakeCircle(whereMe, range);
-				rangeCircle.active = true;
-				//see if enemy units would be in range
-				Messenger.Broadcast("AttackableInRange", whereMe, range);
-				//tooltip popup
-			}
+			if (!enabled) return;
+			RangeArc(rangeCircle, range, 45);
 		}
 
-		private void mouseExit()
+		protected override void mouseExit()
 		{
-			rangeCircle.active = false;
-			Messenger.Broadcast("AttackableStopHighlight");
+
+			base.mouseExit();
 		}
-		
-		public Entity Parent { get; set; }
 	}
 }
