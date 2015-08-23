@@ -106,6 +106,7 @@ namespace Assets.Code.Entities.Components {
 		private void mouseExit()
 		{
 			rangeCircle.active = false;
+			Messenger.Broadcast("AttackableStopHighlight");
 		}
 
 		public Entity Parent { get; set; }

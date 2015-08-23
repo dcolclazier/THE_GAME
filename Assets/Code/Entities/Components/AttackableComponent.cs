@@ -17,6 +17,7 @@ namespace Assets.Code.Entities.Components {
         public void Init() {
             Parent.Attributes.Register("AttackableComponent", true);
 			Messenger.AddListener<Vector2, float>("AttackableInRange", inAttackRange);
+			Messenger.AddListener("AttackableStopHighlight", stopHighlight);
         }
 
 		private void inAttackRange(Vector2 where, float range)
@@ -29,9 +30,13 @@ namespace Assets.Code.Entities.Components {
 
 			if (Vector2.Distance(where, mePos) < meRadius + range)
 			{
-
 				me.GetComponent<SpriteRenderer>().color = Color.red;
 			}
+		}
+		private void stopHighlight()
+		{
+			GameObject me = Parent.Attributes.Get<GameObject>("GameObject");
+			me.GetComponent<SpriteRenderer>().color = Color.white;
 		}
     }
 }
