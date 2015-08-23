@@ -7,7 +7,7 @@ namespace Assets.Code.Entities {
             
             ComponentsToInit = new List<string>() {
                 "GameObject",
-                "ObstructableProp"
+                "ObstructableProp",
             };
             NumericalAttributesToSet = new Dictionary<string, int>();
             StringAttributesToSet = new Dictionary<string, string>();

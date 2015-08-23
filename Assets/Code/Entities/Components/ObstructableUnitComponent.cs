@@ -57,13 +57,15 @@ namespace Assets.Code.Entities.Components {
                     "Trying to init an SelectablUnit Component, but init couldn't find the collider. " +
                     "Make sure it is attached to the game object itself, not the child ObstructCollider object. ");
         }
-        protected override void DrawSelected()
+        protected override void DrawSelectVisual()
         {
             Debug.Log("Running Unit Draw....");
             var position = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider").transform.position.ToVector2() + SelectCollider.offset;
-            _selectCircle.MakeCircle(position, SelectRadius, 360);
-            _selectCircle.Draw3DAuto();
+            SelectCircle.MakeCircle(position, SelectRadius, 360);
+            SelectCircle.Draw3DAuto();
         }
+
+       
     }
     public sealed class SelectablePropComponent : SelectableComponent
     {
@@ -84,11 +86,11 @@ namespace Assets.Code.Entities.Components {
                     "Make sure it is attached to a child Child GameObject named selectCollider ");
         }
 
-        protected override void DrawSelected() {
+        protected override void DrawSelectVisual() {
             var position = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider").transform.position.ToVector2()+SelectCollider.offset;
             Debug.Log("Naa, you're not crazy...");
-            _selectCircle.MakeCircle(position,SelectRadius,360);
-            _selectCircle.Draw3DAuto();
+            SelectCircle.MakeCircle(position,SelectRadius,360);
+            SelectCircle.Draw3DAuto();
         }
 
         protected override void OnDeselect() {
