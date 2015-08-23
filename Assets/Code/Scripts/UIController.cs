@@ -76,6 +76,44 @@ namespace Assets.Code.Scripts {
         {
             Messenger.Broadcast("AbilityFiveClicked");
         }
+<<<<<<< HEAD
+    }
+
+    bool UIClicked() {
+        return _eventSystem.IsPointerOverGameObject();
+    }
+
+    public void ClickedButton1()
+	{
+		Messenger.Broadcast("AbilityOneClicked");
+	}
+	public void ClickedButton2()
+	{
+		Messenger.Broadcast("AbilityTwoClicked");
+	}
+	public void ClickedButton3()
+	{
+		Messenger.Broadcast("AbilityThreeClicked");
+	}
+	public void ClickedButton4()
+	{
+		Messenger.Broadcast("AbilityFourClicked");
+	}
+	public void ClickedButton5()
+	{
+		Messenger.Broadcast("AbilityFiveClicked");
+	}
+	public void MouseEnterAbility(int buttonNumber)
+	{
+		Messenger.Broadcast("MouseEnterAbility" + buttonNumber);
+		Debug.Log("Over Button:  " + buttonNumber);
+	}
+	public void MouseExitAbility(int buttonNumber)
+	{
+		Messenger.Broadcast("MouseExitAbility" + buttonNumber);
+	}
+=======
+>>>>>>> aafafadc2935da9f088f3cc7671efb0cf07b64c1
 
         public void TestMethod(Vector2 position) {
         
