@@ -30,10 +30,11 @@ namespace Assets.Code.Entities.Components {
 			button = GameObject.Find("Button_" + AbilityNum);
 			defaultSprite = button.GetComponent<Image>().sprite;
 			Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-			Messenger.AddListener<Vector2>("GroundClicked", OnDeselect); //method of deselecting should change
+			Messenger.AddListener<Vector2>("GameObjectDeselected", OnDeselect); //method of deselecting should change
 			//Messenger.AddListener<?>("Ability#3Clicked", IAmActivated);
 			//Messenger.AddListener<Entity>("AttackableEnemyClicked", DoAttack);
 
+            //Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown");
 
 		}
 		private void OnSelected(GameObject selectedObj)
@@ -41,13 +42,16 @@ namespace Assets.Code.Entities.Components {
 			//if the object selected was us, enabled = true - otherwise, enable = false.
 			enabled = selectedObj == Parent.Attributes.Get<GameObject>("GameObject");
 
-			if (enabled) button.GetComponent<Image>().sprite = sprite[108];
-			Debug.Log ("SHOW THE ABILITY ICON");
 
+		    if (enabled && Parent.Attributes.Get<bool>("CurrentlySelected")) {
+		        button.GetComponent<Image>().sprite = sprite[108];
+		        Debug.Log ("SHOW THE ABILITY ICON");
+		    }
 		}
 		private void OnDeselect(Vector2 blah)
 		{
-			if (!enabled) return;
+			if (!enabled || Parent.Attributes.Get<bool>("CurrentlySelected")) return;
+            Debug.Log("HIDE THE ABILITY ICON");
 			button.GetComponent<Image>().sprite = defaultSprite;
 		}
 		private void IAmActivated()

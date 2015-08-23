@@ -15,36 +15,35 @@ namespace Assets.Code.Entities.Components {
             }
         }
         private void OnSelected(GameObject selectedObj) {
-            
-            //if the object selected was us, enabled = true - otherwise, enable = false.
-            Enabled = selectedObj == Parent.Attributes.Get<GameObject>("GameObject");
 
-            //Update the currentlySelected attribute and Enable/Disable the select circle
+            Enabled = true;
+            _selectCircle.active = true;
             Parent.Attributes.Update("CurrentlySelected", Enabled);
-            _selectCircle.active = Enabled;
 
             //assign the radius to either the ObstructRadius, the SelectionRadius, or 0f for now - bad code
+
             var radius = 0f;
             var position = _selectCollider.transform.position;
-            if (Parent.Attributes.Contains("ObstructRadius")) {
+            if (Parent.Attributes.Contains("ObstructRadius"))
+            {
                 radius = Parent.Attributes.Get<float>("ObstructRadius");
                 position = Parent.Attributes.Get<Collider2D>("ObstructCollider").transform.position;
             }
             else if (Parent.Attributes.Contains("SelectionRadius")) radius = Parent.Attributes.Get<float>("SelectionRadius");
             _selectCircle.MakeCircle(position, radius, 360);
 			_selectCircle.Draw3DAuto();
-
+            Messenger.Broadcast("GameObjectSelected", Parent.Attributes.Get<GameObject>("GameObject"));
         }
      
         private void OnDeselect(Vector2 position) {
-            if (!Enabled) return;
-            var pathTarget = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
-            var radius = Parent.Attributes.Get<float>("ObstructRadius");
-            if (Parent.Attributes.Get<bool>("PathIsActive") && Vector2.Distance(pathTarget, position) < radius) return;
-
-
+            //if (!Enabled) return;
+            //var pathTarget = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
+            //var radius = Parent.Attributes.Get<float>("ObstructRadius");
+            //if (Parent.Attributes.Get<bool>("PathIsActive") && Vector2.Distance(pathTarget, position) < radius) return;
+            
             Enabled = false;
             _selectCircle.active = false;
+
             Parent.Attributes.Update("CurrentlySelected", Enabled);
             Messenger.Broadcast("GameObjectDeselected", Parent.Attributes.Get<GameObject>("GameObject"));
         }
@@ -59,22 +58,27 @@ namespace Assets.Code.Entities.Components {
 
             _selectCircle = new VectorLine("Select Circle", new Vector3[720], null, _lineThickness);
             _selectCircle.Draw3DAuto();
-            VectorLine.canvas3D.sortingLayerName = "Select Circles";
+            VectorLine.canvas3D.sortingLayerName = "Select Circle";
 
-            Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-            Messenger.AddListener<Vector2>("GroundClicked", OnDeselect);
             
-            //Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown",OnLeftMouseDown);
+
+            //Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
+            //Messenger.AddListener<Vector2>("GroundClicked", OnDeselect);
+            
+            Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown",OnLeftMouseDown);
         }
 
         private void OnLeftMouseDown(LayerFlag layer, RaycastHit2D objClicked) {
-            
+            Debug.Log("Got here...");
+            if (_myGameObject.layer != UnityUtilites.ConvertBinaryFlag(layer)) return;
 
+            if (objClicked.transform.gameObject != _myGameObject) {
+                OnDeselect(Input.mousePosition);
+            }
+            else {
+                OnSelected(objClicked.transform.gameObject);
+            }
 
-
-
-            if (_myGameObject.transform.gameObject.layer != (int)layer) return;
-            Debug.Log(string.Format("My layer is {0} and the layer clicked was {1}",_myGameObject.transform.gameObject.layer, layer));
             Debug.Log("A selectable component was clicked on!");
             //if(myGO != objClicked.)
         }

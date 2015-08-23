@@ -23,6 +23,16 @@ namespace Assets.Code.Statics {
             var hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, (int)layer);
             return hit;
         }
+        public static int ConvertBinaryFlag(LayerFlag test) {
+            int i = 0;
+            var test2 = (int) test;
+            do {
+                i++;
+                test2 /= 2;
+            } while (test2 != 1);
+            //Debug.Log("Converted " + (int)test + " to " + i);
+            return i;
+        }
 
         //public static IEnumerable<LayerFlag> GetFlags(int input) {
         //    var flag = (LayerFlag)input;

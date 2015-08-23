@@ -32,6 +32,7 @@ namespace Assets.Code.Scripts {
         }
 
         private void HandleMouseClick(string eventToBroadcast) {
+            //Gets top most layer clicked, and broadcast the object it hits if it hits anything, along with the layer
             if (_eventSystem.IsPointerOverGameObject()) return;
             foreach (LayerFlag layer in Enum.GetValues(typeof(LayerFlag))) {
                 var hit = UnityUtilites.CheckHitOnLayer(layer);

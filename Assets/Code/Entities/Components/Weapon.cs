@@ -4,16 +4,13 @@ using UnityEngine;
 namespace Assets.Code.Entities.Components {
 
     [Flags] public enum LayerFlag { //In order of precedence
-        Props = 1 << 8,
-        NoWalk = 1 << 10,
-        SelectCircle = 1 << 9,
-        //Water = 1 << 4,
-        Ground = 1 << 11,
-        //Default = 0,
-        //TransparentFx = 1,
-        //IgnoreRayCast = 1 << 2,
-        //All = Default | TransparentFx | IgnoreRayCast | Water | Ui | Props | SelectCircle | Ground | NoWalk
+        Units = 1 << 8,
+        Props = 1 << 9,
+        SelectCircle = 1 << 10,
+        NoWalk = 1 << 11,
+        Ground = 1 << 12,
     }
+    
     
     public abstract class Weapon : Entity, IWeapon, IOwnable, IPickupable {
         public virtual void Wield() {
