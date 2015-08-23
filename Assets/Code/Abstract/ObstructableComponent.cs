@@ -39,8 +39,6 @@ namespace Assets.Code.Entities.Components {
         public virtual void Init()
         {
             ////get the obstruct collider from the game object and register it as an attribute for the entity.
-            //ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<Collider2D>();
-            //if (ObstructCollider == null) GetOuttaHere();
 
             Parent.Attributes.Register("ObstructCollider", ObstructCollider);
             Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
@@ -49,16 +47,10 @@ namespace Assets.Code.Entities.Components {
             CollisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent));
             Parent.Attributes.Register("CollisionNodes", CollisionNodes);
             
-            //This is deprecated - use "EntitySelected" instead.
-            //Messenger.AddListener<GameObject>("GameObjectSelected", OnSelected);
-            //Messenger.AddListener<GameObject>("GameObjectDeselected", OnDeselected);
-            
             Messenger.AddListener<Entity>("EntitySelected", OnDeselected);
             Messenger.AddListener<Entity>("EntityDeselected", OnDeselected);
-
-
-            
             Messenger.AddListener("OnUpdate", OnUpdate);
+            
             Solid = true;
         }
         public bool Enabled { get; private set; }

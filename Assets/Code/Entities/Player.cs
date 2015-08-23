@@ -9,7 +9,7 @@ namespace Assets.Code.Entities {
                 "GameObject",
                 "UnitStats",
                 "ObstructableUnit",
-                "Selectable",
+                "SelectableUnit",
                 "Pathfinding",
                 "Moveable",
                 //"AttackableComponent",
@@ -18,7 +18,7 @@ namespace Assets.Code.Entities {
 				"BasicAttack"
             };
             EntitysToInclude = new List<string>() {
-                "BasicWoodenSword",
+                //"BasicWoodenSword",
             };
             NumericalAttributesToSet = new Dictionary<string, int>() {
                  {"Strength", 18},

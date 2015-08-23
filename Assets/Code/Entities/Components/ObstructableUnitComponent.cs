@@ -8,27 +8,17 @@ using UnityEngine;
 namespace Assets.Code.Entities.Components {
     public class ObstructableUnitComponent : ObstructableComponent {
         
-        public override void Init()
-        {
-            ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponentInChildren<CircleCollider2D>();
+        public override void Init() {
+            ObstructCollider = Parent.Attributes.Get<GameObject>("GameObject").GetComponent<CircleCollider2D>();
             if (ObstructCollider == null) GetOuttaHere();
-            Parent.Attributes.Register("ObstructRadius", ((CircleCollider2D)ObstructCollider).radius);
+
+            var circleCollider2D = (CircleCollider2D) ObstructCollider;
+            if (circleCollider2D == null)
+                throw new NullReferenceException("Circle Collider on ObstructableUnit was null");
+            
+            Parent.Attributes.Register("ObstructRadius", circleCollider2D.radius);
 
             base.Init();
-            
-            //Parent.Attributes.Register("ObstructCollider", ObstructCollider);
-            //Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
-            //Parent.Attributes.Register("CurrentlyObstructing", true);
-            
-            //CollisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent));
-            //Parent.Attributes.Register("CollisionNodes", CollisionNodes);
-            
-            //Messenger.AddListener<Entity>("EntitySelected", OnDeselected);
-            //Messenger.AddListener<Entity>("EntityDeselected", OnDeselected);
-
-
-            //Messenger.AddListener("OnUpdate",OnUpdate);
-            //Solid = true;
         }
 
         public override void GetOuttaHere() {
@@ -46,6 +36,65 @@ namespace Assets.Code.Entities.Components {
             base.OnSelected(selectedEntity);
 
             Solid = true;
+        }
+    }
+    public sealed class SelectableUnitComponent : SelectableComponent
+    {
+        
+        public override void Init()
+        {
+            MyGameObject = Parent.Attributes.Get<GameObject>("GameObject");
+            SelectCollider = MyGameObject.GetComponentInChildren<Collider2D>();
+            if (SelectCollider == null) GetOuttaHere();
+
+            SelectRadius = Parent.Attributes.Get<float>("ObstructRadius");
+
+            base.Init();
+        }
+        protected override void GetOuttaHere()
+        {
+            throw new Exception(
+                    "Trying to init an SelectablUnit Component, but init couldn't find the collider. " +
+                    "Make sure it is attached to the game object itself, not the child ObstructCollider object. ");
+        }
+        protected override void DrawSelected()
+        {
+            Debug.Log("Running Unit Draw....");
+            var position = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider").transform.position.ToVector2() + SelectCollider.offset;
+            _selectCircle.MakeCircle(position, SelectRadius, 360);
+            _selectCircle.Draw3DAuto();
+        }
+    }
+    public sealed class SelectablePropComponent : SelectableComponent
+    {
+        public override void Init()
+        {
+            MyGameObject = Parent.Attributes.Get<GameObject>("GameObject");
+            SelectCollider = MyGameObject.GetComponentInChildren<Collider2D>();
+            if (SelectCollider == null) GetOuttaHere();
+
+            SelectRadius = Parent.Attributes.Get<float>("ObstructRadius");
+            
+            base.Init();
+        }
+        protected override void GetOuttaHere()
+        {
+            throw new Exception(
+                    "Trying to init an SelectableProp Component, but init couldn't find the collider. " +
+                    "Make sure it is attached to a child Child GameObject named selectCollider ");
+        }
+
+        protected override void DrawSelected() {
+            var position = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider").transform.position.ToVector2()+SelectCollider.offset;
+            Debug.Log("Naa, you're not crazy...");
+            _selectCircle.MakeCircle(position,SelectRadius,360);
+            _selectCircle.Draw3DAuto();
+        }
+
+        protected override void OnDeselect() {
+            
+            
+            base.OnDeselect();
         }
     }
 }

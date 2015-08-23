@@ -21,8 +21,8 @@ namespace Assets.Code.Abstract {
 
            var componentList = new Dictionary<string, Type> {
                 {"GameObject", typeof(GameObjectComponent)},
-                {"Selectable", typeof(SelectableComponent)},
-                {"Obstructable", typeof(ObstructableComponent)},
+                {"SelectableUnit", typeof(SelectableUnitComponent)},
+                {"ObstructableProp", typeof(ObstructableComponent)},
                 {"Pathfinding", typeof(PathFindingComponent)},
                 {"IronBowRangedAttack", typeof(IronBowRangedAttackComponent)},
                 //{"Defender", typeof(DefenderCompononent)},
