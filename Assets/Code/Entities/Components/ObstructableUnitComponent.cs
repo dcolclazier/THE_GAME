@@ -61,7 +61,8 @@ namespace Assets.Code.Entities.Components {
         protected override void DrawSelectVisual()
         {
             //Debug.Log("Running Unit Draw....");
-            var position = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider").transform.position.ToVector2() + SelectCollider.offset;
+            var position = Parent.Attributes.Get<Vector2>("Position");
+            //var position = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider").transform.position.ToVector2() + SelectCollider.offset;
             SelectCircle.MakeCircle(position, SelectRadius, 360);
             SelectCircle.Draw3DAuto();
         }

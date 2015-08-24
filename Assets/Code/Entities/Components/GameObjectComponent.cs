@@ -28,12 +28,15 @@ namespace Assets.Code.Entities.Components {
         }
 
         public void OnUpdate() {
-            if (_entityPosition.Equals(Go.transform.position.ToVector2())) return;
-            var offset = Go.GetComponent<Collider2D>().offset;
-            Debug.Log(string.Format("offset: x: " + offset.x + " y: " + offset.y));
             _entityPosition = (Vector2)Go.transform.position + Go.GetComponent<Collider2D>().offset;
+            if (Parent.Attributes.Get<Vector2>("Position") == _entityPosition) return;
+
             Parent.Attributes.Update("Position", _entityPosition);
+
+            //var offset = Go.GetComponent<Collider2D>().offset;
+            //Debug.Log(string.Format("offset: x: " + offset.x + " y: " + offset.y));
             Messenger.Broadcast("GameObjectMoved", Parent);
+            Messenger.Broadcast("EntityMoved", Parent);
         }
         public void Init() {
             Go = Parent.Attributes.Get<GameObject>("GameObject");

@@ -64,6 +64,14 @@ namespace Assets.Code.Entities.Components {
             VectorLine.canvas3D.sortingLayerName = "Select Circle";
             
             Messenger.AddListener<LayerFlag, RaycastHit2D>("LeftMouseDown",OnLeftMouseDown);
+            Messenger.AddListener<Entity>("EntityMoved",EntityMoved);
+        }
+
+        private void EntityMoved(Entity entity) {
+            if (entity != Parent) return;
+            DrawSelectVisual();
+
+
         }
 
         private float GetRadius() {
