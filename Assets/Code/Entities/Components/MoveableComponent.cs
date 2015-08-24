@@ -9,6 +9,7 @@ namespace Assets.Code.Entities.Components {
     public class MoveableComponent : IComponent{
         private GameObjectComponent _myGoComponent;
         private GameObject _myGameObject;
+        private Vector2 _myOffset;
 
         public List<string> Dependencies {
             get {
@@ -39,7 +40,7 @@ namespace Assets.Code.Entities.Components {
                     var gameObject = Parent.Attributes.Get<GameObject>("GameObject");
                     var goComponent = Parent.Attributes.Get<GameObjectComponent>("GameObjectComponent");
                     var path = Parent.Attributes.Get<List<Vector3>>("CurrentPath");
-                    Parent.Attributes.Update("CurrentMoveSource", gameObject.transform.position.ToVector2());
+                    //Parent.Attributes.Update("CurrentMoveSource", gameObject.transform.position.ToVector2());
                     foreach (var point in path) {
                         Parent.Attributes.Update("CurrentMoveTarget", point.ToVector2());
                         goComponent.StartUnityCoroutine(Move);
@@ -50,25 +51,28 @@ namespace Assets.Code.Entities.Components {
         
         public IEnumerator Move() {
             var speed = Parent.Attributes.Get<float>("MovementSpeed"); //Commplex algorithm here
-            var from = Parent.Attributes.Get<Vector2>("CurrentMoveSource");
+            var from = Parent.Attributes.Get<Vector2>("Position");
+            //var from = Parent.Attributes.Get<Vector2>("CurrentMoveSource");
             var to = Parent.Attributes.Get<Vector2>("CurrentMoveTarget");
-            var step = (speed*.75f / Vector2.Distance(from,to)) * Time.fixedDeltaTime;
+            var step = (speed*.5f / Vector2.Distance(from,to)) * Time.fixedDeltaTime;
             float t = 0;
             while (t <= 1.0f) {
                 t += step; // Goes from 0 to 1, incrementing by step each time
-                _myGameObject.transform.position = Vector3.Lerp(from, to, t); // Move objectToMove closer to b
+                _myGameObject.transform.position = Vector3.Lerp(from, to, t).ToVector2() - _myOffset; // Move objectToMove closer to b
+                //_myGameObject.transform.position = Vector3.Lerp(from, to, t).ToVector2() - _myGameObject.GetComponent<Collider2D>().offset; // Move objectToMove closer to b
                 yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
             }
-            _myGameObject.transform.position = to;
-            Parent.Attributes.Update("CurrentMoveSource", to);
+            _myGameObject.transform.position = to - _myOffset;
+            //Parent.Attributes.Update("CurrentMoveSource", to);
         }
        
         public void Init() {
             _myGameObject = Parent.Attributes.Get<GameObject>("GameObject");
+            _myOffset = Parent.Attributes.Get<Collider2D>("ObstructCollider").offset;
             _myGoComponent = Parent.Attributes.Get<GameObjectComponent>("GameObjectComponnet");
 
             Parent.Attributes.Register("CurrentMoveTarget",new Vector2());
-            Parent.Attributes.Register("CurrentMoveSource",new Vector2());
+            //Parent.Attributes.Register("CurrentMoveSource",new Vector2());
             Messenger.AddListener("OnUpdate",OnUpdate);
         }
 
