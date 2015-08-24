@@ -96,8 +96,11 @@ public abstract class UnitAbility : IComponent {
 
 	protected void RangeArc(VectorLine vectorLine, float range, int arcSize)
 	{
-		GameObject arc = GameObject.Instantiate(Resources.Load("Prefabs/ConeAttack")) as GameObject;
-		arc.transform.position = whereMe();
+		if (!GameObject.Find("ConeAttack(Clone)"))
+		{
+			GameObject arc = GameObject.Instantiate(Resources.Load("Prefabs/ConeAttack")) as GameObject;
+			arc.transform.position = whereMe();
+		}
 	}
 
 	protected virtual void DoAttack()
@@ -108,9 +111,10 @@ public abstract class UnitAbility : IComponent {
 
 	protected Vector2 whereMe ()
 	{
+		Vector2 test = new Vector2();
 		Vector2 whereMe = Parent.Attributes.Get<Vector2>("CurrentPathTarget");
-		//if (whereMe == null) whereMe = Parent.Attributes.Get<Vector2>("Position");
-		if (whereMe == null) whereMe = Parent.Attributes.Get<GameObject>("GameObject").transform.position;
+		if (whereMe.PositionEquals(test)) whereMe = Parent.Attributes.Get<Vector2>("Position");
+		if (whereMe.PositionEquals(test)) whereMe = Parent.Attributes.Get<GameObject>("GameObject").transform.position;
 		return whereMe;
 	}
 	
