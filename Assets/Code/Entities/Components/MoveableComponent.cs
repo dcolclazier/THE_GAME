@@ -26,7 +26,9 @@ namespace Assets.Code.Entities.Components {
             var pathActive = Parent.Attributes.Get<bool>("PathIsActive");
 
             if (!selected) return;
+            //Debug.Log("Path Active? " + pathActive);
             if (!pathActive) return;
+            //Debug.Log("Selected? " + selected);
 
             if (Input.GetMouseButtonDown(0)) {
                 Debug.Log("Got here!");

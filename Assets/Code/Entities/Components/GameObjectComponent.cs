@@ -10,7 +10,7 @@ namespace Assets.Code.Entities.Components {
 
         public GameObject Go { get; private set; }
 
-        private Vector2 _transformPosition;
+        private Vector2 _entityPosition;
         public Entity Parent { get; set; }
         public bool Enabled { get; private set; }
 
@@ -28,10 +28,11 @@ namespace Assets.Code.Entities.Components {
         }
 
         public void OnUpdate() {
-            if (_transformPosition.Equals(Go.transform.position.ToVector2())) return;
-            
-            _transformPosition = Go.transform.position;
-            Parent.Attributes.Update("Position", _transformPosition);
+            if (_entityPosition.Equals(Go.transform.position.ToVector2())) return;
+            var offset = Go.GetComponent<Collider2D>().offset;
+            Debug.Log(string.Format("offset: x: " + offset.x + " y: " + offset.y));
+            _entityPosition = (Vector2)Go.transform.position + Go.GetComponent<Collider2D>().offset;
+            Parent.Attributes.Update("Position", _entityPosition);
             Messenger.Broadcast("GameObjectMoved", Parent);
         }
         public void Init() {

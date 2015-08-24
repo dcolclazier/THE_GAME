@@ -43,6 +43,7 @@ namespace Assets.Code.Entities.Components {
         
         public override void Init()
         {
+
             MyGameObject = Parent.Attributes.Get<GameObject>("GameObject");
             SelectCollider = MyGameObject.GetComponentInChildren<Collider2D>();
             if (SelectCollider == null) GetOuttaHere();
@@ -59,7 +60,7 @@ namespace Assets.Code.Entities.Components {
         }
         protected override void DrawSelectVisual()
         {
-            Debug.Log("Running Unit Draw....");
+            //Debug.Log("Running Unit Draw....");
             var position = Parent.Attributes.Get<CircleCollider2D>("ObstructCollider").transform.position.ToVector2() + SelectCollider.offset;
             SelectCircle.MakeCircle(position, SelectRadius, 360);
             SelectCircle.Draw3DAuto();

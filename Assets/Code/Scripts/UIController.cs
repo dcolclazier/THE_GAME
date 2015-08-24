@@ -14,7 +14,7 @@ namespace Assets.Code.Scripts {
 
         public void Awake() {
             _eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-            Messenger.AddListener<Vector2>("RightMouseDown",TestMethod);
+           // Messenger.AddListener<Vector2>("RightMouseDown",TestMethod);
             Messenger.MarkAsPermanent("RightMouseDown");
         }
 
@@ -22,12 +22,14 @@ namespace Assets.Code.Scripts {
             var hoverDelay = .75f;
             if (Input.GetMouseButtonDown(0)) HandleMouseClick("LeftMouseDown");
             if (Input.GetMouseButtonDown(1)) HandleMouseClick("RightMouseDown");
+            if (Input.GetMouseButton(0)) HandleMouseClick("LeftMouseHeld");
+            if (Input.GetMouseButton(1)) HandleMouseClick("RightMouseHeld");
 
-            if (_eventSystem.IsPointerOverGameObject()) StartCoroutine("HandleUiHover", hoverDelay);
-            else {
-                StopCoroutine("HandleHover");
-                Messenger.Broadcast("UIHoverStopped");
-            }
+            //if (_eventSystem.IsPointerOverGameObject()) StartCoroutine("HandleUiHover", hoverDelay);
+            //else {
+            //    StopCoroutine("HandleHover");
+            //    Messenger.Broadcast("UIHoverStopped");
+            //}
 
         }
 
@@ -38,7 +40,7 @@ namespace Assets.Code.Scripts {
                 var hit = UnityUtilites.CheckHitOnLayer(layer);
                 if (hit.collider != null) {
                     Messenger.Broadcast(eventToBroadcast, layer, hit);
-                    Debug.Log("Mouse down on layer " + layer);
+                    //Debug.Log("Mouse down on layer " + layer);
                     break;
                 }
             }
@@ -55,32 +57,29 @@ namespace Assets.Code.Scripts {
                 Debug.Log("Tooltip Appeared here!");
             }
         }
-    
-      
-    
 
-    bool UIClicked() {
-        return _eventSystem.IsPointerOverGameObject();
-    }
+#region UI_Button_Scripts
+        bool UIClicked() {
+            return _eventSystem.IsPointerOverGameObject();
+        }
 
-    public void AbilityClicked(int buttonNumber)
+        public void AbilityClicked(int buttonNumber)
 		{
 			Messenger.Broadcast("ClickedAbility" + buttonNumber);
 		}
-	public void MouseEnterAbility(int buttonNumber)
+	    public void MouseEnterAbility(int buttonNumber)
 	{
 		Messenger.Broadcast("MouseEnterAbility" + buttonNumber);
 	}
-	public void MouseExitAbility(int buttonNumber)
-	{
-		Messenger.Broadcast("MouseExitAbility" + buttonNumber);
-	}
+	    public void MouseExitAbility(int buttonNumber)
+	    {
+	    	Messenger.Broadcast("MouseExitAbility" + buttonNumber);
+	    }
+#endregion UI_Button_Scripts
 
 
-        public void TestMethod(Vector2 position) {
-        
-      
-        }
-	
+
     }
+
+
 }

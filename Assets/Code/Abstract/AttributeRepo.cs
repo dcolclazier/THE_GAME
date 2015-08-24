@@ -15,6 +15,15 @@ namespace Assets.Code.Abstract {
             OnRegistering(key, value);
             _repository.Add(key, value);
         }
+
+        public void RegisterOrUpdate<T>(string key, T value) {
+            if (_repository.ContainsKey(key)) {
+                Debug.Log("Updating attribute; it already exists...");
+                Update(key,value);
+            }
+            else Register(key,value);
+            
+        }
         private void OnRegistering<T>(string key, T value) {
             if (_repository.ContainsKey(key)) {
                 Debug.Log("Tried to register a value " + key + " that already exists.. updating instead - are you sure this was intended?");

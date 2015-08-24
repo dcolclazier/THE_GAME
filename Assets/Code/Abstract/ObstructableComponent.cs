@@ -39,7 +39,9 @@ namespace Assets.Code.Entities.Components {
         public virtual void Init()
         {
             ////get the obstruct collider from the game object and register it as an attribute for the entity.
+            Playername = Parent.Attributes.Get<string>("Name");
 
+            Debug.Log("Obstructable Init for " + Playername);
             Parent.Attributes.Register("ObstructCollider", ObstructCollider);
             Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
             Parent.Attributes.Register("CurrentlyObstructing", Solid);
@@ -61,6 +63,7 @@ namespace Assets.Code.Entities.Components {
         private NodeManager.ColliderType _colliderType;
         protected List<Node> CollisionNodes;
         private bool _obstructionChanged;
+        protected string Playername { get; private set; }
         public Entity Parent { get; set; }
         public virtual void GetOuttaHere() {
 

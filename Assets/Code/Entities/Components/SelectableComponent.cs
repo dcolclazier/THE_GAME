@@ -15,7 +15,7 @@ namespace Assets.Code.Entities.Components {
             }
         }
         protected virtual void OnSelect() {
-            Debug.Log("Running OnSelect");
+            //Debug.Log("Running OnSelect");
             Enabled = true;
             SelectCircle.active = true;
             
@@ -44,6 +44,9 @@ namespace Assets.Code.Entities.Components {
             Messenger.Broadcast("EntityDeselected", Parent);
         }
         public virtual void Init() {
+            Playername = Parent.Attributes.Get<string>("Name");
+
+            Debug.Log("Selectable Init for " + Playername);
             if(SelectCollider == null) throw new NullReferenceException("You forgot to assign a collider to SelectCollider in the Init() method of your Selectable<whatever> component.");
 
             Parent.Attributes.Register("SelectCollider", SelectCollider);
@@ -51,7 +54,10 @@ namespace Assets.Code.Entities.Components {
             Parent.Attributes.Register("CurrentlySelected", false);
 
             //if we haven't defined the radius, do so now.
-            if(Math.Abs(SelectRadius) < .0001) SelectRadius = GetRadius();
+            if (Math.Abs(SelectRadius) < .0001) {
+                
+                SelectRadius = GetRadius();
+            }
 
             SelectCircle = new VectorLine("Select Circle", new Vector3[720], null, _lineThickness);
             SelectCircle.Draw3DAuto();
@@ -80,6 +86,7 @@ namespace Assets.Code.Entities.Components {
         private float _lineThickness = 2.0f;
         private bool _enabled;
         private NodeManager.ColliderType _colliderType;
+        protected string Playername { get; set; }
         public Entity Parent { get; set; }
         protected Collider2D SelectCollider { get; set; }
         protected VectorLine SelectCircle { get; private set; }
@@ -87,9 +94,7 @@ namespace Assets.Code.Entities.Components {
         protected float SelectRadius { get; set; }
         public bool Enabled { get; private set; }
         protected virtual void GetOuttaHere() {
-            throw new Exception(
-                    "Trying to init an Selectable Component, but init couldn't find the collider. " +
-                    "Make sure it is attached to the game object itself, not the child ObstructCollider object. ");
+            throw new Exception("Trying to init an Selectable Component, but init couldn't find the collider. ");
         }
         public virtual void OnUpdate()
         {
