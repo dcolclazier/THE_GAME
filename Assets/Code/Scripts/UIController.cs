@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Assets.Code.Entities.Components;
 using Assets.Code.Statics;
 using UnityEngine;
@@ -16,6 +17,16 @@ namespace Assets.Code.Scripts {
             _eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
            // Messenger.AddListener<Vector2>("RightMouseDown",TestMethod);
             Messenger.MarkAsPermanent("RightMouseDown");
+
+            Messenger.AddListener<LayerFlag,RaycastHit2D>("LeftMouseDown",LeftMouseDownDebug);
+        }
+
+        private void LeftMouseDownDebug(LayerFlag layerFlag, RaycastHit2D raycastHit2D) {
+            if (layerFlag != LayerFlag.Ground) return;
+            var position = UnityUtilites.MouseWorldPoint();
+
+            Debug.Log(string.Format("Mouse position - X: {0} y: {1} ", position.x, position.y));
+
         }
 
         public void Update() {
@@ -24,6 +35,8 @@ namespace Assets.Code.Scripts {
             if (Input.GetMouseButtonDown(1)) HandleMouseClick("RightMouseDown");
             if (Input.GetMouseButton(0)) HandleMouseClick("LeftMouseHeld");
             if (Input.GetMouseButton(1)) HandleMouseClick("RightMouseHeld");
+            Messenger.Broadcast("OnUpdate");
+
 
             //if (_eventSystem.IsPointerOverGameObject()) StartCoroutine("HandleUiHover", hoverDelay);
             //else {
@@ -68,9 +81,9 @@ namespace Assets.Code.Scripts {
 			Messenger.Broadcast("ClickedAbility" + buttonNumber);
 		}
 	    public void MouseEnterAbility(int buttonNumber)
-	{
-		Messenger.Broadcast("MouseEnterAbility" + buttonNumber);
-	}
+	    {
+	    	Messenger.Broadcast("MouseEnterAbility" + buttonNumber);
+	    }
 	    public void MouseExitAbility(int buttonNumber)
 	    {
 	    	Messenger.Broadcast("MouseExitAbility" + buttonNumber);

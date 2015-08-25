@@ -30,7 +30,6 @@ namespace Assets.Code.Entities {
               
             base.Awake();
 
-            //entity's he should be wielding at spawn, and where they go
             
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Code.Abstract;
 using Assets.Code.Movement;
 using Assets.Code.Statics;
@@ -38,23 +39,37 @@ namespace Assets.Code.Entities.Components {
         }
         public virtual void Init()
         {
-            ////get the obstruct collider from the game object and register it as an attribute for the entity.
+            CollisionNodes = new List<Node>();
             Playername = Parent.Attributes.Get<string>("Name");
 
             Debug.Log("Obstructable Init for " + Playername);
+
             Parent.Attributes.Register("ObstructCollider", ObstructCollider);
             Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
             Parent.Attributes.Register("CurrentlyObstructing", Solid);
 
-            CollisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent));
-            Parent.Attributes.Register("CollisionNodes", CollisionNodes);
+            UpdateCollisionNodes();
             
             Messenger.AddListener<Entity>("EntitySelected", OnDeselected);
             Messenger.AddListener<Entity>("EntityDeselected", OnDeselected);
+            Messenger.AddListener<Entity>("EntityMoved",EntityMoved);
             Messenger.AddListener("OnUpdate", OnUpdate);
             
             Solid = true;
         }
+
+        private void EntityMoved(Entity arg1) {
+            UpdateCollisionNodes();
+        }
+
+        private void UpdateCollisionNodes() {
+            
+            //if (CollisionNodes == null) CollisionNodes = new List<Node>();
+
+            CollisionNodes = new List<Node>(EntityManager.GetNodesForEntity(Parent).ToList());
+            Parent.Attributes.RegisterOrUpdate("CollisionNodes", CollisionNodes);
+        }
+
         public bool Enabled { get; private set; }
         protected bool Solid;
 

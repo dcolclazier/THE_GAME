@@ -18,7 +18,7 @@ namespace Assets.Code.Abstract {
 
         public void RegisterOrUpdate<T>(string key, T value) {
             if (_repository.ContainsKey(key)) {
-                Debug.Log("Updating attribute; it already exists...");
+                //Debug.Log("Updating attribute; it already exists...");
                 Update(key,value);
             }
             else Register(key,value);
@@ -33,7 +33,7 @@ namespace Assets.Code.Abstract {
 
         public T Get<T>(string key) {
             if (!_repository.ContainsKey(key)) return default(T);
-            OnGetting(key, typeof(T));
+            //OnGetting(key, typeof(T));
             return (T)_repository[key];
         }
 
@@ -69,12 +69,6 @@ namespace Assets.Code.Abstract {
             return _repository.ContainsKey(currentlyselected);
         }
 
-        public void UpdateOrRegister(string key, object value) {
-            if(_repository.ContainsKey(key))
-                Update(key,value);
-            else {
-                
-            }
-        }
+     
     }
 }

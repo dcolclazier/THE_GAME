@@ -29,7 +29,7 @@ namespace Assets.Code.Entities.Components {
             _destinationCircle.Draw3DAuto();
 
             _pathLine = new VectorLine("Move Path Line", new Vector3[20], null, line_thickness, LineType.Continuous);
-            _pathLine.Draw3DAuto();
+            
 
             VectorLine.canvas3D.sortingLayerName = "Select Circles";
 
@@ -123,6 +123,7 @@ namespace Assets.Code.Entities.Components {
             _destinationCircle.active = true;
             _destinationCircle.Draw3DAuto();
             _pathLine.active = true;
+            _pathLine.Draw3DAuto();
             Parent.Attributes.Update("PathIsActive", true);
             //Parent.Attributes.Update("PathIsActive", true);
         }

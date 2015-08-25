@@ -31,16 +31,18 @@ namespace Assets.Code.Entities.Components {
             _entityPosition = (Vector2)Go.transform.position + Go.GetComponent<Collider2D>().offset;
             if (Parent.Attributes.Get<Vector2>("Position") == _entityPosition) return;
 
-            Parent.Attributes.Update("Position", _entityPosition);
+            var first = Parent.Attributes.Get<Vector2>("Position") == Vector2.zero;
 
-            //var offset = Go.GetComponent<Collider2D>().offset;
-            //Debug.Log(string.Format("offset: x: " + offset.x + " y: " + offset.y));
-            Messenger.Broadcast("GameObjectMoved", Parent);
-            Messenger.Broadcast("EntityMoved", Parent);
+            Parent.Attributes.Update("Position", Go.transform.position.ToVector2() + Go.GetComponent<Collider2D>().offset);
+
+            //This is deprecatd - use EntityMoved instead.
+            if(!first) Messenger.Broadcast("GameObjectMoved", Parent);
+            
+            if(!first) Messenger.Broadcast("EntityMoved", Parent);
         }
         public void Init() {
             Go = Parent.Attributes.Get<GameObject>("GameObject");
-            Parent.Attributes.Register("Position", Go.transform.position.ToVector2());
+            Parent.Attributes.Register("Position", Go.transform.position.ToVector2() + Go.GetComponent<Collider2D>().offset);
 
             Messenger.AddListener("OnUpdate",OnUpdate);
             Enabled = true;
@@ -48,12 +50,7 @@ namespace Assets.Code.Entities.Components {
             Parent.Attributes.Register("GameObjectComponent",this);
         }
 
-        public void OnMessage() {
-        }
-
-        public void StartUnityCoroutine(Func<IEnumerator> moveRoutine) {
-
-            StartCoroutine(moveRoutine());
-        }
+        
+        
     }
 }
