@@ -2,16 +2,18 @@ using System.Collections.Generic;
 using Assets.Code.Abstract;
 
 namespace Assets.Code.Entities {
-    public class Tree : EntityInitializer {
+    public class NoWalkTest : EntityInitializer {
         protected override void Awake() {
+            
             ComponentsToInit = new List<string>() {
                 "GameObject",
-                "ObstructableUnit",
+                "ObstructableProp",
             };
             NumericalAttributesToSet = new Dictionary<string, int>();
             StringAttributesToSet = new Dictionary<string, string>();
             EntitysToInclude = new List<string>();
             base.Awake();
         }
+
     }
 }

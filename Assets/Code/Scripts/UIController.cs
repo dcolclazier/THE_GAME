@@ -7,7 +7,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.Code.Scripts {
-    public class UiController : MonoBehaviour {
+    // ReSharper disable once InconsistentNaming
+    public class UIController : MonoBehaviour {
 
         private EventSystem _eventSystem; 
         public void MouseOver(GameObject who) {

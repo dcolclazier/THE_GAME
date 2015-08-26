@@ -73,8 +73,8 @@ namespace Assets.Code.Entities.Components {
                 if (MyPosition() == next) {
                     Debug.Log("Got to a next?");
                     //_moving = false;
-                    if(_path.Any()) Messenger.Broadcast("NotDoneYet", _path);
-                    else Messenger.Broadcast("DoneMoving!");
+                    if(_path.Any()) Messenger.Broadcast("NotDoneYet", _path, Parent);
+                    else Messenger.Broadcast("DoneMoving!",Parent);
                     //Messenger.Broadcast(_path.Any() ? "NotDoneYet" : "DoneMoving!");
                     //GC.KeepAlive(_path);
                     yield break;
@@ -97,12 +97,12 @@ namespace Assets.Code.Entities.Components {
             _myGoComponent = Parent.Attributes.Get<GameObjectComponent>("GameObjectComponent");
             
             Messenger.AddListener<LayerFlag,RaycastHit2D>("LeftMouseDown",OnLeftMouseDown);
-            Messenger.AddListener<List<Vector3>>("NotDoneYet",MoveNext);
-            Messenger.AddListener("DoneMoving!", Cleanup);
+            Messenger.AddListener<List<Vector3>,Entity>("NotDoneYet",MoveNext);
+            Messenger.AddListener<Entity>("DoneMoving!", Cleanup);
             
         }
 
-        private void Cleanup() {
+        private void Cleanup(Entity entity) {
             Debug.Log("Done! You should cleanup here.");
             _moving = false;
             _path = null;
@@ -124,11 +124,12 @@ namespace Assets.Code.Entities.Components {
             _moving = true;
             Debug.Log("Starting move - current waypoint count: " + _path.Count);
             _path.RemoveAt(_path.Count - 1); //remove source location from path
-            MoveNext(_path);
+            MoveNext(_path,Parent);
             //Messenger.Broadcast("NotDoneYet");
         }
 
-        private void MoveNext(List<Vector3> path) {
+        private void MoveNext(List<Vector3> path, Entity entity) {
+            if (Parent != entity) return;
             Debug.Log("MoveNext called.");
             _moving = true;
             if (path == null || path.Count == 0) return;

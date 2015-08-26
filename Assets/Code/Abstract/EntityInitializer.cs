@@ -23,7 +23,7 @@ namespace Assets.Code.Abstract {
                 {"GameObject", typeof(GameObjectComponent)},
                 {"SelectableUnit", typeof(SelectableUnitComponent)},
                 {"SelectableProp", typeof(SelectablePropComponent)},
-                {"ObstructableProp", typeof(ObstructableComponent)},
+                {"ObstructableProp", typeof(ObstructablePropComponent)},
                 {"Pathfinding", typeof(PathFindingComponent)},
                 {"IronBowRangedAttack", typeof(IronBowRangedAttackComponent)},
                 //{"Defender", typeof(DefenderCompononent)},
@@ -56,6 +56,7 @@ namespace Assets.Code.Abstract {
             foreach (var c in ComponentsToInit) {
 
                 if (c == "GameObject") {
+                    Debug.Log("GameObjectComponentDetected, initializing first. for " + myParent);
                     var test = gameObject.AddComponent<GameObjectComponent>();
                     test.Parent = myParent;
                     test.Init();

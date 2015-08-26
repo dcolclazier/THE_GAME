@@ -12,7 +12,7 @@ namespace Assets.Code.Entities {
             NumericalAttributesToSet = new Dictionary<string, int>();
             StringAttributesToSet = new Dictionary<string, string>();
             EntitysToInclude = new List<string>();
-
+            base.Awake();
         }
     }
 }

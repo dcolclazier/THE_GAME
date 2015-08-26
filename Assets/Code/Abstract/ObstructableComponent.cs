@@ -48,14 +48,13 @@ namespace Assets.Code.Entities.Components {
             Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
             Parent.Attributes.Register("CurrentlyObstructing", Solid);
 
+            Solid = true;
             UpdateCollisionNodes();
-            
+
             Messenger.AddListener<Entity>("EntitySelected", OnDeselected);
             Messenger.AddListener<Entity>("EntityDeselected", OnDeselected);
             Messenger.AddListener<Entity>("EntityMoved",EntityMoved);
             Messenger.AddListener("OnUpdate", OnUpdate);
-            
-            Solid = true;
         }
 
         private void EntityMoved(Entity arg1) {
