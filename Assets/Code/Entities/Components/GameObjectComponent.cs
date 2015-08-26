@@ -36,7 +36,7 @@ namespace Assets.Code.Entities.Components {
             Parent.Attributes.Update("Position", Go.transform.position.ToVector2() + Go.GetComponent<Collider2D>().offset);
 
             //This is deprecatd - use EntityMoved instead.
-            if(!first) Messenger.Broadcast("GameObjectMoved", Parent);
+            //if(!first) Messenger.Broadcast("GameObjectMoved", Parent);
             
             if(!first) Messenger.Broadcast("EntityMoved", Parent);
         }

@@ -34,55 +34,33 @@ namespace Assets.Code.Entities.Components {
             }
         }
 
-        //public IEnumerator Move()
-        //{
-        //    Debug.Log("Running Move CoRoutine.");
-        //    Debug.Log("About to move from " + _from.x + ":::" + _from.y + " to " + _to.x + ":::" + _to.y);
-
-        //    _speed = Parent.Attributes.Get<float>("MovementSpeed"); //Commplex algorithm here
-        //    var step = (_speed * .25f / Vector2.Distance(_from, _to)) * Time.fixedDeltaTime;
-        //    float t = 0;
-        //    _gotthere = false;
-        //    while (t <= 1.0f)
-        //    {
-        //        t += step; // Goes from 0 to 1, incrementing by step each time
-        //        _myGameObject.transform.position = Vector3.Lerp(_from, _to, t).ToVector2() - _myOffset; // Move objectToMove closer to b
-        //        yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
-        //    }
-        //    //Messenger.Broadcast("GotThere");
-        //}
+     
         private Vector2 _currentMoveTarget;
         public IEnumerator MoveFunction(Vector2 next, Vector2 _from)
         {
             while (true)
             {
-                //timeSinceStarted += Time.deltaTime;
-                //_myGameObject.transform.position = Vector3.Lerp(MyPosition(), next, timeSinceStarted) - (Vector3)_myOffset;
 
                 _speed = Parent.Attributes.Get<float>("MovementSpeed"); //Commplex algorithm here
-                var step = (_speed * .25f / Vector2.Distance(_from, next)) * Time.fixedDeltaTime;
+                var step = (_speed * .5f / Vector2.Distance(_from, next)) * Time.fixedDeltaTime;
                 float t = 0;
-                while (t <= 1.0f)
-                {
+                while (t <= 1.0f) {
                     t += step; // Goes from 0 to 1, incrementing by step each time
                     _myGameObject.transform.position = Vector3.Lerp(_from, next, t).ToVector2() - _myOffset; // Move objectToMove closer to b
                     yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
                 }
-                
+
                 // If the object has arrived, stop the coroutine
                 if (MyPosition() == next) {
-                    Debug.Log("Got to a next?");
-                    //_moving = false;
-                    if(_path.Any()) Messenger.Broadcast("NotDoneYet", _path, Parent);
-                    else Messenger.Broadcast("DoneMoving!",Parent);
-                    //Messenger.Broadcast(_path.Any() ? "NotDoneYet" : "DoneMoving!");
-                    //GC.KeepAlive(_path);
+                    if (_path.Any()) Messenger.Broadcast("NotDoneYet", _path, Parent);
+                    else Messenger.Broadcast("DoneMoving!", Parent);
                     yield break;
                 }
 
                 // Otherwise, continue next frame
                 yield return null;
             }
+            yield break;
         }
         public void OnUpdate() {
             throw new System.NotImplementedException();
@@ -104,6 +82,8 @@ namespace Assets.Code.Entities.Components {
 
         private void Cleanup(Entity entity) {
             Debug.Log("Done! You should cleanup here.");
+            Messenger.Broadcast("ResetPath",Parent);
+            _myGoComponent.StopAllCoroutines();
             _moving = false;
             _path = null;
 
@@ -159,7 +139,23 @@ namespace Assets.Code.Entities.Components {
 
 
 /*
- 
+        //public IEnumerator Move()
+        //{
+        //    Debug.Log("Running Move CoRoutine.");
+        //    Debug.Log("About to move from " + _from.x + ":::" + _from.y + " to " + _to.x + ":::" + _to.y);
+
+        //    _speed = Parent.Attributes.Get<float>("MovementSpeed"); //Commplex algorithm here
+        //    var step = (_speed * .25f / Vector2.Distance(_from, _to)) * Time.fixedDeltaTime;
+        //    float t = 0;
+        //    _gotthere = false;
+        //    while (t <= 1.0f)
+        //    {
+        //        t += step; // Goes from 0 to 1, incrementing by step each time
+        //        _myGameObject.transform.position = Vector3.Lerp(_from, _to, t).ToVector2() - _myOffset; // Move objectToMove closer to b
+        //        yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
+        //    }
+        //    //Messenger.Broadcast("GotThere");
+        //}
  
         protected IEnumerator Move()
         {

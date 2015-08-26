@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
-using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Code.Abstract {

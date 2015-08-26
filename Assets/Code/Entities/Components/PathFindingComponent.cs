@@ -39,10 +39,25 @@ namespace Assets.Code.Entities.Components {
             Messenger.AddListener<Entity>("EntityDeselected", OnDeselected);
             Messenger.AddListener<Entity>("EntityMoved",EntityMoved);
 
+            Messenger.AddListener<Entity>("DoneMoving!",DoneMoving);
+            Messenger.AddListener<Entity>("ResetPath",ResetPath);
+
             Parent.Attributes.Register("CurrentlyPathing", false);
             Parent.Attributes.Register("CurrentPathTarget", new Vector2());
             Parent.Attributes.Register("PathIsActive", false);
             Parent.Attributes.Register("CurrentPath", new List<Vector3>());
+        }
+
+        private void DoneMoving(Entity arg1) {
+            if (arg1 != Parent) return;
+            UpdatePathMap();
+            ResetPath();
+            DisablePathArt();
+        }
+
+        private void ResetPath(Entity arg1) {
+            if (arg1 != Parent) return;
+            ResetPath();
         }
 
         private void EntityMoved(Entity entity) {
@@ -82,6 +97,7 @@ namespace Assets.Code.Entities.Components {
         }
 
         private void ResetPath() {
+            NodeManager.ClearNodes();
             _currentPath = null;
         }
 
@@ -90,20 +106,18 @@ namespace Assets.Code.Entities.Components {
 
             var currentMousePos = UnityUtilites.MouseWorldPoint();
             var radius = Parent.Attributes.Get<float>("ObstructRadius");
-            var overlap = Physics2D.OverlapCircle(currentMousePos, radius, (int)LayerFlag.NoWalk);
+            var overlap = Physics2D.OverlapCircle(currentMousePos, radius, (int)(LayerFlag.NoWalk | LayerFlag.Units ));
             if (overlap)
             {
                 //Disable pathline
                 //Draw red X where mouse position is
-
-
                 var ray = new Ray2D(overlap.transform.position, currentMousePos - overlap.transform.position.ToVector2());
                 var dist = Vector2.Distance(overlap.transform.position, currentMousePos);
                 while (overlap)
                 {
                     dist += 0.1f;
                     currentMousePos = ray.GetPoint(dist);
-                    overlap = Physics2D.OverlapCircle(currentMousePos, radius, (int)LayerFlag.NoWalk);
+                    overlap = Physics2D.OverlapCircle(currentMousePos, radius, (int)(LayerFlag.NoWalk | LayerFlag.Units));
                 }
             }
             _destinationCircle.MakeCircle(currentMousePos, radius, 360);
