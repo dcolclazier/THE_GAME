@@ -31,12 +31,11 @@ namespace Assets.Code.Scripts {
         }
 
         public void Update() {
-            var hoverDelay = .75f;
             if (Input.GetMouseButtonDown(0)) HandleMouseClick("LeftMouseDown");
+            else if (Input.GetMouseButton(0)) HandleMouseClick("LeftMouseHeld");
+
             if (Input.GetMouseButtonDown(1)) HandleMouseClick("RightMouseDown");
-            if (Input.GetMouseButton(0)) HandleMouseClick("LeftMouseHeld");
-            if (Input.GetMouseButton(1)) HandleMouseClick("RightMouseHeld");
-            Messenger.Broadcast("OnUpdate");
+            else if (Input.GetMouseButton(1)) HandleMouseClick("RightMouseHeld");
 
 
             //if (_eventSystem.IsPointerOverGameObject()) StartCoroutine("HandleUiHover", hoverDelay);
@@ -44,7 +43,7 @@ namespace Assets.Code.Scripts {
             //    StopCoroutine("HandleHover");
             //    Messenger.Broadcast("UIHoverStopped");
             //}
-
+            //Messenger.Broadcast("OnUpdate");
         }
 
         private void HandleMouseClick(string eventToBroadcast) {

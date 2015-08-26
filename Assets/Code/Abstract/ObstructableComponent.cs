@@ -31,30 +31,23 @@ namespace Assets.Code.Entities.Components {
         }
 
         public virtual void OnUpdate() {
-            if (Solid == Enabled) return;
-            
-            Enabled = Solid;
-            Parent.Attributes.Update("CurrentlyObstructing", Solid);
-            Messenger.Broadcast(Enabled ? "ObstructionAdded" : "ObstructionRemoved", Parent);
+         
         }
         public virtual void Init()
         {
             CollisionNodes = new List<Node>();
-            Playername = Parent.Attributes.Get<string>("Name");
-
-            Debug.Log("Obstructable Init for " + Playername);
 
             Parent.Attributes.Register("ObstructCollider", ObstructCollider);
             Parent.Attributes.Register("ObstructColliderType", NodeManager.GetColliderType(ObstructCollider));
             Parent.Attributes.Register("CurrentlyObstructing", Solid);
 
-            Solid = true;
             UpdateCollisionNodes();
+            Enabled = true;
 
             Messenger.AddListener<Entity>("EntitySelected", OnDeselected);
             Messenger.AddListener<Entity>("EntityDeselected", OnDeselected);
             Messenger.AddListener<Entity>("EntityMoved",EntityMoved);
-            Messenger.AddListener("OnUpdate", OnUpdate);
+            //Messenger.AddListener("OnUpdate", OnUpdate);
         }
 
         private void EntityMoved(Entity arg1) {
@@ -69,7 +62,18 @@ namespace Assets.Code.Entities.Components {
             Parent.Attributes.RegisterOrUpdate("CollisionNodes", CollisionNodes);
         }
 
-        public bool Enabled { get; private set; }
+        public bool Enabled
+        {
+            get { return Solid; }
+            set {
+                var changed = Solid != value;
+                Debug.Log(changed);
+                Solid = value;
+                if (!changed) return;
+                Parent.Attributes.Update("CurrentlyObstructing", Solid);
+                Messenger.Broadcast(Enabled ? "ObstructionAdded" : "ObstructionRemoved", Parent);
+            }
+        }
         protected bool Solid;
 
         //No logic below here. 
@@ -77,7 +81,6 @@ namespace Assets.Code.Entities.Components {
         private NodeManager.ColliderType _colliderType;
         protected List<Node> CollisionNodes;
         private bool _obstructionChanged;
-        protected string Playername { get; private set; }
         public Entity Parent { get; set; }
         public virtual void GetOuttaHere() {
 

@@ -16,12 +16,12 @@ namespace Assets.Code.Entities.Components {
         private GameObjectComponent _myGoComponent;
         private GameObject _myGameObject;
         private Vector2 _myOffset;
-        private bool _gotthere;
+        //private bool _gotthere;
         private float _speed;
         private List<Vector3> _path;
-        private Vector3 destination;
-        private Vector2 _from;
-        private Vector3 _to;
+        //private Vector3 destination;
+        //private Vector2 _from;
+        //private Vector3 _to;
         private bool _moving;
 
         public List<string> Dependencies {
@@ -82,7 +82,6 @@ namespace Assets.Code.Entities.Components {
 
         private void Cleanup(Entity entity) {
             Debug.Log("Done! You should cleanup here.");
-            Messenger.Broadcast("ResetPath",Parent);
             _myGoComponent.StopAllCoroutines();
             _moving = false;
             _path = null;

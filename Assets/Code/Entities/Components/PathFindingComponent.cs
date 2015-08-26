@@ -42,7 +42,6 @@ namespace Assets.Code.Entities.Components {
             Messenger.AddListener<Entity>("DoneMoving!",DoneMoving);
             Messenger.AddListener<Entity>("ResetPath",ResetPath);
 
-            Parent.Attributes.Register("CurrentlyPathing", false);
             Parent.Attributes.Register("CurrentPathTarget", new Vector2());
             Parent.Attributes.Register("PathIsActive", false);
             Parent.Attributes.Register("CurrentPath", new List<Vector3>());
@@ -50,6 +49,7 @@ namespace Assets.Code.Entities.Components {
 
         private void DoneMoving(Entity arg1) {
             if (arg1 != Parent) return;
+            Debug.Log("Running Done Moving.");
             UpdatePathMap();
             ResetPath();
             DisablePathArt();
@@ -70,8 +70,6 @@ namespace Assets.Code.Entities.Components {
 
         private void RightMouseHeld(LayerFlag arg1, RaycastHit2D arg2) {
             if (!Parent.Attributes.Get<bool>("CurrentlySelected")) return;
-
-            Parent.Attributes.Update("CurrentlyPathing", true);
 
             _target = SetDestinationCircle();
             UpdatePath();
@@ -97,7 +95,6 @@ namespace Assets.Code.Entities.Components {
         }
 
         private void ResetPath() {
-            NodeManager.ClearNodes();
             _currentPath = null;
         }
 

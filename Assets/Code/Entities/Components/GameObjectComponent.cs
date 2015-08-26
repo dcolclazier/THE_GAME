@@ -11,8 +11,8 @@ namespace Assets.Code.Entities.Components {
         public GameObject Go { get; private set; }
 
         private Vector2 _entityPosition;
+        private Vector2 _offset;
         public Entity Parent { get; set; }
-        public bool Enabled { get; private set; }
 
         Entity IComponent.Parent {
             get { return Parent; }
@@ -27,26 +27,30 @@ namespace Assets.Code.Entities.Components {
             }
         }
 
-        public void OnUpdate() {
-            _entityPosition = (Vector2)Go.transform.position + Go.GetComponent<Collider2D>().offset;
-            if (Parent.Attributes.Get<Vector2>("Position") == _entityPosition) return;
-
-            var first = Parent.Attributes.Get<Vector2>("Position") == Vector2.zero;
-
-            Parent.Attributes.Update("Position", Go.transform.position.ToVector2() + Go.GetComponent<Collider2D>().offset);
-
-            //This is deprecatd - use EntityMoved instead.
-            //if(!first) Messenger.Broadcast("GameObjectMoved", Parent);
-            
-            if(!first) Messenger.Broadcast("EntityMoved", Parent);
+        public void Update() {
+           if(EntityPositionChanged()) UpdatePosition();
         }
+
+        private bool EntityPositionChanged() {
+            return Parent.Attributes.Get<Vector2>("Position") != (Vector2)Go.transform.position + _offset;
+        }
+
+        private void UpdatePosition() {
+            
+            var first = Parent.Attributes.Get<Vector2>("Position") == Vector2.zero;
+            Parent.Attributes.Update("Position", Go.transform.position.ToVector2() + _offset);
+            if (!first) Messenger.Broadcast("EntityMoved", Parent);
+        }
+
+        public void OnUpdate() {
+            throw new NotImplementedException();
+        }
+
         public void Init() {
             Go = Parent.Attributes.Get<GameObject>("GameObject");
-            Parent.Attributes.Register("Position", Go.transform.position.ToVector2() + Go.GetComponent<Collider2D>().offset);
+            _offset = Go.GetComponent<Collider2D>().offset;
 
-            Messenger.AddListener("OnUpdate",OnUpdate);
-            Enabled = true;
-
+            Parent.Attributes.Register("Position", Go.transform.position.ToVector2() + _offset);
             Parent.Attributes.Register("GameObjectComponent",this);
         }
 
