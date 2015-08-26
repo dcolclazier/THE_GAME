@@ -84,12 +84,17 @@ namespace Assets.Code.Movement {
 
         private IEnumerable<Vector3> BuildPath(Node endpoint) {
             var path = new List<Node> {endpoint};
-            
+            var ind = 0;
             while (endpoint != SourceNode) {
+                ind++;
+                if (ind > 10) {
+                    Debug.Log("Path build loop broke...");
+                    break;
+                }
                 if(!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom);
                 endpoint = endpoint.CameFrom;
             }
-            
+            //Debug.Log("Path Count: " + path.Count);
             NodeManager.ClearNodes();
             return ConvertToVectorArray(path);
         }
@@ -104,7 +109,7 @@ namespace Assets.Code.Movement {
             
             SourceNode.Position = selectedPlayer;
             StaticNodes = EntityManager.GetAllSolidNodes().ToList();
-
+            //Debug.Log("Static Nodes Count: " + StaticNodes.Count);
             if (!StaticNodes.Contains(SourceNode)) StaticNodes.Add(SourceNode);
 
             foreach (var node in StaticNodes) {

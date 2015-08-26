@@ -53,6 +53,7 @@ namespace Assets.Code.Entities.Components {
             UpdatePathMap();
             ResetPath();
             DisablePathArt();
+            _pathMap = null;
         }
 
         private void ResetPath(Entity arg1) {
@@ -96,6 +97,7 @@ namespace Assets.Code.Entities.Components {
 
         private void ResetPath() {
             _currentPath = null;
+            //_pathMap = null;
         }
 
         private Vector2 SetDestinationCircle()
@@ -164,6 +166,8 @@ namespace Assets.Code.Entities.Components {
         }
 
         private void UpdatePath() {
+            //if(_pathMap == null) 
+                UpdatePathMap();
             _currentPath = _pathMap.GetBestPath(_target, Parent).ToList();
             Parent.Attributes.Update("CurrentPath", _currentPath);
         }
