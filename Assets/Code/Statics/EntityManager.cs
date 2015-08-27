@@ -13,8 +13,10 @@ namespace Assets.Code.Statics
 
         public static NodeManager NodeMgr { get; private set; }
 
+        private static readonly EntityManagerHelper Helper;
 
         static EntityManager()  {
+             if(Helper == null) Helper = (new GameObject("EntityManagerHelper").AddComponent<EntityManagerHelper>());
             NodeMgr = new NodeManager();
             MasterEntityList = new List<Entity>();
             //PermenantEntityList = new List<Entity>();

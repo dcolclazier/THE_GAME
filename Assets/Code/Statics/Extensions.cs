@@ -23,12 +23,6 @@ namespace Assets.Code.Statics {
         {
             return (Convert.ToUInt32(input) & Convert.ToUInt32(matchTo)) != 0;
         }
-
-        public static Vector2 GetCenter2D(this BoxCollider2D box) {
-            var g_position = box.transform.position;
-            var center = box.offset + (Vector2)g_position;
-            return center;
-        }
         public static Vector2 GetCenter2D(this PolygonCollider2D poly)
         {
             var highestX = -100000000f;

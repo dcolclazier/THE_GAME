@@ -9,7 +9,7 @@ namespace Assets.Code.Entities {
 				"GameObject",
 				"UnitStats",
 				"ObstructableUnit",
-				"SelectableUnit",
+				"Selectable",
 				"Pathfinding",
 				"Moveable",
 				//"AttackableComponent",

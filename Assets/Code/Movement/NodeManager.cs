@@ -62,8 +62,8 @@ namespace Assets.Code.Movement
             const float precision = 6f;
             const float radians = (2f * Mathf.PI) / precision;
             var circle = ((CircleCollider2D)entity.Attributes.Get<Collider2D>("ObstructCollider"));
-            var centerX = circle.transform.position.x + circle.offset.x;
-            var centerY = circle.transform.position.y + circle.offset.y;
+            var centerX = circle.transform.position.x;
+            var centerY = circle.transform.position.y;
             for (var i = 0; i < precision; i++) {
                 var angle = radians * (i + 1);
                 var xMag = centerX + Mathf.Round((circle.radius + .1f) 

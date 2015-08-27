@@ -8,8 +8,8 @@ namespace Assets.Code.Entities {
         {
             ComponentsToInit = new List<string>() {
                 "GameObject",
-                "ObstructableProp",
-                "SelectableProp",
+                "Obstructable",
+                "Selectable",
                 "AttackableComponent",
 
             };

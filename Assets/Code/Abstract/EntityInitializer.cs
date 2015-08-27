@@ -21,9 +21,8 @@ namespace Assets.Code.Abstract {
 
            var componentList = new Dictionary<string, Type> {
                 {"GameObject", typeof(GameObjectComponent)},
-                {"SelectableUnit", typeof(SelectableUnitComponent)},
-                {"SelectableProp", typeof(SelectablePropComponent)},
-                {"ObstructableProp", typeof(ObstructablePropComponent)},
+                {"Selectable", typeof(SelectableComponent)},
+                {"Obstructable", typeof(ObstructableComponent)},
                 {"Pathfinding", typeof(PathFindingComponent)},
                 {"IronBowRangedAttack", typeof(IronBowRangedAttackComponent)},
                 //{"Defender", typeof(DefenderCompononent)},
@@ -39,24 +38,12 @@ namespace Assets.Code.Abstract {
 
             };
             var validEntityList = new Dictionary<string, Type> {
-                //{"BasicWoodenSword", typeof(BasicWoodenSword)},
+                {"BasicWoodenSword", typeof(BasicWoodenSword)},
             };
-            foreach (var entry in NumericalAttributesToSet)
-            {
-                if (!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key, entry.Value);
-                else myParent.Attributes.Update(entry.Key, entry.Value);
-            }
-            foreach (var entry in StringAttributesToSet)
-            {
-                Debug.Log("Key " + entry.Key + "Value " + entry.Value);
-                if (!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key, entry.Value);
-                else myParent.Attributes.Update(entry.Key, entry.Value);
-                Debug.Log("Entry added? " + myParent.Attributes.Contains(entry.Key));
-            }
+            
             foreach (var c in ComponentsToInit) {
 
                 if (c == "GameObject") {
-                    Debug.Log("GameObjectComponentDetected, initializing first. for " + myParent);
                     var test = gameObject.AddComponent<GameObjectComponent>();
                     test.Parent = myParent;
                     test.Init();
@@ -79,8 +66,33 @@ namespace Assets.Code.Abstract {
             }
             
             //todo - figure out a way to make this generic and type safe
-           
+            foreach (var entry in NumericalAttributesToSet) {
+                if(!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key,entry.Value);
+                else myParent.Attributes.Update(entry.Key, entry.Value);
+            }
+            foreach (var entry in StringAttributesToSet) {
+                if(!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key,entry.Value);
+                else myParent.Attributes.Update(entry.Key, entry.Value);
+            }
             Messenger.Broadcast("EntityCreated", myParent);
+        }
+    }
+
+    public class TooltipComponent : IComponent {
+        public Entity Parent { get; set; }
+
+        public List<string> Dependencies {
+            get { return new List<string>() {
+                "GameObject"
+            }; }
+        }
+
+        public void OnUpdate() {
+            throw new NotImplementedException();
+        }
+
+        public void Init() {
+            Parent.Attributes.Register("TooltipMessage","JUST THE TOOLTIP");
         }
     }
 }

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Assets.Code.Entities.Components;
 using Assets.Code.Statics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.Code.Scripts {
-    // ReSharper disable once InconsistentNaming
-    public class UIController : MonoBehaviour {
+    public class UiController : MonoBehaviour {
 
         private EventSystem _eventSystem; 
         public void MouseOver(GameObject who) {
@@ -16,34 +14,21 @@ namespace Assets.Code.Scripts {
 
         public void Awake() {
             _eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-           // Messenger.AddListener<Vector2>("RightMouseDown",TestMethod);
+            Messenger.AddListener<Vector2>("RightMouseDown",TestMethod);
             Messenger.MarkAsPermanent("RightMouseDown");
-
-            Messenger.AddListener<LayerFlag,RaycastHit2D>("LeftMouseDown",LeftMouseDownDebug);
-        }
-
-        private void LeftMouseDownDebug(LayerFlag layerFlag, RaycastHit2D raycastHit2D) {
-            if (layerFlag != LayerFlag.Ground) return;
-            var position = UnityUtilites.MouseWorldPoint();
-
-            Debug.Log(string.Format("Mouse position - X: {0} y: {1} ", position.x, position.y));
-
         }
 
         public void Update() {
+            var hoverDelay = .75f;
             if (Input.GetMouseButtonDown(0)) HandleMouseClick("LeftMouseDown");
-            else if (Input.GetMouseButton(0)) HandleMouseClick("LeftMouseHeld");
-
             if (Input.GetMouseButtonDown(1)) HandleMouseClick("RightMouseDown");
-            else if (Input.GetMouseButton(1)) HandleMouseClick("RightMouseHeld");
 
+            if (_eventSystem.IsPointerOverGameObject()) StartCoroutine("HandleUiHover", hoverDelay);
+            else {
+                StopCoroutine("HandleHover");
+                Messenger.Broadcast("UIHoverStopped");
+            }
 
-            //if (_eventSystem.IsPointerOverGameObject()) StartCoroutine("HandleUiHover", hoverDelay);
-            //else {
-            //    StopCoroutine("HandleHover");
-            //    Messenger.Broadcast("UIHoverStopped");
-            //}
-            //Messenger.Broadcast("OnUpdate");
         }
 
         private void HandleMouseClick(string eventToBroadcast) {
@@ -53,7 +38,7 @@ namespace Assets.Code.Scripts {
                 var hit = UnityUtilites.CheckHitOnLayer(layer);
                 if (hit.collider != null) {
                     Messenger.Broadcast(eventToBroadcast, layer, hit);
-                    //Debug.Log("Mouse down on layer " + layer);
+                    Debug.Log("Mouse down on layer " + layer);
                     break;
                 }
             }
@@ -70,29 +55,32 @@ namespace Assets.Code.Scripts {
                 Debug.Log("Tooltip Appeared here!");
             }
         }
+    
+      
+    
 
-#region UI_Button_Scripts
-        bool UIClicked() {
-            return _eventSystem.IsPointerOverGameObject();
-        }
+    bool UIClicked() {
+        return _eventSystem.IsPointerOverGameObject();
+    }
 
-        public void AbilityClicked(int buttonNumber)
+    public void AbilityClicked(int buttonNumber)
 		{
 			Messenger.Broadcast("ClickedAbility" + buttonNumber);
 		}
-	    public void MouseEnterAbility(int buttonNumber)
-	    {
-	    	Messenger.Broadcast("MouseEnterAbility" + buttonNumber);
-	    }
-	    public void MouseExitAbility(int buttonNumber)
-	    {
-	    	Messenger.Broadcast("MouseExitAbility" + buttonNumber);
-	    }
-#endregion UI_Button_Scripts
+	public void MouseEnterAbility(int buttonNumber)
+	{
+		Messenger.Broadcast("MouseEnterAbility" + buttonNumber);
+	}
+	public void MouseExitAbility(int buttonNumber)
+	{
+		Messenger.Broadcast("MouseExitAbility" + buttonNumber);
+	}
 
 
-
+        public void TestMethod(Vector2 position) {
+        
+      
+        }
+	
     }
-
-
 }

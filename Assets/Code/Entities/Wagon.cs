@@ -6,7 +6,7 @@ namespace Assets.Code.Entities {
         protected override void Awake() {
             ComponentsToInit = new List<string>() {
                 "GameObject",
-                "ObstructableProp"
+                "Obstructable"
             };
             NumericalAttributesToSet = new Dictionary<string, int>();
             StringAttributesToSet = new Dictionary<string, string>();

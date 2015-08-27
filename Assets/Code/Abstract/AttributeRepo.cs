@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
+using Assets.Code.Statics;
 using UnityEngine;
 
 namespace Assets.Code.Abstract {
@@ -13,15 +15,6 @@ namespace Assets.Code.Abstract {
             OnRegistering(key, value);
             _repository.Add(key, value);
         }
-
-        public void RegisterOrUpdate<T>(string key, T value) {
-            if (_repository.ContainsKey(key)) {
-                //Debug.Log("Updating attribute; it already exists...");
-                Update(key,value);
-            }
-            else Register(key,value);
-            
-        }
         private void OnRegistering<T>(string key, T value) {
             if (_repository.ContainsKey(key)) {
                 Debug.Log("Tried to register a value " + key + " that already exists.. updating instead - are you sure this was intended?");
@@ -31,7 +24,7 @@ namespace Assets.Code.Abstract {
 
         public T Get<T>(string key) {
             if (!_repository.ContainsKey(key)) return default(T);
-            //OnGetting(key, typeof(T));
+            OnGetting(key, typeof(T));
             return (T)_repository[key];
         }
 
@@ -67,6 +60,12 @@ namespace Assets.Code.Abstract {
             return _repository.ContainsKey(currentlyselected);
         }
 
-     
+        public void UpdateOrRegister(string key, object value) {
+            if(_repository.ContainsKey(key))
+                Update(key,value);
+            else {
+                
+            }
+        }
     }
 }

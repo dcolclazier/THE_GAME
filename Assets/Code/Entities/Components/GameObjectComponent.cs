@@ -10,9 +10,9 @@ namespace Assets.Code.Entities.Components {
 
         public GameObject Go { get; private set; }
 
-        private Vector2 _entityPosition;
-        private Vector2 _offset;
+        private Vector2 _transformPosition;
         public Entity Parent { get; set; }
+        public bool Enabled { get; private set; }
 
         Entity IComponent.Parent {
             get { return Parent; }
@@ -27,34 +27,29 @@ namespace Assets.Code.Entities.Components {
             }
         }
 
-        public void Update() {
-           if(EntityPositionChanged()) UpdatePosition();
-        }
-
-        private bool EntityPositionChanged() {
-            return Parent.Attributes.Get<Vector2>("Position") != (Vector2)Go.transform.position + _offset;
-        }
-
-        private void UpdatePosition() {
-            
-            var first = Parent.Attributes.Get<Vector2>("Position") == Vector2.zero;
-            Parent.Attributes.Update("Position", Go.transform.position.ToVector2() + _offset);
-            if (!first) Messenger.Broadcast("EntityMoved", Parent);
-        }
-
         public void OnUpdate() {
-            throw new NotImplementedException();
+            if (_transformPosition.Equals(Go.transform.position.ToVector2())) return;
+            
+            _transformPosition = Go.transform.position;
+            Parent.Attributes.Update("Position", _transformPosition);
+            Messenger.Broadcast("GameObjectMoved", Parent);
         }
-
         public void Init() {
             Go = Parent.Attributes.Get<GameObject>("GameObject");
-            _offset = Go.GetComponent<Collider2D>().offset;
+            Parent.Attributes.Register("Position", Go.transform.position.ToVector2());
 
-            Parent.Attributes.Register("Position", Go.transform.position.ToVector2() + _offset);
+            Messenger.AddListener("OnUpdate",OnUpdate);
+            Enabled = true;
+
             Parent.Attributes.Register("GameObjectComponent",this);
         }
 
-        
-        
+        public void OnMessage() {
+        }
+
+        public void StartUnityCoroutine(Func<IEnumerator> moveRoutine) {
+
+            StartCoroutine(moveRoutine());
+        }
     }
 }

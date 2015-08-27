@@ -9,7 +9,7 @@ namespace Assets.Code.Entities {
                 "GameObject",
                 "UnitStats",
                 "ObstructableUnit",
-                "SelectableUnit",
+                "Selectable",
                 "Pathfinding",
                 "Moveable",
                 //"AttackableComponent",
@@ -18,7 +18,7 @@ namespace Assets.Code.Entities {
 				"BasicAttack"
             };
             EntitysToInclude = new List<string>() {
-                //"BasicWoodenSword",
+                "BasicWoodenSword",
             };
             NumericalAttributesToSet = new Dictionary<string, int>() {
                  {"Strength", 18},
@@ -30,6 +30,7 @@ namespace Assets.Code.Entities {
               
             base.Awake();
 
+            //entity's he should be wielding at spawn, and where they go
             
         }
 
