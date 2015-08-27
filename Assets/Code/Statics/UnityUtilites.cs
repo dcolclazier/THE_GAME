@@ -34,6 +34,17 @@ namespace Assets.Code.Statics {
             return i;
         }
 
+        public static Vector3[] SpriteLocalToWorld(Sprite sp, GameObject go)
+        {
+            Vector3 pos = go.transform.position;
+            Vector3[] array = new Vector3[2];
+            //top left
+            array[0] = pos + sp.bounds.min;
+            // Bottom right
+            array[1] = pos + sp.bounds.max;
+            return array;
+        }
+
         //public static IEnumerable<LayerFlag> GetFlags(int input) {
         //    var flag = (LayerFlag)input;
         //    foreach (LayerFlag value in Enum.GetValues(flag.GetType()))

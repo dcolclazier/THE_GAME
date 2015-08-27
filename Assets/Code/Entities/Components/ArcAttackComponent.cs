@@ -54,7 +54,8 @@ namespace Assets.Code.Entities.Components {
 
 		protected override void mouseEnter()
 		{
-			if (!enabled) return;
+			//if (!enabled) return;
+            Debug.Log("Getting here...");
 			RangeArc(rangeCircle, range, 45);
 		}
 

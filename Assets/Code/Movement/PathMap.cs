@@ -41,7 +41,6 @@ namespace Assets.Code.Movement {
 
             openQueue.Enqueue(SourceNode); 
         
-            int i = 0;
             while (openQueue.Any()) {
                 var scrub = false;
                 var sortedQueue = new Queue<Node>(openQueue.OrderBy(z => z.TotalScoreF));
@@ -63,7 +62,7 @@ namespace Assets.Code.Movement {
                     }
 
                     foreach (var node in openQueue) {
-                        if (node.Position == neighbor.Position)
+                        if (node == neighbor)
                             scrub = true;
 						if (node.Equals(neighbor))
 						    scrub = true;
@@ -85,17 +84,18 @@ namespace Assets.Code.Movement {
 
         private IEnumerable<Vector3> BuildPath(Node endpoint) {
             var path = new List<Node> {endpoint};
-            
-            while (endpoint.CameFrom != null) {
-                if (!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom); 
-                if (endpoint.IsSource) break;
+            var ind = 0;
+            while (endpoint != SourceNode) {
+                ind++;
+                if (ind > 10) {
+                    Debug.Log("Path build loop broke...");
+                    break;
+                }
+                if(!path.Contains(endpoint.CameFrom)) path.Add(endpoint.CameFrom);
                 endpoint = endpoint.CameFrom;
             }
-            path.Add(SourceNode);
-            
-            path.RemoveAt(path.Count - (path.Count>2? 2:1)); //fix for pathfinding_bug
+            //Debug.Log("Path Count: " + path.Count);
             NodeManager.ClearNodes();
-
             return ConvertToVectorArray(path);
         }
 
@@ -109,7 +109,7 @@ namespace Assets.Code.Movement {
             
             SourceNode.Position = selectedPlayer;
             StaticNodes = EntityManager.GetAllSolidNodes().ToList();
-
+            //Debug.Log("Static Nodes Count: " + StaticNodes.Count);
             if (!StaticNodes.Contains(SourceNode)) StaticNodes.Add(SourceNode);
 
             foreach (var node in StaticNodes) {
