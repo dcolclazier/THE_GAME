@@ -29,10 +29,12 @@ public class BattleController : MonoBehaviour{
 		
 	}
 	
-	private void newRound ()
+	public void newRound ()
 	{
 		Messenger.Broadcast("New Round");
-		
+		GameObject newRoundText = GameObject.Find("New Round Text");
+		Animator animator = newRoundText.GetComponent<Animator>();
+		animator.Play("Round_Text");
 	}
 	
 	private void turnCount(string team, int actions)
