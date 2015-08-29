@@ -54,7 +54,9 @@ namespace Assets.Code.Entities.Components {
             Parent.Attributes.Register("GameObjectComponent",this);
         }
 
-        
+        public void Testing() {
+            Debug.Log("Hey Kyle!");
+        }
         
     }
 }
