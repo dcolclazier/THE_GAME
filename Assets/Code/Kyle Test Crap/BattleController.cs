@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Vectrosity;
 
-public class BattleController : MonoBehaviour{
+public class BattleController : MonoBehaviour{  //monobehavior for testing??
 	
 	public int TestPlayerActions;   //TESTING ONLY
 	public int TestEnemyActions;    //TESTING ONLY
@@ -17,6 +17,8 @@ public class BattleController : MonoBehaviour{
 	private int enemyActionsRemain;
 	
 	private Turn[] Round;
+
+
 	
 	
 	// Use this for initialization
@@ -29,12 +31,17 @@ public class BattleController : MonoBehaviour{
 		
 	}
 	
-	public void newRound ()
+	public void newRound ()  //public for testing
 	{
+		playerRoundActions = 0;
+		enemyRoundActions = 0;
+
 		Messenger.Broadcast("New Round");
 		GameObject newRoundText = GameObject.Find("New Round Text");
 		Animator animator = newRoundText.GetComponent<Animator>();
 		animator.Play("Round_Text");
+
+		setRoundTurnOrder();
 	}
 	
 	private void turnCount(string team, int actions)
@@ -45,8 +52,8 @@ public class BattleController : MonoBehaviour{
 	
 	public void setRoundTurnOrder()  //PUBLIC FOR TESTING
 	{ 
-		playerRoundActions = TestPlayerActions;  //TESTING ONLY 
-		enemyRoundActions = TestEnemyActions;    //TESTING ONLY
+		//playerRoundActions = TestPlayerActions;  //TESTING ONLY 
+		//enemyRoundActions = TestEnemyActions;    //TESTING ONLY
 		
 		string firstTurn;
 		string secondTurn;

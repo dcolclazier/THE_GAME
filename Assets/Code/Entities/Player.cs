@@ -25,7 +25,8 @@ namespace Assets.Code.Entities {
                  {"Agility", 2}
             };
             StringAttributesToSet = new Dictionary<string, string>() {
-                {"Name", "David"},
+				{"Team", "Player"},
+				{"Name", "David"},
             };
               
             base.Awake();

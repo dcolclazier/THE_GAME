@@ -8,13 +8,21 @@ namespace Assets.Code.Entities {
         {
             ComponentsToInit = new List<string>() {
                 "GameObject",
+				"UnitStats",
                 "ObstructableProp",
                 "SelectableProp",
                 "AttackableComponent",
 
             };
-            NumericalAttributesToSet = new Dictionary<string, int>();
-            StringAttributesToSet = new Dictionary<string, string>();
+            NumericalAttributesToSet = new Dictionary<string, int>()
+			{
+				{"Actions", 5},
+			};
+            StringAttributesToSet = new Dictionary<string, string>()
+			{
+				{"Team", "Enemy"},
+
+			};
             EntitysToInclude = new List<string>();
             base.Awake();
         }

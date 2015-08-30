@@ -26,6 +26,7 @@ namespace Assets.Code.Entities {
 				{"Agility", 2}
 			};
 			StringAttributesToSet = new Dictionary<string, string>() {
+				{"Team", "Player"},
 				{"Name", "Betty"},
 			};
 			
