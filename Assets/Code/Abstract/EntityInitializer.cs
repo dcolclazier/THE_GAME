@@ -41,18 +41,7 @@ namespace Assets.Code.Abstract {
             var validEntityList = new Dictionary<string, Type> {
                 //{"BasicWoodenSword", typeof(BasicWoodenSword)},
             };
-            foreach (var entry in NumericalAttributesToSet)
-            {
-                if (!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key, entry.Value);
-                else myParent.Attributes.Update(entry.Key, entry.Value);
-            }
-            foreach (var entry in StringAttributesToSet)
-            {
-                Debug.Log("Key " + entry.Key + "Value " + entry.Value);
-                if (!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key, entry.Value);
-                else myParent.Attributes.Update(entry.Key, entry.Value);
-                Debug.Log("Entry added? " + myParent.Attributes.Contains(entry.Key));
-            }
+            
             foreach (var c in ComponentsToInit) {
 
                 if (c == "GameObject") {
@@ -71,12 +60,25 @@ namespace Assets.Code.Abstract {
                     myParent.Components.Register(c, component);
                 }
             }
-            foreach (var e in EntitysToInclude) {
-                var test = Activator.CreateInstance(validEntityList[e]);
-                var entity = test as Entity;
-                if (entity == null) continue;
-                entity.Init(myParent);
-            }
+            
+			foreach (var entry in NumericalAttributesToSet)
+			{
+				if (!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key, entry.Value);
+				else myParent.Attributes.Update(entry.Key, entry.Value);
+			}
+			foreach (var entry in StringAttributesToSet)
+			{
+				Debug.Log("Key " + entry.Key + "Value " + entry.Value);
+				if (!myParent.Attributes.Contains(entry.Key)) myParent.Attributes.Register(entry.Key, entry.Value);
+				else myParent.Attributes.Update(entry.Key, entry.Value);
+				Debug.Log("Entry added? " + myParent.Attributes.Contains(entry.Key));
+			}
+			foreach (var e in EntitysToInclude) {
+				var test = Activator.CreateInstance(validEntityList[e]);
+				var entity = test as Entity;
+				if (entity == null) continue;
+				entity.Init(myParent);
+			}
             
             //todo - figure out a way to make this generic and type safe
            

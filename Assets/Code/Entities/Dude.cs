@@ -16,7 +16,8 @@ namespace Assets.Code.Entities {
             };
             NumericalAttributesToSet = new Dictionary<string, int>()
 			{
-				{"Actions", 5},
+				{"Strength", 1},
+				{"Actions", 3},
 			};
             StringAttributesToSet = new Dictionary<string, string>()
 			{
